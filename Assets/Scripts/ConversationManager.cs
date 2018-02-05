@@ -29,14 +29,14 @@ public class ConversationManager : MonoBehaviour {
     public void BotSay(string text)
     {
         ChatLine botLine = Instantiate(botPrefab, transform).GetComponent<ChatLine>();
-        botLine.label.text = text;
+        botLine.label.Text = text;
         conversation.Add(botLine);
     }
 
     public void UserSay(string text)
-    {
+    { 
         ChatLine userLine = Instantiate(userPrefab, transform).GetComponent<ChatLine>();
-        userLine.label.text = text;
+        userLine.label.Text = text;
         conversation.Add(userLine);
     }
 }

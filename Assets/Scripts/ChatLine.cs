@@ -1,6 +1,5 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ChatLine : MonoBehaviour {
-    public TextMeshProUGUI label;
+    public ArabicText label;
 }

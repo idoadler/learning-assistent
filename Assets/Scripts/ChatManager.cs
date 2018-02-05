@@ -6,10 +6,10 @@ public class ChatManager : MonoBehaviour {
     public ScrollRect chatScroll;
     public InputField input;
 
-    private void Start()
+    private void Awake()
     {
         WitAi.request_success += SetBotTextJSON;
-        WitAi.request_failure += SetBotText;
+        WitAi.request_failure += SetBotErrorMsg;
     }
 
     // Update is called once per frame
@@ -38,6 +38,11 @@ public class ChatManager : MonoBehaviour {
     private void SetBotText(string text)
     {
         ConversationManager.Instance.BotSay(text);
+    }
+
+    private void SetBotErrorMsg(string error)
+    {
+        SetBotText("התקבלה שגיאה:\n" + error);
     }
 
     private void SetBotTextJSON(string json)
