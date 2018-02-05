@@ -49,17 +49,17 @@ public class ChatManager : MonoBehaviour {
         if (entities == null)
         {
             // wrong communication
-            SetBotText("no entities");
+            SetBotText("שגיאה: בעית תקשורת");
         }
         else if (entities.Count == 0)
         {
             // normal no result
-            SetBotText("no keys");
+            SetBotText("אין לי מושג למה התכוונת");
         }
         else if (entities.Count > 1)
         {
             // API change
-            SetBotText("too many keys");
+            SetBotText("שגיאה: קלט לא מזוהה");
         }
         else
         {
@@ -70,7 +70,7 @@ public class ChatManager : MonoBehaviour {
             }
 
             value = entities[key][0]["value"];
-            SetBotText(key + ": " + value);
+            SetBotText("זוהתה כוונה\n"+key + ": " + value);
         }
     }
 }
