@@ -10,6 +10,8 @@ public class ChatManager : MonoBehaviour {
     {
         WitAi.request_success += SetBotTextJSON;
         WitAi.request_failure += SetBotErrorMsg;
+        input.Select();
+        input.ActivateInputField();
     }
 
     // Update is called once per frame
@@ -18,7 +20,7 @@ public class ChatManager : MonoBehaviour {
         {
             Application.Quit();
         }
-        else if (input.isFocused && Input.GetKey(KeyCode.Return))
+        else if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
         {
             SendText();
         }
@@ -32,6 +34,8 @@ public class ChatManager : MonoBehaviour {
             WitAi.Instance.Say(input.text);
             chatScroll.normalizedPosition = Vector2.zero;
             input.text = "";
+            input.Select();
+            input.ActivateInputField();
         }
     }
 
