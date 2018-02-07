@@ -20,7 +20,7 @@ public class ChatManager : MonoBehaviour {
         {
             Application.Quit();
         }
-        else if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
+        else if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter) /*|| !input.isFocused*/)
         {
             SendText();
         }
@@ -34,9 +34,9 @@ public class ChatManager : MonoBehaviour {
             WitAi.Instance.Say(input.text);
             chatScroll.normalizedPosition = Vector2.zero;
             input.text = "";
-            input.Select();
-            input.ActivateInputField();
         }
+        input.Select();
+        input.ActivateInputField();
     }
 
     private void SetBotText(string text)
