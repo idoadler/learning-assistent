@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "377506858147",
+    "firebase_url": "https://study-assistent.firebaseio.com",
+    "project_id": "study-assistent",
+    "storage_bucket": "study-assistent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377506858147:android:eb2068d647471a84",
+        "android_client_info": {
+          "package_name": "assistent.MindCet.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "377506858147-m04tbnrjafdfcttrg9fb284ek347kqch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ2UTpN3RfKf_AUfmDAqKrqpNXmOK_6a0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
