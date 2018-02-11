@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ConversationManager : MonoBehaviour {
     public static ConversationManager Instance;
@@ -23,13 +23,14 @@ public class ConversationManager : MonoBehaviour {
 
     public void BotSay(string text)
     {
+        GetComponent<VerticalLayoutGroup>().childControlHeight = true;
         ChatLine botLine = Instantiate(botPrefab, transform).GetComponent<ChatLine>();
         botLine.label.Text = text;
         conversation.Add(botLine);
     }
 
     public void UserSay(string text)
-    { 
+    {
         ChatLine userLine = Instantiate(userPrefab, transform).GetComponent<ChatLine>();
         userLine.label.Text = text;
         conversation.Add(userLine);

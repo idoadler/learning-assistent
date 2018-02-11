@@ -1,5 +1,8 @@
 צריך לעשות:
 
+errors:
+*scoll to bottom doesn't work with long chatline prefabs
+
 טכנולוגיה:
 * לעשות בילד למובייל
 * לשלוח נוטיפקציה
@@ -10,6 +13,9 @@
 * להטמיע פעולות
 * היסטורית שיחה?
 * לסדר מסד נתונים מול firebase
+* להוסיף validator לקובץ brain
+* https://jsoneditoronline.org/?id=ba550e06b7db20a97ae67b414b7bc085
+* enable brain editing via node graph visualization
 
 * implement UI
 

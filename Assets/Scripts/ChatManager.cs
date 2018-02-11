@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour {
@@ -36,8 +37,8 @@ public class ChatManager : MonoBehaviour {
         if (input.text != "")
         {
             ConversationManager.Instance.UserSay(input.text);
+            //TODO: scroll to bottom
             WitAi.Instance.Say(input.text);
-            chatScroll.normalizedPosition = Vector2.zero;
             input.text = "";
         }
         input.Select();
@@ -47,6 +48,7 @@ public class ChatManager : MonoBehaviour {
     private void SetBotText(string text)
     {
         ConversationManager.Instance.BotSay(text);
+        //TODO: scroll to bottom
     }
 
     private void SetBotErrorMsg(string error)
