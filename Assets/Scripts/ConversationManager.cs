@@ -20,11 +20,6 @@ public class ConversationManager : MonoBehaviour {
             Destroy(this);
         }
     }
-    
-    // Use this for initialization
-    void Start () {
-        BotSay("שלום משתמש");
-	}
 
     public void BotSay(string text)
     {

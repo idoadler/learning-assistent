@@ -1,10 +1,10 @@
-﻿using SimpleJSON;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour {
     public ScrollRect chatScroll;
     public InputField input;
+    public TextAsset conversation;
 
     private void Awake()
     {
@@ -12,6 +12,11 @@ public class ChatManager : MonoBehaviour {
         WitAi.request_failure += SetBotErrorMsg;
         input.Select();
         input.ActivateInputField();
+    }
+
+    private void Start()
+    {
+        ConversationManager.Instance.BotSay(JsonManager.InitConversationJson(conversation.text));
     }
 
     // Update is called once per frame
@@ -51,35 +56,6 @@ public class ChatManager : MonoBehaviour {
 
     private void SetBotTextJSON(string json)
     {
-        JSONNode entities = JSON.Parse(json)["entities"];
-        string key = "";
-        string value = "";
-
-        if (entities == null)
-        {
-            // wrong communication
-            SetBotText("שגיאה: בעית תקשורת");
-        }
-        else if (entities.Count == 0)
-        {
-            // normal no result
-            SetBotText("אין לי מושג למה התכוונת");
-        }
-        else if (entities.Count > 1)
-        {
-            // API change
-            SetBotText("שגיאה: קלט לא מזוהה");
-        }
-        else
-        {
-            // normal result
-            foreach (string k in entities.Keys)
-            {
-                key = k;
-            }
-
-            value = entities[key][0]["value"];
-            SetBotText("זוהתה כוונה\n"+key + ": " + value);
-        }
+        SetBotText(JsonManager.JsonToBotText(json));
     }
 }

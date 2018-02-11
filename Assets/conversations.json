@@ -1,0 +1,69 @@
+{
+  "firstrun": "choosebot",
+  "conversations": {
+    "choosebot": {
+      "text": [
+        "היי, אנחנו פה כדי לעזור לך\nיוני ועלמה, במי תבחר?"
+      ],
+      "type": "choice",
+      "nlp": true,
+      "intentions": {
+        "trainer": {
+          "mona": "meetmona",
+          "yoni": "meetyoni"
+        }
+      },
+      "retry": "choosebotretry"
+    },
+    "coohsebotretry": {
+      "text": [
+        "לא הבנתי את כוונתך, יש לבחור באחת משתי האופציות"
+      ],
+      "nlp": false,
+      "options": {
+        "yoni": {
+          "text": "יוני",
+          "next": "meetyoni"
+        },
+        "mona": {
+          "text": "מונה",
+          "next": "meetmona"
+        }
+      }
+    },
+    "meetmona": {
+      "text": [
+        "נעים מאוד, אני מונה, מה שמך?"
+      ],
+      "type": "freetext",
+      "var": "name",
+      "nlp": false,
+      "next": "introduction"
+    },
+    "meetyoni": {
+      "text": [
+        "נעים מאוד, אני יוני, מה שמך?"
+      ],
+      "type": "freetext",
+      "var": "name",
+      "nlp": false,
+      "next": "introduction"
+    },
+    "introduction": {
+      "text": [
+        "שלום %name% אני פה לעזור לך ללמוד, בן או בת?"
+      ],
+      "type": "choice",
+      "var": "sex",
+      "nlp": false,
+      "options": {
+        "male": {
+          "text": "בן"
+        },
+        "female": {
+          "text": "בת"
+        }
+      }
+    }
+  }
+}

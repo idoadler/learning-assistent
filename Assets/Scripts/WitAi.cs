@@ -33,7 +33,6 @@ public class WitAi : MonoBehaviour {
         // check for errors
         if (www.error == null)
         {
-            Debug.Log("WWW Ok!: " + www.text);
             if (request_success != null)
             {
                 request_success(www.text);
