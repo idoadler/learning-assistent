@@ -5,14 +5,14 @@ public static class JsonManager
 {
     private const string LAST_STATE = "LASTSTATE";
     private const string FIRST_NODE = "firstrun";
-    private static JSONNode entireJson;
+    private static JSONNode brain;
     private static JSONNode conversation;
     private static JSONNode currentState;
 
     public static string InitConversationJson(string json)
     {
-        entireJson = JSON.Parse(json);
-        conversation = entireJson["conversations"];
+        brain = JSON.Parse(json);
+        conversation = brain["conversations"];
         string state = PlayerPrefs.GetString(LAST_STATE);
         if (string.IsNullOrEmpty(state))
             return (ResetConversation());
@@ -25,7 +25,7 @@ public static class JsonManager
 
     public static string ResetConversation()
     {
-        string state = entireJson["firstrun"].Value;
+        string state = brain["firstrun"].Value;
         PlayerPrefs.SetString(LAST_STATE, state);
         currentState = conversation[state];
         return currentState["text"][0];

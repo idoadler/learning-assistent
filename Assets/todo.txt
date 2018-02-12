@@ -1,8 +1,5 @@
 צריך לעשות:
 
-errors:
-*scoll to bottom doesn't work with long chatline prefabs
-
 טכנולוגיה:
 * לעשות בילד למובייל
 * לשלוח נוטיפקציה

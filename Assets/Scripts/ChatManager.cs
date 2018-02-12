@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ChatManager : MonoBehaviour {
     public ScrollRect chatScroll;
     public InputField input;
-    public TextAsset conversation;
+    public TextAsset brain;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class ChatManager : MonoBehaviour {
 
     private void Start()
     {
-        ConversationManager.Instance.BotSay(JsonManager.InitConversationJson(conversation.text));
+        ConversationManager.Instance.BotSay(JsonManager.InitConversationJson(brain.text));
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class ChatManager : MonoBehaviour {
         if (input.text != "")
         {
             ConversationManager.Instance.UserSay(input.text);
-            //TODO: scroll to bottom
+            StartCoroutine(ScrollToBottom());
             WitAi.Instance.Say(input.text);
             input.text = "";
         }
@@ -48,7 +48,7 @@ public class ChatManager : MonoBehaviour {
     private void SetBotText(string text)
     {
         ConversationManager.Instance.BotSay(text);
-        //TODO: scroll to bottom
+        StartCoroutine(ScrollToBottom());
     }
 
     private void SetBotErrorMsg(string error)
@@ -59,5 +59,14 @@ public class ChatManager : MonoBehaviour {
     private void SetBotTextJSON(string json)
     {
         SetBotText(JsonManager.JsonToBotText(json));
+    }
+
+    IEnumerator ScrollToBottom()
+    {
+        yield return new WaitForEndOfFrame();
+        chatScroll.verticalNormalizedPosition = 0;
+        ConversationManager.Instance.EmptyHack();
+        yield return new WaitForEndOfFrame();
+        chatScroll.verticalNormalizedPosition = 0;
     }
 }

@@ -6,7 +6,10 @@ public class ConversationManager : MonoBehaviour {
     public static ConversationManager Instance;
     public GameObject botPrefab;
     public GameObject userPrefab;
+    public GameObject emptyPrefab;
     public List<ChatLine> conversation = new List<ChatLine>();
+
+    private GameObject emptyObject;
 
     private void Awake()
     {
@@ -23,16 +26,32 @@ public class ConversationManager : MonoBehaviour {
 
     public void BotSay(string text)
     {
-        GetComponent<VerticalLayoutGroup>().childControlHeight = true;
-        ChatLine botLine = Instantiate(botPrefab, transform).GetComponent<ChatLine>();
-        botLine.label.Text = text;
-        conversation.Add(botLine);
+        SayText(botPrefab, text);
     }
 
     public void UserSay(string text)
     {
-        ChatLine userLine = Instantiate(userPrefab, transform).GetComponent<ChatLine>();
-        userLine.label.Text = text;
-        conversation.Add(userLine);
+        SayText(userPrefab, text);
+    }
+
+    private void SayText(GameObject prefab, string text)
+    {
+        // hack to make the chat scrollebel to the correct hight (the scroller set this off at drag)
+        GetComponent<VerticalLayoutGroup>().childControlHeight = true;
+
+        // create prefab with the spoken text
+        ChatLine chatLine = Instantiate(prefab, transform).GetComponent<ChatLine>();
+        chatLine.label.Text = text;
+        conversation.Add(chatLine);
+    }
+
+    public void EmptyHack()
+    {
+        // hack to add another empty line at the end of the chat
+        if (emptyObject != null)
+        {
+            Destroy(emptyObject);
+        }
+        emptyObject = Instantiate(emptyPrefab, transform);
     }
 }

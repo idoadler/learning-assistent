@@ -147,7 +147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000012484005}
+  m_AnchoredPosition: {x: 0, y: -0.000015878639}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &29405283
@@ -204,6 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botPrefab: {fileID: 1272946852988846, guid: 0a2983b5db8e01d4bae2a932c558909e, type: 2}
   userPrefab: {fileID: 1376964215388976, guid: 5b1a29f2c5329254ea45e2342caee593, type: 2}
+  emptyPrefab: {fileID: 1369088406318106, guid: da9dd7515e6bbdd4dbe3f5e646adc253,
+    type: 2}
   conversation: []
 --- !u!1 &322082916
 GameObject:
@@ -220,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &322082917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -355,6 +357,7 @@ GameObject:
   - component: {fileID: 710725462}
   - component: {fileID: 710725461}
   - component: {fileID: 710725460}
+  - component: {fileID: 710725463}
   m_Layer: 5
   m_Name: ChatBack
   m_TagString: Untagged
@@ -445,6 +448,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 710725458}
+--- !u!114 &710725463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 710725458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 29405284}
+          m_MethodName: set_childControlHeight
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &855228114
 Prefab:
   m_ObjectHideFlags: 0
@@ -1020,7 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatScroll: {fileID: 710725460}
   input: {fileID: 1323373624}
-  conversation: {fileID: 4900000, guid: 65cee368a10993847bb05f0442c900eb, type: 3}
+  brain: {fileID: 4900000, guid: 65cee368a10993847bb05f0442c900eb, type: 3}
 --- !u!222 &1413911478
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1282,10 +1315,10 @@ RectTransform:
   m_Father: {fileID: 322082917}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 374.99997, y: -60}
+  m_SizeDelta: {x: 187.49998, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1817865834
 MonoBehaviour:
@@ -1404,10 +1437,10 @@ RectTransform:
   m_Father: {fileID: 322082917}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 187.49998, y: -60}
+  m_SizeDelta: {x: 187.49998, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1824699394
 MonoBehaviour:
