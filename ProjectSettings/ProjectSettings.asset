@@ -245,8 +245,8 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: C:/Users/X/Documents/git/learning-assistent/user.keystore
-  AndroidKeyaliasName: assistent
-  AndroidTVCompatibility: 1
+  AndroidKeyaliasName: 
+  AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
@@ -654,7 +654,9 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Build: 1
     Collab: 1
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: abbf71c3-d8d0-4b9d-ba2c-7f5ab076dc6c

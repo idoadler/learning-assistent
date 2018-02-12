@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Assets.SimpleAndroidNotifications;
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,13 +13,12 @@ public class ChatManager : MonoBehaviour {
     {
         WitAi.request_success += SetBotTextJSON;
         WitAi.request_failure += SetBotErrorMsg;
-        input.Select();
-        input.ActivateInputField();
     }
 
     private void Start()
     {
         ConversationManager.Instance.BotSay(JsonManager.InitConversationJson(brain.text));
+        NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
     }
 
     // Update is called once per frame
@@ -30,6 +31,8 @@ public class ChatManager : MonoBehaviour {
         {
             SendText();
         }
+
+        // TODO: adjust UI height by TouchScreenKeyboard.area.height
     }
 
     public void SendText()
@@ -41,8 +44,6 @@ public class ChatManager : MonoBehaviour {
             WitAi.Instance.Say(input.text);
             input.text = "";
         }
-        input.Select();
-        input.ActivateInputField();
     }
 
     private void SetBotText(string text)
