@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using ArabicSupport;
 using System.Collections.Generic;
 using System;
@@ -92,7 +91,7 @@ public class ArabicText : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(Text))
         {
-            string rtlText = ArabicSupport.ArabicFixer.Fix(Text, ShowTashkeel, UseHinduNumbers);
+            string rtlText = ArabicFixer.Fix(Text, ShowTashkeel, UseHinduNumbers);
             rtlText = rtlText.Replace("\r", ""); // the Arabix fixer Return \r\n for everyy \n .. need to be removed
 
             string finalText = "";

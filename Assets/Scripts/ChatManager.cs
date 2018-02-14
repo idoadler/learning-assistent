@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour {
+    public GameObject[] screens;
+    private int currentScreen = 0;
     public ScrollRect chatScroll;
     public InputField input;
     public TextAsset brain;
@@ -19,6 +21,23 @@ public class ChatManager : MonoBehaviour {
     {
         ConversationManager.Instance.BotSay(JsonManager.InitConversationJson(brain.text));
         NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
+
+        // reset screens
+        foreach(GameObject g in screens)
+        {
+            g.SetActive(false);
+        }
+        screens[currentScreen].SetActive(true);
+    }
+
+    public void NextScreen()
+    {
+        screens[currentScreen].SetActive(false);
+        currentScreen++;
+        if (currentScreen < screens.Length)
+        {
+            screens[currentScreen].SetActive(true);
+        }
     }
 
     // Update is called once per frame
