@@ -21,7 +21,7 @@ public class ChatManager : MonoBehaviour {
     private void Start()
     {
         conversation.BotSay(JsonManager.InitConversationJson(brain.text));
-        NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
+        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
 
         // reset screens
         foreach(GameObject g in screens)
@@ -96,7 +96,7 @@ public class ChatManager : MonoBehaviour {
     {
         yield return new WaitForEndOfFrame();
         chatScroll.verticalNormalizedPosition = 0;
-        conversation.EmptyHack();
+        //conversation.EmptyHack();
         yield return new WaitForEndOfFrame();
         chatScroll.verticalNormalizedPosition = 0;
     }
