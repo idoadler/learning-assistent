@@ -10,6 +10,7 @@ public class ChatManager : MonoBehaviour {
     public ScrollRect chatScroll;
     public InputField input;
     public TextAsset brain;
+    public ConversationManager conversation;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class ChatManager : MonoBehaviour {
 
     private void Start()
     {
-        ConversationManager.Instance.BotSay(JsonManager.InitConversationJson(brain.text));
+        conversation.BotSay(JsonManager.InitConversationJson(brain.text));
         NotificationManager.SendWithAppIcon(TimeSpan.FromSeconds(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
 
         // reset screens
@@ -32,10 +33,20 @@ public class ChatManager : MonoBehaviour {
 
     public void NextScreen()
     {
-        screens[currentScreen].SetActive(false);
-        currentScreen++;
         if (currentScreen < screens.Length)
         {
+            screens[currentScreen].SetActive(false);
+            currentScreen++;
+            screens[currentScreen].SetActive(true);
+        }
+    }
+
+    public void LastScreen()
+    {
+        if (currentScreen > 0)
+        {
+            screens[currentScreen].SetActive(false);
+            currentScreen--;
             screens[currentScreen].SetActive(true);
         }
     }
@@ -58,7 +69,7 @@ public class ChatManager : MonoBehaviour {
     {
         if (input.text != "")
         {
-            ConversationManager.Instance.UserSay(input.text);
+            conversation.UserSay(input.text);
             StartCoroutine(ScrollToBottom());
             WitAi.Instance.Say(input.text);
             input.text = "";
@@ -67,7 +78,7 @@ public class ChatManager : MonoBehaviour {
 
     private void SetBotText(string text)
     {
-        ConversationManager.Instance.BotSay(text);
+        conversation.BotSay(text);
         StartCoroutine(ScrollToBottom());
     }
 
@@ -85,7 +96,7 @@ public class ChatManager : MonoBehaviour {
     {
         yield return new WaitForEndOfFrame();
         chatScroll.verticalNormalizedPosition = 0;
-        ConversationManager.Instance.EmptyHack();
+        conversation.EmptyHack();
         yield return new WaitForEndOfFrame();
         chatScroll.verticalNormalizedPosition = 0;
     }

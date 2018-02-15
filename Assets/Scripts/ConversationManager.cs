@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ConversationManager : MonoBehaviour {
-    public static ConversationManager Instance;
+//    public static ConversationManager Instance;
     public GameObject botPrefab;
     public GameObject userPrefab;
     public GameObject emptyPrefab;
@@ -11,18 +11,18 @@ public class ConversationManager : MonoBehaviour {
 
     private GameObject emptyObject;
 
-    private void Awake()
-    {
-        // Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(this);
-        }
-    }
+    //private void Awake()
+    //{
+    //    // Singleton
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //    }
+    //    else if (Instance != this)
+    //    {
+    //        Destroy(this);
+    //    }
+    //}
 
     public void BotSay(string text)
     {
