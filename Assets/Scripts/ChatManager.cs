@@ -5,6 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour {
+    public static bool IsAssistentGirl = true;
+    public static bool IsUserGirl = true;
+
+    public void SetAsistentGender(bool isGirl)
+    {
+        IsAssistentGirl = isGirl;
+        if (!isGirl)
+        {
+            JsonManager.ConversationGender = "m2f";
+        }
+    }
+
     public GameObject[] screens;
     private int currentScreen = 0;
     public ScrollRect chatScroll;
@@ -16,19 +28,21 @@ public class ChatManager : MonoBehaviour {
     {
         WitAi.request_success += SetBotTextJSON;
         WitAi.request_failure += SetBotErrorMsg;
+
+        // reset screens
+        foreach (GameObject g in screens)
+        {
+            g.SetActive(false);
+        }
+        screens[0].SetActive(true);
     }
 
     private void Start()
     {
-        conversation.BotSay(JsonManager.InitConversationJson(brain.text));
+        JsonManager.InitConversationJson(brain.text);
+#if UNITY_ANDROID
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
-
-        // reset screens
-        foreach(GameObject g in screens)
-        {
-            g.SetActive(false);
-        }
-        screens[currentScreen].SetActive(true);
+#endif
     }
 
     public void NextScreen()

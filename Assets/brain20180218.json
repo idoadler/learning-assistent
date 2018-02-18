@@ -1,0 +1,76 @@
+{
+  "firstrun": "warning",
+  "general-error": "generalerr",
+  "communication-error": "commerr",
+  "intent-unknown": "intenterr",
+  "conversations": {
+    "generalerr": {
+      "text-f2f": "שגיאה: קלט לא מזוהה",
+      "text-f2m": "שגיאה: קלט לא מזוהה",
+      "text-m2f": "שגיאה: קלט לא מזוהה",
+      "text-m2m": "שגיאה: קלט לא מזוהה"
+    },
+    "commerr": {
+      "text-f2f": "שגיאה: בעית תקשורת",
+      "text-f2m": "שגיאה: בעית תקשורת",
+      "text-m2f": "שגיאה: בעית תקשורת",
+      "text-m2m": "שגיאה: בעית תקשורת"
+    },
+    "intenterr": {
+      "text-f2f": "אין לי מושג למה התכוונת",
+      "text-f2m": "אין לי מושג למה התכוונת",
+      "text-m2f": "אין לי מושג למה התכוונת",
+      "text-m2m": "אין לי מושג למה התכוונת"
+    },
+    "warning": {
+      "text-f2f": "היי, אני עלמה, ואני עדיין לא למדתי לדבר.\nרוצה לכתוב לי משהו בכל זאת?",
+      "text-f2m": "היי, אני עלמה, ואני עדיין לא למדתי לדבר.\nרוצה לכתוב לי משהו בכל זאת?",
+      "text-m2f": "היי, אני יוני, ואני עדיין לא למדתי לדבר.\nרוצה לכתוב לי משהו בכל זאת?",
+      "text-m2m": "היי, אני יוני, ואני עדיין לא למדתי לדבר.\nרוצה לכתוב לי משהו בכל זאת?",
+      "type": "choice",
+      "nlp": true,
+      "intentions": {
+        "introduction": {
+          "hi": "meetassistent"
+        }
+      },
+      "next": "choosebotretry"
+    },
+    "choosebotretry": {
+      "text-f2f": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "text-f2m": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "text-m2f": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "text-m2m": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "nlp": false,
+      "next": "meetassistent"
+    },
+    "meetassistent": {
+      "text-f2f": "נעים מאוד, אני עלמה, מה שמך?",
+      "text-f2m": "נעים מאוד, אני עלמה, מה שמך?",
+      "text-m2f": "נעים מאוד, אני יוני, מה שמך?",
+      "text-m2m": "נעים מאוד, אני יוני, מה שמך?",
+      "type": "freetext",
+      "var": "name",
+      "nlp": false,
+      "next": "introduction"
+    },
+    "introduction": {
+      "text-f2f": "שלום %name% אני פה לעזור לך ללמוד, בן או בת?",
+      "text-f2m": "שלום %name% אני פה לעזור לך ללמוד, בן או בת?",
+      "text-m2f": "שלום %name% אני פה לעזור לך ללמוד, בן או בת?",
+      "text-m2m": "שלום %name% אני פה לעזור לך ללמוד, בן או בת?",
+      "type": "choice",
+      "var": "sex",
+      "nlp": false,
+      "next": "warning",
+      "options": {
+        "male": {
+          "text": "בן"
+        },
+        "female": {
+          "text": "בת"
+        }
+      }
+    }
+  }
+}
