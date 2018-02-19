@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class HomeScreenManager : MonoBehaviour {
 
@@ -7,8 +8,10 @@ public class HomeScreenManager : MonoBehaviour {
     public GameObject dailyMissions;
     public GameObject allMissions;
     public GameObject allTests;
-    public GameObject subMenu;
+    public GameObject[] menusToHide;
     public GameObject[] screens;
+    public GameObject addMissionMenu;
+    private bool isTest;
 
     public void SetScreen(int target)
     {
@@ -16,7 +19,7 @@ public class HomeScreenManager : MonoBehaviour {
         {
             screens[i].SetActive(i == target);
         }
-        subMenu.SetActive(false);
+        HideMenus();
     }
 
     private void Start()
@@ -24,30 +27,51 @@ public class HomeScreenManager : MonoBehaviour {
         SetScreen(0);
     }
 
+    private void HideMenus()
+    {
+        foreach (GameObject menu in menusToHide)
+        {
+            menu.SetActive(false);
+        }
+    }
+
     private void OnEnable()
     {
-        subMenu.SetActive(false);
+        HideMenus();
     }
 
     public void AddDailyMission()
     {
-        // TODO: STUB
         ChatLine chatLine = Instantiate(missionLinePrefab, dailyMissions.transform).GetComponent<ChatLine>();
+        // TODO: STUB
+        HideMenus();
+        addMissionMenu.SetActive(true);
     }
 
     public void AddMissions()
     {
-        // TODO: STUB
         Instantiate(dateLinePrefab, allMissions.transform).GetComponent<ChatLine>();
         Instantiate(missionLinePrefab, allMissions.transform).GetComponent<ChatLine>();
         Instantiate(missionLinePrefab, allMissions.transform).GetComponent<ChatLine>();
+        // TODO: STUB
+        HideMenus();
+        addMissionMenu.SetActive(true);
+        isTest = false;
     }
 
     public void AddTests()
     {
-        // TODO: STUB
         Instantiate(dateLinePrefab, allTests.transform).GetComponent<ChatLine>();
         Instantiate(missionLinePrefab, allTests.transform).GetComponent<ChatLine>();
         Instantiate(missionLinePrefab, allTests.transform).GetComponent<ChatLine>();
+        // TODO: STUB
+        HideMenus();
+        addMissionMenu.SetActive(true);
+        isTest = true;
+    }
+
+    public void CreateMission(DateTime from, DateTime to, string mission)
+    {
+
     }
 }
