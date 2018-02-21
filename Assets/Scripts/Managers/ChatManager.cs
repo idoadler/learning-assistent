@@ -1,10 +1,10 @@
-﻿using Assets.SimpleAndroidNotifications;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour {
+    public const bool IS_TESTING = true;
+
     public static bool IsAssistentGirl = true;
     public static bool IsUserGirl = true;
 
@@ -40,9 +40,6 @@ public class ChatManager : MonoBehaviour {
     private void Start()
     {
         JsonManager.InitConversationJson(brain.text);
-#if UNITY_ANDROID
-        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
-#endif
     }
 
     public void NextScreen()

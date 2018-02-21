@@ -13,13 +13,30 @@ public class SetDateLabel : MonoBehaviour {
 	void Start ()
     {
         label = GetComponent<ArabicText>();
+        DateTime date = DateTime.Today.AddDays(shiftFromToday);
         if (shiftFromToday == 0)
         {
             label.Text = "היום";
         } else
         {
-            DateTime date = DateTime.Today.AddDays(shiftFromToday);
-            label.Text = date.ToString("dddd  |  d.M", HebCulture);
+            label.Text = DateFormat(date);
         }
     }
+
+    public static string DateFormat(DateTime date)
+    {
+        if (date.Date == DateTime.Today)
+        {
+            return date.ToString("היום  |  d.M", HebCulture);
+        }
+        else
+        {
+            return date.ToString("dddd  |  d.M", HebCulture);
+        }
+    }
+
+    //public static DateTime Parse(string date, string hour)
+    //{
+    //    return DateTime.ParseExact(date + " " + hour, "dddd  |  d.M", HebCulture);
+    //}
 }

@@ -17,13 +17,21 @@ public static class JsonManager
         brain = JSON.Parse(json);
         conversation = brain["conversations"];
         string state = PlayerPrefs.GetString(LAST_STATE);
-        if (string.IsNullOrEmpty(state) || conversation[state] == null)
+
+        if (ChatManager.IS_TESTING)
         {
-            ResetConversation();
+            ResetConversation(); // TODO: Remove, this is for testing
         }
         else
         {
-            currentState = conversation[state];
+            if (string.IsNullOrEmpty(state) || conversation[state] == null)
+            {
+                ResetConversation();
+            }
+            else
+            {
+                currentState = conversation[state];
+            }
         }
     }
 
@@ -61,7 +69,7 @@ public static class JsonManager
             }
             PlayerPrefs.SetString(LAST_STATE, state);
             currentState = conversation[state];
-            return "זוהתה כוונה\n" + intention + "," + key + "\n" + CurrentText();
+            return /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText();
         }
         catch (Exception e)
         {
