@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -100,7 +101,13 @@ public class ChatManager : MonoBehaviour {
 
     private void SetBotTextJSON(string json)
     {
-        SetBotText(JsonManager.JsonToBotText(json));
+        JsonManager.Result result = JsonManager.JsonToBotText(json);
+        SetBotText(result.displayText);
+    }
+
+    internal void ChooseResult(string text)
+    {
+        throw new NotImplementedException();
     }
 
     IEnumerator ScrollToBottom()

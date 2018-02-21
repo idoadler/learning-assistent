@@ -1,5 +1,6 @@
 ﻿using SimpleJSON;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class JsonManager
@@ -42,10 +43,12 @@ public static class JsonManager
         currentState = conversation[state];
     }
 
-    public static string SaySpecial(string state)
+    public static Result SaySpecial(string state)
     {
+        Result result = new Result();
         string specialState = brain[state].Value;
-        return conversation[specialState]["text-" + ConversationGender];
+        result.displayText = conversation[specialState]["text-" + ConversationGender];
+        return result;
     }
 
     public static string CurrentText()
@@ -53,15 +56,15 @@ public static class JsonManager
         return currentState["text-" + ConversationGender];
     }
 
-    public static string RetrieveResponse(string intention, string key)
+    public static Result RetrieveResponse(string intention, string key)
     {
+        Result result = new Result();
         try
         {
-            JSONNode result = currentState["intentions"][intention][key];
             string state;
-            if (result != null)
+            if (currentState["intentions"] != null && currentState["intentions"][intention][key] != null)
             {
-                state = result.Value;
+                state = currentState["intentions"][intention][key].Value;
             }
             else
             {
@@ -69,15 +72,51 @@ public static class JsonManager
             }
             PlayerPrefs.SetString(LAST_STATE, state);
             currentState = conversation[state];
-            return /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText();
+
+            result.displayText = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText();
+            if (currentState["options"] != null)
+            {
+                result.options = new List<string>(currentState["options"]);
+            }
         }
         catch (Exception e)
         {
-            return "זוהתה כוונה\n" + intention + "," + key + "\n" + "Error parsing:" + e.Message;
+            result.displayText = "זוהתה כוונה\n" + intention + "," + key + "\n" + "Error parsing:" + e.Message;
         }
+        return result;
     }
 
-    public static string JsonToBotText(string json)
+    public static Result RetrieveOption(string option)
+    {
+        Result result = new Result();
+        try
+        {
+            string state;
+            if (currentState["options"] != null && currentState["options"][option] != null)
+            {
+                state = currentState["options"][option].Value;
+            }
+            else
+            {
+                state = currentState["next"].Value;
+            }
+            PlayerPrefs.SetString(LAST_STATE, state);
+            currentState = conversation[state];
+
+            result.displayText = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText();
+            if (currentState["options"] != null)
+            {
+                result.options = new List<string>(currentState["options"]);
+            }
+        }
+        catch (Exception e)
+        {
+            result.displayText = "זוהתה כוונה\n" + option + "\n" + "Error parsing:" + e.Message;
+        }
+        return result;
+    }
+
+    public static Result JsonToBotText(string json)
     {
         JSONNode entities = JSON.Parse(json)["entities"];
 
@@ -112,4 +151,9 @@ public static class JsonManager
         }
     }
 
+    public struct Result
+    {
+        public string displayText;
+        public List<string> options;
+    }
 }
