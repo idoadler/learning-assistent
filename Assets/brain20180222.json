@@ -1,0 +1,130 @@
+{
+  "firstrun": "warning",
+  "general-error": "generalerr",
+  "communication-error": "commerr",
+  "intent-unknown": "intenterr",
+  "conversations": {
+    "generalerr": {
+      "text-f2f": "שגיאה: קלט לא מזוהה",
+      "text-f2m": "שגיאה: קלט לא מזוהה",
+      "text-m2f": "שגיאה: קלט לא מזוהה",
+      "text-m2m": "שגיאה: קלט לא מזוהה"
+    },
+    "commerr": {
+      "text-f2f": "שגיאה: בעית תקשורת",
+      "text-f2m": "שגיאה: בעית תקשורת",
+      "text-m2f": "שגיאה: בעית תקשורת",
+      "text-m2m": "שגיאה: בעית תקשורת"
+    },
+    "intenterr": {
+      "text-f2f": "אין לי מושג למה התכוונת",
+      "text-f2m": "אין לי מושג למה התכוונת",
+      "text-m2f": "אין לי מושג למה התכוונת",
+      "text-m2m": "אין לי מושג למה התכוונת"
+    },
+    "warning": {
+      "text-f2f": "היי, אני עלמה, ואני עדיין לומדת לדבר.\nרוצה לכתוב לי משהו?",
+      "text-f2m": "היי, אני עלמה, ואני עדיין לומדת לדבר.\nרוצה לכתוב לי משהו?",
+      "text-m2f": "היי, אני יוני, ואני עדיין לומד לדבר.\nרוצה לכתוב לי משהו?",
+      "text-m2m": "היי, אני יוני, ואני עדיין לומד לדבר.\nרוצה לכתוב לי משהו?",
+      "intentions": {
+        "introduction": {
+          "hi": "meetassistent"
+        }
+      },
+      "next": "meetassistent"
+    },
+    "welcome": {
+      "text-f2f": "היי שוב, איך הולך?",
+      "text-f2m": "היי שוב, איך הולך?",
+      "text-m2f": "היי שוב, איך הולך?",
+      "text-m2m": "היי שוב, איך הולך?",
+      "intentions": {
+        "introduction": {
+          "hi": "howcanihelp"
+        }
+      },
+      "back": true,
+      "next": "howcanihelp"
+    },
+    "choosebotretry": {
+      "text-f2f": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "text-f2m": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "text-m2f": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "text-m2m": "לא הבנתי את כוונתך, יש לבחור באחת האופציות",
+      "options": {
+        "היי": "meetassistent"
+      },
+      "next": "meetassistent"
+    },
+    "meetassistent": {
+      "text-f2f": "נעים מאוד, מה שמך?",
+      "text-f2m": "נעים מאוד, מה שמך?",
+      "text-m2f": "נעים מאוד, מה שמך?",
+      "text-m2m": "נעים מאוד, מה שמך?",
+      "var": "name",
+      "next": "introduction"
+    },
+    "howcanihelp": {
+      "text-f2f": "אחלה, אז במה אפשר לעזור?",
+      "text-f2m": "אחלה, אז במה אפשר לעזור?",
+      "text-m2f": "אחלה, אז במה אפשר לעזור?",
+      "text-m2m": "אחלה, אז במה אפשר לעזור?",
+      "intentions": {
+        "task": {
+          "מבחן": "testtask"
+        }
+      },
+      "next": "homeworktask"
+    },
+    "homeworktask": {
+      "text-f2f": "אז במה יש לך שיעורי בית?",
+      "text-f2m": "אז במה יש לך שיעורי בית?",
+      "text-m2f": "אז במה יש לך שיעורי בית?",
+      "text-m2m": "אז במה יש לך שיעורי בית?",
+      "next": "homeworktime"
+    },
+    "testtask": {
+      "text-f2f": "באיזה נושא המבחן?",
+      "text-f2m": "באיזה נושא המבחן?",
+      "text-m2f": "באיזה נושא המבחן?",
+      "text-m2m": "באיזה נושא המבחן?",
+      "next": "homeworktime"
+    },
+    "homeworktime": {
+      "text-f2f": "מתי מתאים לך לשבת?",
+      "text-f2m": "מתי מתאים לך לשבת?",
+      "text-m2f": "מתי מתאים לך לשבת?",
+      "text-m2m": "מתי מתאים לך לשבת?",
+      "next": "homeworkschedule"
+    },
+    "homeworkschedule": {
+      "text-f2f": "מצויין! - אזכיר לך לפני!\nיש עוד שיעורים?",
+      "text-f2m": "מצויין! - אזכיר לך לפני!\nיש עוד שיעורים?",
+      "text-m2f": "מצויין! - אזכיר לך לפני!\nיש עוד שיעורים?",
+      "text-m2m": "מצויין! - אזכיר לך לפני!\nיש עוד שיעורים?",
+      "intentions": {
+        "yes_no": {
+          "yes": "homeworktask"
+        }
+      },
+      "next": "welcome"
+    },
+    "introduction": {
+      "text-f2f": "שלום, אני פה לעזור לך ללמוד, בן או בת?",
+      "text-f2m": "שלום, אני פה לעזור לך ללמוד, בן או בת?",
+      "text-m2f": "שלום, אני פה לעזור לך ללמוד, בן או בת?",
+      "text-m2m": "שלום, אני פה לעזור לך ללמוד, בן או בת?",
+      "var": "sex",
+      "next": "howcanihelp",
+      "options": {
+        "male": {
+          "text": "בן"
+        },
+        "female": {
+          "text": "בת"
+        }
+      }
+    }
+  }
+}

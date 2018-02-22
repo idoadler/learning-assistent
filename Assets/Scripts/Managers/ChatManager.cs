@@ -103,6 +103,10 @@ public class ChatManager : MonoBehaviour {
     {
         JsonManager.Result result = JsonManager.JsonToBotText(json);
         SetBotText(result.displayText);
+        if(result.goBack)
+        {
+            NextScreen();
+        }
     }
 
     internal void ChooseResult(string text)

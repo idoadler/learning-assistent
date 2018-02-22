@@ -46,6 +46,7 @@ public static class JsonManager
     public static Result SaySpecial(string state)
     {
         Result result = new Result();
+        result.goBack = true;
         string specialState = brain[state].Value;
         result.displayText = conversation[specialState]["text-" + ConversationGender];
         return result;
@@ -59,6 +60,11 @@ public static class JsonManager
     public static Result RetrieveResponse(string intention, string key)
     {
         Result result = new Result();
+        result.goBack = false;
+        if (intention == "exit")
+        {
+            result.goBack = true;
+        }
         try
         {
             string state;
@@ -72,6 +78,10 @@ public static class JsonManager
             }
             PlayerPrefs.SetString(LAST_STATE, state);
             currentState = conversation[state];
+            if (currentState["back"])
+            {
+                result.goBack = true;
+            }
 
             result.displayText = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText();
             if (currentState["options"] != null)
@@ -128,7 +138,8 @@ public static class JsonManager
         else if (entities.Count == 0)
         {
             // normal no result
-            return(SaySpecial("intent-unknown"));
+            // return(SaySpecial("intent-unknown"));
+            return (RetrieveResponse("", ""));
         }
         else if (entities.Count > 1)
         {
@@ -155,5 +166,13 @@ public static class JsonManager
     {
         public string displayText;
         public List<string> options;
+        public bool goBack;
+
+        public Result(string text, bool back = false)
+        {
+            displayText = text;
+            goBack = back;
+            options = null;
+        }
     }
 }
