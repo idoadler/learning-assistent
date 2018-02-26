@@ -109,7 +109,7 @@ public class HomeScreenManager : MonoBehaviour {
 
         if (from.Date == DateTime.Today)
         {
-            MissionLine today = Instantiate(missionLinePrefab, allTests.transform);
+            MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
             today.desc.Text = title;
             today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
             todayMissions.Add(today);
@@ -118,7 +118,11 @@ public class HomeScreenManager : MonoBehaviour {
         MissionLine mission = Instantiate(missionLinePrefab, allTests.transform);
         mission.desc.Text = title;
         mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-        missions[from.Date].missions.Add(from, mission);
+        try
+        {
+            missions[from.Date].missions.Add(from, mission);
+        }
+        catch { Debug.LogError("can't add to events at the same time"); }
 // TODO: set reminder
 //#if UNITY_ANDROID
 //        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);

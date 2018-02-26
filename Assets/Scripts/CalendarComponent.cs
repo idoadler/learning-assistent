@@ -23,7 +23,7 @@ public class CalendarComponent : MonoBehaviour {
         hoursToHeight = hoursTo.localPosition.y;
     }
 
-    public void Display(bool isTest)
+    public void Display(bool test)
     {
         if (firstTime)
         {
@@ -35,6 +35,7 @@ public class CalendarComponent : MonoBehaviour {
             hoursFrom.localPosition = new Vector2(hoursFrom.localPosition.x, hoursFromHeight);
             hoursTo.localPosition = new Vector2(hoursTo.localPosition.x, hoursToHeight);
         }
+        isTest = test;
         input.text = "";
         gameObject.SetActive(true);
     }
@@ -50,7 +51,6 @@ public class CalendarComponent : MonoBehaviour {
         {
             DateTime from = DateTime.Today.AddDays((dates.localPosition.y - datesHeight) / 80).AddHours(16 + Math.Round((hoursFrom.localPosition.y - hoursFromHeight) / 160));
             DateTime to = DateTime.Today.AddDays((dates.localPosition.y - datesHeight) / 80).AddHours(16.5 + Math.Round((hoursTo.localPosition.y - hoursToHeight) / 160));
-            Debug.Log(DateTime.Today + "," + hoursFrom.localPosition + hoursTo.localPosition + hoursFromHeight + hoursToHeight);
 
             if (isTest)
             {
