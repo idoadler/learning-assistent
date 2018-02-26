@@ -31,7 +31,6 @@ public class InputFieldForScreenKeyboardPanelAdjuster : MonoBehaviour
             float newKeyboardHeightRatio = GetKeyboardHeightRatio();
             if (currentKeyboardHeightRatio != newKeyboardHeightRatio)
             {
-                Debug.Log("InputFieldForScreenKeyboardPanelAdjuster: Adjust to keyboard height ratio: " + newKeyboardHeightRatio);
                 currentKeyboardHeightRatio = newKeyboardHeightRatio;
                 panelRectTrans.offsetMin = new Vector2(panelOffsetMinOriginal.x, panelHeightOriginal * currentKeyboardHeightRatio);
                 StartCoroutine(DelayedExecute(() => {
@@ -44,7 +43,6 @@ public class InputFieldForScreenKeyboardPanelAdjuster : MonoBehaviour
             if (panelRectTrans.offsetMin != panelOffsetMinOriginal)
             {
                 StartCoroutine( DelayedExecute(() => {
-                    Debug.Log("InputFieldForScreenKeyboardPanelAdjuster: Revert to original");
                     panelRectTrans.offsetMin = panelOffsetMinOriginal;
                 }, 0.5f));
             }
