@@ -103,13 +103,39 @@ public class ChatManager : MonoBehaviour {
         SetBotText("התקבלה שגיאה:\n" + error);
     }
 
+    private JsonManager.Result lastBeforeBack = new JsonManager.Result();
     private void SetBotTextJSON(string json)
     {
-        JsonManager.Result result = JsonManager.JsonToBotText(json);
-        SetBotText(result.displayText);
-        if(result.goBack)
+        // Testing for exit attempt
+        if (lastBeforeBack.goBack)
         {
-            NextScreen();
+            bool exit = JsonManager.VerifyJsonExit(json);
+            SetBotText(JsonManager.RetriveLast().displayTexts[JsonManager.RetriveLast().displayTexts.Length-1]);
+            lastBeforeBack = new JsonManager.Result();
+            if (exit)
+            {
+                NextScreen();
+            }
+        }
+        else
+        {
+            JsonManager.Result result = JsonManager.JsonToBotText(json);
+            if (result.goBack)
+            {
+                lastBeforeBack = result;
+                foreach (string text in JsonManager.AskForExit().displayTexts)
+                {
+                    SetBotText(text);
+                }
+            }
+            else
+            {
+                // Main chat behavior
+                foreach (string text in result.displayTexts)
+                {
+                    SetBotText(text);
+                }
+            }
         }
     }
 

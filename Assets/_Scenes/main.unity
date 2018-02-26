@@ -243,7 +243,7 @@ Prefab:
     - target: {fileID: 224256483971472242, guid: 8e258d98c964e6b41bafb72a427b85d2,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -1234.9999
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e258d98c964e6b41bafb72a427b85d2, type: 2}
@@ -596,7 +596,7 @@ Prefab:
     - target: {fileID: 224519985769604626, guid: c0ce6a192a5481c438d3b1b199b6c86e,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00003640845
+      value: -0.000022442262
       objectReference: {fileID: 0}
     - target: {fileID: 224519985769604626, guid: c0ce6a192a5481c438d3b1b199b6c86e,
         type: 2}
@@ -997,6 +997,11 @@ Prefab:
       propertyPath: conversation
       value: 
       objectReference: {fileID: 1911076918}
+    - target: {fileID: 114643658413422310, guid: edc45a684daa2ba44bcf339b1ef1f7b7,
+        type: 2}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 4900000, guid: f419342ace60c9443b86dff2a35a28eb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: edc45a684daa2ba44bcf339b1ef1f7b7, type: 2}
   m_IsPrefabParent: 0
