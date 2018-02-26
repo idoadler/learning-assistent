@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222471655105278342}
   - component: {fileID: 114054091409034208}
   - component: {fileID: 114474231426472864}
+  - component: {fileID: 114896035329051976}
   m_Layer: 5
   m_Name: arInputField
   m_TagString: Untagged
@@ -416,7 +417,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 150
-    m_Bottom: 200
+    m_Bottom: 100
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -1002,6 +1003,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114896035329051976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010761388470902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992fd4db6c16c1046971a50880dadb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelRectTrans: {fileID: 224329241685031536}
+  chatScrollRect: {fileID: 114621426860977082}
 --- !u!114 &114967438590247140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1157,7 +1171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224329241685031536

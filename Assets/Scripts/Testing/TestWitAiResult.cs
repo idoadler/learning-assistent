@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using SimpleJSON;
 
+[RequireComponent(typeof(WitAi))]
 [RequireComponent(typeof(Text))]
 public class TestWitAiResult : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class TestWitAiResult : MonoBehaviour {
 	void Start () {
         Label = GetComponent<Text>();
         WitAi.request_success += SetLabel;
-        WitAi.Instance.Say("הי");
+        GetComponent<WitAi>().Say("הי");
 	}
 	
     private void SetLabel(string text)

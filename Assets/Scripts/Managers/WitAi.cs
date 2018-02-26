@@ -2,22 +2,9 @@
 using UnityEngine;
 
 public class WitAi : MonoBehaviour {
-    public static WitAi Instance;
     public static event RequestResult request_success;
     public static event RequestResult request_failure;
     public delegate void RequestResult(string result);
-
-    private void Awake()
-    {
-        // Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-        } else if (Instance != this)
-        {
-            Destroy(this);
-        }
-    }
 
     public void Say(string text)
     {

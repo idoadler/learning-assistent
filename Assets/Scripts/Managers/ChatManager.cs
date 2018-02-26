@@ -3,11 +3,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(WitAi))]
 public class ChatManager : MonoBehaviour {
     public const bool IS_TESTING = true;
 
     public static bool IsAssistentGirl = true;
     public static bool IsUserGirl = true;
+
+    private WitAi witai;
 
     public void SetAsistentGender(bool isGirl)
     {
@@ -27,6 +30,7 @@ public class ChatManager : MonoBehaviour {
 
     private void Awake()
     {
+        witai = GetComponent<WitAi>();
         WitAi.request_success += SetBotTextJSON;
         WitAi.request_failure += SetBotErrorMsg;
 
@@ -82,8 +86,8 @@ public class ChatManager : MonoBehaviour {
         if (input.text != "")
         {
             conversation.UserSay(input.text);
-            StartCoroutine(ScrollToBottom());
-            WitAi.Instance.Say(input.text);
+            ScrollToBottom();
+            witai.Say(input.text);
             input.text = "";
         }
     }
@@ -91,7 +95,7 @@ public class ChatManager : MonoBehaviour {
     private void SetBotText(string text)
     {
         conversation.BotSay(text);
-        StartCoroutine(ScrollToBottom());
+        ScrollToBottom();
     }
 
     private void SetBotErrorMsg(string error)
@@ -114,12 +118,16 @@ public class ChatManager : MonoBehaviour {
         throw new NotImplementedException();
     }
 
-    IEnumerator ScrollToBottom()
+    private void ScrollToBottom()
     {
-        yield return new WaitForEndOfFrame();
-        chatScroll.verticalNormalizedPosition = 0;
-        //conversation.EmptyHack();
-        yield return new WaitForEndOfFrame();
-        chatScroll.verticalNormalizedPosition = 0;
+        StartCoroutine(DelayedExecute(() => {
+            chatScroll.verticalNormalizedPosition = 0;
+        }, 0.2f));
+    }
+
+    private IEnumerator DelayedExecute(Action f, float t)
+    {
+        yield return new WaitForSeconds(t);
+        f();
     }
 }
