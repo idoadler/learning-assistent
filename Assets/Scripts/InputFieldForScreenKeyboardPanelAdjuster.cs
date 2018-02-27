@@ -25,6 +25,8 @@ public class InputFieldForScreenKeyboardPanelAdjuster : MonoBehaviour
 
     public void LateUpdate()
     {
+        // TODO: happen on focus/unfocus event
+        // TODO: hide on disable
         TouchScreenKeyboard.hideInput = true;
         if (inputField.isFocused)
         {
