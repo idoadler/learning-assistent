@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HomeScreenManager : MonoBehaviour {
+    private enum Screens {DAILY = 0, MISSIONS = 1, TESTS = 2 };
+
     private List<MissionLine> todayMissions = new List<MissionLine>();
     private SortedDictionary<DateTime, MissionList> missions = new SortedDictionary<DateTime, MissionList>();
   //  private SortedDictionary<DateTime, SortedList<DateTime, Test>> tests = new SortedDictionary<DateTime, SortedList<DateTime, Test>>();
@@ -29,7 +31,7 @@ public class HomeScreenManager : MonoBehaviour {
 
     private void Start()
     {
-        SetScreen(0);
+        SetScreen((int)Screens.DAILY);
         // TODO: read and display all existing data
     }
 
@@ -69,10 +71,16 @@ public class HomeScreenManager : MonoBehaviour {
 
         if (from.Date == DateTime.Today)
         {
+            // add daily mission
             MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
             today.desc.Text = title;
             today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
             todayMissions.Add(today);
+        }
+        else
+        {
+            // go to mission screen
+            SetScreen((int)Screens.MISSIONS);
         }
 
         MissionLine mission = Instantiate(missionLinePrefab, allMissions.transform);
@@ -109,10 +117,16 @@ public class HomeScreenManager : MonoBehaviour {
 
         if (from.Date == DateTime.Today)
         {
+            // add daily mission
             MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
             today.desc.Text = title;
             today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
             todayMissions.Add(today);
+        }
+        else
+        {
+            // go to mission screen
+            SetScreen((int)Screens.TESTS);
         }
 
         MissionLine mission = Instantiate(missionLinePrefab, allTests.transform);
