@@ -8,15 +8,17 @@ using UnityEditor;
 #endif
 
 [ExecuteInEditMode]
+[RequireComponent(typeof(Text))]
 public class ArabicText : MonoBehaviour
 {
     [Multiline]
-    public string Text;
+    private string text;
+//    public string Text;
     public InputField RefrenceInput;
     public bool ShowTashkeel;
     public bool UseHinduNumbers;
 
-    private UnityEngine.UI.Text txt;
+    private Text txt;
 
     private string OldText; // For Refresh on TextChange
     private int OldFontSize; // For Refresh on Font Size Change
@@ -25,15 +27,30 @@ public class ArabicText : MonoBehaviour
     private bool OldEnabled = false; // For Refresh on enabled change // when text ui is not active then arabic text will not trigered when the control get active
     private List<RectTransform> OldRectTransformParents = new List<RectTransform>(); // For Refresh on parent resizing
     private Vector2 OldScreenRect = new Vector2(Screen.width, Screen.height); // For Refresh on screen resizing
+
+    public string Text
+    {
+        get
+        {
+            return text;
+        }
+
+        set
+        {
+            text = value;
+            //CheckFix();
+        }
+    }
+
     public void Awake()
     {
         GetRectTransformParents(OldRectTransformParents);
+        txt = gameObject.GetComponent<Text>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void Start()
     {
-        txt = gameObject.GetComponent<UnityEngine.UI.Text>();
-        rectTransform = GetComponent<RectTransform>();
     }
 
     private void GetRectTransformParents(List<RectTransform> rectTransforms)
@@ -59,13 +76,18 @@ public class ArabicText : MonoBehaviour
         return hasChanged;
     }
 
-    public void Update()
+    private void Update()
     {
         if (!txt)
+        {
+            Debug.LogError("AHHHH!");
             return;
+        }
 
         if (RefrenceInput)
+        {
             Text = RefrenceInput.text;
+        }
 
         // if No Need to Refresh
         if (OldText == Text &&
@@ -91,7 +113,7 @@ public class ArabicText : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(Text))
         {
-            string rtlText = ArabicFixer.Fix(Text, ShowTashkeel, UseHinduNumbers);
+            string rtlText = ArabicFixer.Fix(Text);
             rtlText = rtlText.Replace("\r", ""); // the Arabix fixer Return \r\n for everyy \n .. need to be removed
 
             string finalText = "";
@@ -112,10 +134,21 @@ public class ArabicText : MonoBehaviour
                         : txt.cachedTextGenerator.lines[i + 1].startCharIdx;
                     int length = endIndex - startIndex;
 
-                    string[] lineWords = txt.text.Substring(startIndex, length).Split(' ');
-                    Array.Reverse(lineWords);
+                    if (startIndex + length > txt.text.Length)
+                    {
+                        Debug.LogError(txt.text + "," + i + "," + startIndex + "," + length);
+                    }
+                    else if (length < 0)
+                    {
+                        Debug.LogError(txt.text + "," + i + "," + startIndex + "," + length);
+                    }
+                    else
+                    {
+                        string[] lineWords = txt.text.Substring(startIndex, length).Split(' ');
+                        Array.Reverse(lineWords);
+                        finalText = finalText + string.Join(" ", lineWords).Trim() + "\n";
+                    }
 
-                    finalText = finalText + string.Join(" ", lineWords).Trim() + "\n";
                 }
             }
             txt.text = finalText.TrimEnd('\n');
