@@ -1,15 +1,16 @@
 ﻿using SimpleJSON;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public static class JsonManager
 {
     public static string ConversationGender = "f2f";
-
+ 
     private const string NODE_FIRST = "firstrun";
     private const string NODE_COMMUNICATION_ERROR = "communication-error";
-    private const string NODE_GENERAL_ERROR = "general-error";
+//    private const string NODE_GENERAL_ERROR = "general-error";
     private const string NODE_EXIT = "exit";
     private const string NODE_CONVERSATIONS = "conversations";
     private const string NODE_INTENTIONS = "intentions";
@@ -18,9 +19,12 @@ public static class JsonManager
     private const string NODE_ENTITIES = "entities";
     private const string NODE_VALUE = "value";
     private const string NODE_BACK = "back";
+    private const string NODE_SAVE_DATA = "save";
+    private const string NODE_SAVE_VAR_NAME = "var";
     private const char MESSAGE_SPLIT = '\n';
     private const string SPEACH_NODE_INITIAL = "text-";
     private const string INTENT_EXIT = "exit";
+    private const string INTENT_YESNO = "yes_no";
     private const string INTENT_YES = "yes";
     private const string PREFS_LAST_STATE = "LASTSTATE";
     private const string JSON_CONFIDENCE = "confidence";
@@ -67,7 +71,7 @@ public static class JsonManager
         Result result = new Result();
         result.goBack = true;
         string specialState = brain[state].Value;
-        result.displayTexts = ((string)conversation[specialState][SPEACH_NODE_INITIAL + ConversationGender]).Split(MESSAGE_SPLIT);
+        result.displayTexts = FormatBotText(conversation[specialState][SPEACH_NODE_INITIAL + ConversationGender]);
         return result;
     }
 
@@ -76,19 +80,27 @@ public static class JsonManager
         return currentState[SPEACH_NODE_INITIAL + ConversationGender];
     }
 
-    public static Result RetrieveResponse(string intention, string key, bool initialBack = false)
+    public static Result RetrieveResponse(JSONNode entities, bool initialBack = false)
     {
         Result result = new Result();
         result.goBack = initialBack;
         try
         {
             string state;
-            if (currentState[NODE_INTENTIONS] != null && currentState[NODE_INTENTIONS][intention][key] != null)
+            JSONNode intentions = currentState[NODE_INTENTIONS];
+            KeyValuePair<string,string> intent = MatchBestIntent(entities, intentions);
+            if (!string.IsNullOrEmpty(intent.Key) && intentions[intent.Key][intent.Value])
             {
-                state = currentState[NODE_INTENTIONS][intention][key].Value;
+                state = intentions[intent.Key][intent.Value].Value;
             }
             else
             {
+                intentions = currentState[NODE_SAVE_DATA];
+                intent = MatchBestIntent(entities, intentions);
+                if (!string.IsNullOrEmpty(intent.Key))
+                {
+                    PlayerPrefs.SetString(currentState[NODE_SAVE_DATA][NODE_SAVE_VAR_NAME], intent.Value);
+                }
                 state = currentState[NODE_NEXT].Value;
             }
             PlayerPrefs.SetString(PREFS_LAST_STATE, state);
@@ -99,16 +111,35 @@ public static class JsonManager
                 result.goBack = true;
             }
 
-            result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText().Split(MESSAGE_SPLIT);
-            if (currentState[NODE_OPTIONS] != null)
-            {
-                result.options = new List<string>(currentState[NODE_OPTIONS]);
-            }
+            result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ FormatBotText(CurrentText());
+            //if (currentState[NODE_OPTIONS] != null)
+            //{
+            //    result.options = new List<string>(currentState[NODE_OPTIONS]);
+            //}
         }
         catch (Exception e)
         {
-            result.displayTexts = new string[] { "זוהתה כוונה\n" + intention + "," + key + "\n" + "Error parsing:" + e.Message };
+            result.displayTexts = FormatBotText("Error parsing:" + e.Message);
         }
+        return result;
+    }
+
+    private static KeyValuePair<string, string> MatchBestIntent(JSONNode entities, JSONNode intentions)
+    {
+        KeyValuePair<string, string> result = new KeyValuePair<string, string>();
+        int bestConfidence = -1;
+        if (intentions != null)
+        {
+            foreach (string intent in entities.Keys)
+            {
+                if ((intentions[intent] != null) && entities[intent][0][JSON_CONFIDENCE] > bestConfidence)
+                {
+                    bestConfidence = entities[intent][0][JSON_CONFIDENCE];
+                    result = new KeyValuePair<string, string>(intent, entities[intent][0][NODE_VALUE]);
+                }
+            }
+        }
+
         return result;
     }
 
@@ -121,6 +152,8 @@ public static class JsonManager
     {
         JSONNode entities = JSON.Parse(json)[NODE_ENTITIES];
 
+        return (JSON.Parse(json)[NODE_ENTITIES][INTENT_YESNO] == INTENT_YES);
+/*
         string intention = "";
         string key = "";
 
@@ -131,45 +164,45 @@ public static class JsonManager
         }
 
         key = entities[intention][0][NODE_VALUE];
-        return (key == INTENT_YES);
+        return (key == INTENT_YES);*/
     }
 
-    public static Result RetrieveOption(string option)
-    {
-        Result result = new Result();
-        try
-        {
-            string state;
-            if (currentState[NODE_OPTIONS] != null && currentState[NODE_OPTIONS][option] != null)
-            {
-                state = currentState[NODE_OPTIONS][option].Value;
-            }
-            else
-            {
-                state = currentState[NODE_NEXT].Value;
-            }
-            PlayerPrefs.SetString(PREFS_LAST_STATE, state);
-            lastState = currentState;
-            currentState = conversation[state];
+    //public static Result RetrieveOption(string option)
+    //{
+    //    Result result = new Result();
+    //    try
+    //    {
+    //        string state;
+    //        if (currentState[NODE_OPTIONS] != null && currentState[NODE_OPTIONS][option] != null)
+    //        {
+    //            state = currentState[NODE_OPTIONS][option].Value;
+    //        }
+    //        else
+    //        {
+    //            state = currentState[NODE_NEXT].Value;
+    //        }
+    //        PlayerPrefs.SetString(PREFS_LAST_STATE, state);
+    //        lastState = currentState;
+    //        currentState = conversation[state];
 
-            result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText().Split(MESSAGE_SPLIT);
-            if (currentState[NODE_OPTIONS] != null)
-            {
-                result.options = new List<string>(currentState[NODE_OPTIONS]);
-            }
-        }
-        catch (Exception e)
-        {
-            result.displayTexts = new string[] { "זוהתה כוונה\n" + option + "\n" + "Error parsing:" + e.Message };
-        }
-        return result;
-    }
+    //        result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText().Split(MESSAGE_SPLIT);
+    //        if (currentState[NODE_OPTIONS] != null)
+    //        {
+    //            result.options = new List<string>(currentState[NODE_OPTIONS]);
+    //        }
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        result.displayTexts = new string[] { "זוהתה כוונה\n" + option + "\n" + "Error parsing:" + e.Message };
+    //    }
+    //    return result;
+    //}
 
     public static Result RetriveLast()
     {
         Result result = new Result();
         currentState = lastState;
-        result.displayTexts = CurrentText().Split(MESSAGE_SPLIT);
+        result.displayTexts = FormatBotText(CurrentText());
         result.goBack = currentState[NODE_BACK];
         return result;
     }
@@ -183,49 +216,36 @@ public static class JsonManager
             // wrong communication
             return(SaySpecial(NODE_COMMUNICATION_ERROR));
         }
-        else if (entities.Count == 0)
-        {
-            // normal no result
-            // return(SaySpecial("intent-unknown"));
-            return (RetrieveResponse("", ""));
-        }
-        else if (entities.Count > 1)
-        {
-            // API change
-            return(SaySpecial(NODE_GENERAL_ERROR));
-        }
         else
         {
-            string intention = "";
-            string key = "";
-
-            // normal result
-            foreach (string intent in entities.Keys)
-            {
-                intention = intent;
-            }
-
-            key = entities[intention][0][NODE_VALUE];
-            bool exit = false;
-            if (intention == INTENT_EXIT && entities[intention][0][JSON_CONFIDENCE] > REQUIRED_CONFIDENCE)
-            {
-                exit = true;
-            }
-            return (RetrieveResponse(intention,key,exit));
+            bool exit = (entities[INTENT_EXIT] != null && entities[INTENT_EXIT][0][JSON_CONFIDENCE] > REQUIRED_CONFIDENCE);
+            return (RetrieveResponse(entities,exit));
         }
+    }
+
+    private static string[] FormatBotText(string botText)
+    {
+        string result = botText;
+        foreach (Match match in Regex.Matches(botText, "%([^%]*)%"))
+        {
+            string val = match.ToString();
+            botText.Replace(val, PlayerPrefs.GetString(val.Substring(1, val.Length - 2)));
+        }
+
+        return result.Split(MESSAGE_SPLIT);
     }
 
     public struct Result
     {
         public string[] displayTexts;
-        public List<string> options;
+        //public List<string> options;
         public bool goBack;
 
         public Result(string text, bool back = false)
         {
-            displayTexts = text.Split(MESSAGE_SPLIT);
+            displayTexts = FormatBotText(text);
             goBack = back;
-            options = null;
+            //options = null;
         }
     }
 }
