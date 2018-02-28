@@ -148,12 +148,12 @@ public class ChatManager : MonoBehaviour {
     {
         StartCoroutine(DelayedExecute(() => {
             chatScroll.verticalNormalizedPosition = 0;
-        }, 0.2f));
+        }));
     }
 
-    private IEnumerator DelayedExecute(Action f, float t)
+    private IEnumerator DelayedExecute(Action f)
     {
-        yield return new WaitForSeconds(t);
+        yield return new WaitForEndOfFrame();
         f();
     }
 }
