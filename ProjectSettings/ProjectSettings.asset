@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: a0047c9ac771f814bbde37e46e8abe0b
+  productGUID: 0b9a7cbf698aad34587f6d3110e422b0
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 0
@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: MindCet
-  productName: assistent
+  productName: CheckBot
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: assistent.MindCet.com
+    Android: CheckBot.MindCet.com
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -557,21 +557,7 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols:
-    1: TextMeshPro
-    4: TextMeshPro
-    7: TextMeshPro
-    13: TextMeshPro
-    17: TextMeshPro
-    18: TextMeshPro
-    19: TextMeshPro
-    20: TextMeshPro
-    21: TextMeshPro
-    23: TextMeshPro
-    24: TextMeshPro
-    25: TextMeshPro
-    26: TextMeshPro
-    27: TextMeshPro
+  scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
@@ -581,14 +567,14 @@ PlayerSettings:
     Android: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: assistent
+  metroPackageName: CheckBot
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: assistent
+  metroApplicationDescription: CheckBot
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -654,16 +640,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Build: 0
-    Collab: 1
-    ErrorHub: 0
-    Hub: 0
+    Build: 1
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: abbf71c3-d8d0-4b9d-ba2c-7f5ab076dc6c
-  projectName: assistent
-  organizationId: idopoa
+  cloudProjectId: 6b6da201-2a2f-4e19-bf8a-2a683982acf6
+  projectName: checkbot
+  organizationId: ido-adler
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
