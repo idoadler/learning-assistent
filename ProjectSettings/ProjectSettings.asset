@@ -645,7 +645,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 6b6da201-2a2f-4e19-bf8a-2a683982acf6
-  projectName: checkbot
+  projectName: CheckBot
   organizationId: ido-adler
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
