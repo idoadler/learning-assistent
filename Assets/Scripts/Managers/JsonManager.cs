@@ -1,5 +1,4 @@
 ﻿using SimpleJSON;
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -27,6 +26,7 @@ public static class JsonManager
     private const string INTENT_YESNO = "yes_no";
     private const string INTENT_YES = "yes";
     private const string PREFS_LAST_STATE = "LASTSTATE";
+    private const string PREFS_USER_SEX = "SEX";
     private const string JSON_CONFIDENCE = "confidence";
     private const float REQUIRED_CONFIDENCE = 0.8f;
 
@@ -84,43 +84,46 @@ public static class JsonManager
     {
         Result result = new Result();
         result.goBack = initialBack;
-        try
-        {
-            string state;
-            JSONNode intentions = currentState[NODE_INTENTIONS];
-            KeyValuePair<string,string> intent = MatchBestIntent(entities, intentions);
-            if (!string.IsNullOrEmpty(intent.Key) && intentions[intent.Key][intent.Value])
-            {
-                state = intentions[intent.Key][intent.Value].Value;
-            }
-            else
-            {
-                intentions = currentState[NODE_SAVE_DATA];
-                intent = MatchBestIntent(entities, intentions);
-                if (!string.IsNullOrEmpty(intent.Key))
-                {
-                    PlayerPrefs.SetString(currentState[NODE_SAVE_DATA][NODE_SAVE_VAR_NAME], intent.Value);
-                }
-                state = currentState[NODE_NEXT].Value;
-            }
-            PlayerPrefs.SetString(PREFS_LAST_STATE, state);
-            lastState = currentState;
-            currentState = conversation[state];
-            if (currentState[NODE_BACK])
-            {
-                result.goBack = true;
-            }
 
-            result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ FormatBotText(CurrentText());
-            //if (currentState[NODE_OPTIONS] != null)
-            //{
-            //    result.options = new List<string>(currentState[NODE_OPTIONS]);
-            //}
-        }
-        catch (Exception e)
+        // save results to vars
+        JSONNode intentions = currentState[NODE_SAVE_DATA][NODE_INTENTIONS];
+        KeyValuePair<string, string> intent = MatchBestIntent(entities, intentions);
+        if (!string.IsNullOrEmpty(intent.Key))
         {
-            result.displayTexts = FormatBotText("Error parsing:" + e.Message);
+            PlayerPrefs.SetString(currentState[NODE_SAVE_DATA][NODE_SAVE_VAR_NAME], intent.Value);
+            // TODO: hack, move to someplace that make sense
+            if (intent.Key == "sex" && intent.Value == "boy")
+            {
+                ConversationGender = ConversationGender.Substring(0, ConversationGender.Length - 1) + 'm';
+            }
         }
+
+        // check next state
+        string state;
+        intentions = currentState[NODE_INTENTIONS];
+        intent = MatchBestIntent(entities, intentions);
+        if (!string.IsNullOrEmpty(intent.Key) && intentions[intent.Key][intent.Value])
+        {
+            state = intentions[intent.Key][intent.Value].Value;
+        }
+        else
+        {
+            state = currentState[NODE_NEXT].Value;
+        }
+        PlayerPrefs.SetString(PREFS_LAST_STATE, state);
+        lastState = currentState;
+        currentState = conversation[state];
+        if (currentState[NODE_BACK])
+        {
+            result.goBack = true;
+        }
+
+        result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ FormatBotText(CurrentText());
+        //if (currentState[NODE_OPTIONS] != null)
+        //{
+        //    result.options = new List<string>(currentState[NODE_OPTIONS]);
+        //}
+
         return result;
     }
 
@@ -226,10 +229,10 @@ public static class JsonManager
     private static string[] FormatBotText(string botText)
     {
         string result = botText;
-        foreach (Match match in Regex.Matches(botText, "%([^%]*)%"))
+        foreach (Match match in Regex.Matches(botText, "#([^#]*)#"))
         {
             string val = match.ToString();
-            botText.Replace(val, PlayerPrefs.GetString(val.Substring(1, val.Length - 2)));
+            result = botText.Replace(val, PlayerPrefs.GetString(val.Substring(1, val.Length - 2)));
         }
 
         return result.Split(MESSAGE_SPLIT);
