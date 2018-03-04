@@ -5,9 +5,9 @@ using UnityEngine;
 public class HomeScreenManager : MonoBehaviour {
     private enum Screens {DAILY = 0, MISSIONS = 1, TESTS = 2 };
 
-    private List<MissionLine> todayMissions = new List<MissionLine>();
+//    private List<MissionLine> todayMissions = new List<MissionLine>();
     private SortedDictionary<DateTime, MissionList> missions = new SortedDictionary<DateTime, MissionList>();
-  //  private SortedDictionary<DateTime, SortedList<DateTime, Test>> tests = new SortedDictionary<DateTime, SortedList<DateTime, Test>>();
+  private SortedDictionary<DateTime, MissionList> tests = new SortedDictionary<DateTime, MissionList>();
 
     public MissionLine missionLinePrefab;
     public DateLine dateLinePrefab;
@@ -112,11 +112,11 @@ public class HomeScreenManager : MonoBehaviour {
     public void CreateTest(string title, DateTime from, DateTime to)
     {
         // TODO: Test screen
-        if (!missions.ContainsKey(from.Date))
+        if (!tests.ContainsKey(from.Date))
         {
             DateLine date = Instantiate(dateLinePrefab, allTests.transform);
             date.label.Text = SetDateLabel.DateFormat(from);
-            missions.Add(from.Date, new MissionList(date));
+            tests.Add(from.Date, new MissionList(date));
         }
 
         MissionLine mission = Instantiate(missionLinePrefab, allTests.transform);

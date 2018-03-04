@@ -70,5 +70,5 @@ MonoBehaviour:
   - {fileID: 0}
   chatScroll: {fileID: 0}
   input: {fileID: 0}
-  brain: {fileID: 4900000, guid: f419342ace60c9443b86dff2a35a28eb, type: 3}
+  brain: {fileID: 4900000, guid: f7d65c8f7447ddf4c9ebc2273fad7e48, type: 3}
   conversation: {fileID: 0}
