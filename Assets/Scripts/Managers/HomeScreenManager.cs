@@ -51,13 +51,13 @@ public class HomeScreenManager : MonoBehaviour {
     public void AddMissions()
     {
         HideMenus();
-        calendar.Display(false);
+        calendar.DisplayMissions();
     }
 
     public void AddTests()
     {
         HideMenus();
-        calendar.Display(true);
+        calendar.DisplayTests();
     }
 
     public void CreateMission(string title, DateTime from, DateTime to)
@@ -69,13 +69,20 @@ public class HomeScreenManager : MonoBehaviour {
             missions.Add(from.Date, new MissionList(date));
         }
 
+        MissionLine mission = Instantiate(missionLinePrefab, allMissions.transform);
+        mission.desc.Text = title;
+        mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
+  //      try { 
+  //      missions[from.Date].missions.Add(from, mission);
+  //      }        catch { Debug.LogError("can't add to events at the same time"); }
+
         if (from.Date == DateTime.Today)
         {
             // add daily mission
             MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
             today.desc.Text = title;
             today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-            todayMissions.Add(today);
+//            todayMissions.Add(today);
         }
         else
         {
@@ -83,14 +90,11 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.MISSIONS);
         }
 
-        MissionLine mission = Instantiate(missionLinePrefab, allMissions.transform);
-        mission.desc.Text = title;
-        mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-        missions[from.Date].missions.Add(from, mission);
+
         // TODO: set reminder
-//#if UNITY_ANDROID
-//        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
-//#endif
+        //#if UNITY_ANDROID
+        //        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
+        //#endif
     }
 
     public struct MissionList
@@ -115,13 +119,20 @@ public class HomeScreenManager : MonoBehaviour {
             missions.Add(from.Date, new MissionList(date));
         }
 
+        MissionLine mission = Instantiate(missionLinePrefab, allTests.transform);
+        mission.desc.Text = title;
+        mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
+//        try        {
+//            missions[from.Date].missions.Add(from, mission);
+//        }        catch { Debug.LogError("can't add to events at the same time"); }
+
         if (from.Date == DateTime.Today)
         {
             // add daily mission
             MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
             today.desc.Text = title;
             today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-            todayMissions.Add(today);
+//            todayMissions.Add(today);
         }
         else
         {
@@ -129,17 +140,9 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.TESTS);
         }
 
-        MissionLine mission = Instantiate(missionLinePrefab, allTests.transform);
-        mission.desc.Text = title;
-        mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-        try
-        {
-            missions[from.Date].missions.Add(from, mission);
-        }
-        catch { Debug.LogError("can't add to events at the same time"); }
-// TODO: set reminder
-//#if UNITY_ANDROID
-//        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
-//#endif
+        // TODO: set reminder
+        //#if UNITY_ANDROID
+        //        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
+        //#endif
     }
 }

@@ -23,7 +23,17 @@ public class CalendarComponent : MonoBehaviour {
         hoursToHeight = hoursTo.localPosition.y;
     }
 
-    public void Display(bool test)
+    public void DisplayMissions()
+    {
+        Display(false);
+    }
+
+    public void DisplayTests()
+    {
+        Display(true);
+    }
+
+    private void Display(bool test)
     {
         if (firstTime)
         {

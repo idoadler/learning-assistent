@@ -155,7 +155,7 @@ public static class JsonManager
     {
         JSONNode entities = JSON.Parse(json)[NODE_ENTITIES];
 
-        return (JSON.Parse(json)[NODE_ENTITIES][INTENT_YESNO] == INTENT_YES);
+        return (JSON.Parse(json)[NODE_ENTITIES][INTENT_YESNO][0][NODE_VALUE] == INTENT_YES);
 /*
         string intention = "";
         string key = "";

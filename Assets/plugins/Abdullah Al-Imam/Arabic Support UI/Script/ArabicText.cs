@@ -69,11 +69,18 @@ public class ArabicText : MonoBehaviour
         return hasChanged;
     }
 
+    private void OnEnable()
+    {
+        if (!string.IsNullOrEmpty(text))
+        {
+            CheckIfNeedFix();
+        }
+    }
+
     public void CheckIfNeedFix()
     {
         if (!txt)
         {
-            Debug.LogError("AHHH!");
             return;
         }
 
@@ -104,7 +111,7 @@ public class ArabicText : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(text))
         {
-            string rtlText = ArabicFixer.Fix(text);
+            string rtlText = ArabicFixer.Fix(text,false,false);
             rtlText = rtlText.Replace("\r", ""); // the Arabix fixer Return \r\n for everyy \n .. need to be removed
 
             string finalText = "";
