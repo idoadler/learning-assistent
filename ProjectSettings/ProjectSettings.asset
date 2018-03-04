@@ -12,7 +12,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: MindCet
-  productName: CheckBot
+  productName: "\u05E6'\u05E7\u05D1\u05BC\u05D5\u05B9\u05D8"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -261,7 +261,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: f451cee44962e9f459b721ae4b5d19e3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 4dafa137a67cdcd4fbfe7f46f500f444, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
