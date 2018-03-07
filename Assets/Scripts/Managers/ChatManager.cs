@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(WitAi))]
+[RequireComponent(typeof(BrainManager))]
 public class ChatManager : MonoBehaviour {
     public static bool IS_TESTING = true;
 
@@ -25,7 +26,6 @@ public class ChatManager : MonoBehaviour {
     private int currentScreen = 0;
     public ScrollRect chatScroll;
     public InputField input;
-    public TextAsset brain;
     public ConversationManager conversation;
 
     private void Awake()
@@ -44,7 +44,7 @@ public class ChatManager : MonoBehaviour {
 
     private void Start()
     {
-        JsonManager.InitConversationJson(brain.text);
+        GetComponent<BrainManager>().UpdateBrain();
     }
 
     public void NextScreen()

@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4615287980083122}
   - component: {fileID: 114198355770113902}
+  - component: {fileID: 114052203393138140}
   - component: {fileID: 114643658413422310}
+  - component: {fileID: 114812780256816298}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -41,6 +43,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114052203393138140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680983515710352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7761820fa27be49b68ed8e177eba35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brainAsset: {fileID: 4900000, guid: f7d65c8f7447ddf4c9ebc2273fad7e48, type: 3}
+  localBrainVer: 20180304
+  brainURL: 
 --- !u!114 &114198355770113902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,5 +86,25 @@ MonoBehaviour:
   - {fileID: 0}
   chatScroll: {fileID: 0}
   input: {fileID: 0}
-  brain: {fileID: 4900000, guid: f7d65c8f7447ddf4c9ebc2273fad7e48, type: 3}
   conversation: {fileID: 0}
+--- !u!114 &114812780256816298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680983515710352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52774eb4e08ee1f44a312b607e84fb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DriveableProperty:
+    m_Fields:
+    - m_Target: {fileID: 114052203393138140}
+      m_FieldPath: RemoteBrainVer
+      m_RSKeyName: BRAIN_VER
+      m_Type: int
+    - m_Target: {fileID: 114052203393138140}
+      m_FieldPath: brainURL
+      m_RSKeyName: BRAIN_URL
+      m_Type: string

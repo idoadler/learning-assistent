@@ -6,7 +6,6 @@ public class ConversationManager : MonoBehaviour {
     public GameObject botPrefab;
     public GameObject userPrefab;
     public List<ChatLine> conversation = new List<ChatLine>();
-    private string lastText = "";
 
     private void Start()
     {
