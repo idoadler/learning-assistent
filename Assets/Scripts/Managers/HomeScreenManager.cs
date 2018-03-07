@@ -7,7 +7,7 @@ public class HomeScreenManager : MonoBehaviour {
 
 //    private List<MissionLine> todayMissions = new List<MissionLine>();
     private SortedDictionary<DateTime, MissionList> missions = new SortedDictionary<DateTime, MissionList>();
-  private SortedDictionary<DateTime, MissionList> tests = new SortedDictionary<DateTime, MissionList>();
+    private SortedDictionary<DateTime, MissionList> tests = new SortedDictionary<DateTime, MissionList>();
 
     public MissionLine missionLinePrefab;
     public DateLine dateLinePrefab;
@@ -27,6 +27,7 @@ public class HomeScreenManager : MonoBehaviour {
             screens[i].SetActive(i == target);
         }
         HideMenus();
+        AnalyticsManager.ScreenVisit(screens[target].name);
     }
 
     private void Start()
