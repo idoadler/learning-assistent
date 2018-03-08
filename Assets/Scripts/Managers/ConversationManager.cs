@@ -18,11 +18,14 @@ public class ConversationManager : MonoBehaviour {
     public void BotSay(string text)
     {
         SayText(botPrefab, text);
+        AnalyticsManager.ChatMessageSent(text, false);
+
     }
 
     public void UserSay(string text)
     {
         SayText(userPrefab, text);
+        AnalyticsManager.ChatMessageSent(text, true);
     }
 
     private void SayText(GameObject prefab, string text)

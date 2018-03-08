@@ -54,6 +54,7 @@ public static class JsonManager
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
         currentState = conversation[state];
         lastState = currentState;
+        AnalyticsManager.UserSignup();
     }
 
     public static Result SaySpecial(string state)
