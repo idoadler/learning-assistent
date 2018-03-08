@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(WitAi))]
 public class ChatManager : MonoBehaviour {
-    public static bool IS_TESTING = true;
+    public static bool IS_TESTING = false;
 
     public static bool IsAssistentGirl = true;
     public static bool IsUserGirl = true;

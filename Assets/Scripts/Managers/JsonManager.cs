@@ -40,22 +40,12 @@ public static class JsonManager
         brain = JSON.Parse(json);
         conversation = brain[NODE_CONVERSATIONS];
         string state = PlayerPrefs.GetString(PREFS_LAST_STATE);
+        currentState = conversation["warning"];
+    }
 
-        if (ChatManager.IS_TESTING)
-        {
-            ResetConversation(); // TODO: Remove, this is for testing
-        }
-        else
-        {
-            if (string.IsNullOrEmpty(state) || conversation[state] == null)
-            {
-                ResetConversation();
-            }
-            else
-            {
-                currentState = conversation[state];
-            }
-        }
+    public static void ChgCnvNode (string state)
+    {
+        currentState = conversation[state];
     }
 
     public static void ResetConversation()

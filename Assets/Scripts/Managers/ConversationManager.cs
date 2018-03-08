@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.SimpleAndroidNotifications;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ConversationManager : MonoBehaviour {
@@ -9,6 +10,8 @@ public class ConversationManager : MonoBehaviour {
 
     private void Start()
     {
+       // if miss
+     //   JsonManager.ChgCnvNode("task-ver");
         BotSay(JsonManager.CurrentText());
     }
 

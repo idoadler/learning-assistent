@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Assets.SimpleAndroidNotifications;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Contexts;
 using UnityEngine;
 
 public class HomeScreenManager : MonoBehaviour {
@@ -19,7 +21,6 @@ public class HomeScreenManager : MonoBehaviour {
     public GameObject[] screens;
     public GameObject addMissionMenu;
     private bool isTest;
-
     public void SetScreen(int target)
     {
         for (int i = 0; i < screens.Length; i++)
@@ -43,7 +44,7 @@ public class HomeScreenManager : MonoBehaviour {
         }
     }
 
-    private void OnEnable()
+    private void OnEnable() 
     {
         HideMenus();
     }
@@ -89,12 +90,12 @@ public class HomeScreenManager : MonoBehaviour {
             // go to mission screen
             SetScreen((int)Screens.MISSIONS);
         }
-
-
-        // TODO: set reminder
-        //#if UNITY_ANDROID
-        //        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
-        //#endif
+       
+        //  set reminder
+        int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
+        int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
+        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
+        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
     }
 
     public struct MissionList
@@ -139,10 +140,10 @@ public class HomeScreenManager : MonoBehaviour {
             // go to mission screen
             SetScreen((int)Screens.TESTS);
         }
-
-        // TODO: set reminder
-        //#if UNITY_ANDROID
-        //        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(5), "היי", "אל תשכח להתחיל בשיעורי הבית", new Color(1, 0.8f, 1), NotificationIcon.Clock);
-        //#endif
+        //  set reminder
+        int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
+        int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
+        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
+        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
     }
 }
