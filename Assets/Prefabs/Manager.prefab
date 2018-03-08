@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brainAsset: {fileID: 4900000, guid: f7d65c8f7447ddf4c9ebc2273fad7e48, type: 3}
-  localBrainVer: 20180304
+  localBrainVer: 0
   brainURL: 
 --- !u!114 &114198355770113902
 MonoBehaviour:
@@ -101,10 +101,10 @@ MonoBehaviour:
   m_DriveableProperty:
     m_Fields:
     - m_Target: {fileID: 114052203393138140}
-      m_FieldPath: RemoteBrainVer
-      m_RSKeyName: BRAIN_VER
-      m_Type: int
-    - m_Target: {fileID: 114052203393138140}
       m_FieldPath: brainURL
       m_RSKeyName: BRAIN_URL
       m_Type: string
+    - m_Target: {fileID: 114052203393138140}
+      m_FieldPath: RemoteBrainVer
+      m_RSKeyName: BRAIN_VER
+      m_Type: int

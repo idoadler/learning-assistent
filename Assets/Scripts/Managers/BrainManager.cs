@@ -13,8 +13,8 @@ public class BrainManager : MonoBehaviour {
     {
         if (remoteBrainVer > localBrainVer)
         {
-            GetBrainFile();
-            // TODO: Store new brain ver
+            StartCoroutine(GetBrainFile());
+            // TODO: Store new brain ver and data
         }
     }
 
@@ -27,11 +27,12 @@ public class BrainManager : MonoBehaviour {
 
         set
         {
+            Debug.Log("new ver:" +remoteBrainVer);
             remoteBrainVer = value;
             if (remoteBrainVer > localBrainVer)
             {
-                GetBrainFile();
-                // TODO: Store new brain ver
+                StartCoroutine(GetBrainFile());
+                // TODO: Store new brain ver and data
             }
         }
     }
@@ -60,12 +61,21 @@ public class BrainManager : MonoBehaviour {
 
     IEnumerator GetBrainFile()
     {
-        using (WWW www = new WWW(brainURL))
+        yield return new WaitForEndOfFrame();
+        if (string.IsNullOrEmpty(brainURL))
         {
-            yield return www;
-            BrainData = www.text;
-            Debug.Log(BrainData);
-            UpdateBrain();
+            Debug.LogError("You have no brain!");
+        }
+        else
+        {
+            using (WWW www = new WWW(brainURL))
+            {
+                yield return www;
+                BrainData = www.text;
+                Debug.Log(brainURL + ":\n" + BrainData);
+                UpdateBrain();
+                localBrainVer = remoteBrainVer;
+            }
         }
     }
 }

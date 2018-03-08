@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Name: RemoteSettingsDataStore
   m_EditorClassIdentifier: 
   rsKeyList:
-  - key: BRAIN_URL
-    value: https://jsoneditoronline.org/?id=ba550e06b7db20a97ae67b414b7bc085
-    type: string
   - key: BRAIN_VER
     value: 20180304
     type: int
-  - key: heatmaps_sample_rate
-    value: 10
-    type: int
+  - key: BRAIN_URL
+    value: http://ido.wtf/bot/brain.json
+    type: string
