@@ -128,7 +128,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.2
+  bundleVersion: 0.3
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -160,7 +160,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: CheckBot.MindCet.com
+    Android: com.mindcet.todobot
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -246,8 +246,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/X/Documents/git/learning-assistent/user.keystore
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/X/Documents/git/learning-assistent/mindcet.keystore
+  AndroidKeyaliasName: todobot
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
@@ -263,7 +263,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 31d9bd7a2e0915f46bb0b058e2967253, type: 3}
+      m_Icon: {fileID: 2800000, guid: ebeb0030a674ec141a3e7641fd5550d2, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
