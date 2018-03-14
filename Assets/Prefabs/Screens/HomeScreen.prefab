@@ -951,7 +951,6 @@ GameObject:
   - component: {fileID: 222458871560370422}
   - component: {fileID: 114120859976244344}
   - component: {fileID: 114314973666827452}
-  - component: {fileID: 114963967516473852}
   - component: {fileID: 114197243088520242}
   m_Layer: 5
   m_Name: ChatButton
@@ -4775,8 +4774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114008594389759510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4954,8 +4951,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114038687239369058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5196,8 +5191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114062404308214842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5497,8 +5490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114099631904045410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5616,8 +5607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114103776071651070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5860,7 +5849,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f451cee44962e9f459b721ae4b5d19e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 069728f9c3671be48aabb5c3eca10d34, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6137,8 +6126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114134784100790024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6184,8 +6171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114137253326981058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6231,8 +6216,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114138437769928392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6245,8 +6228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114146187987220452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6443,8 +6424,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114165941318240956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6484,8 +6463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114170270816144804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6498,8 +6475,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114171155703231912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6683,8 +6658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114187641676341994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6853,7 +6826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377e66cf135aba94584d921dde2e0b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boyImage: {fileID: 21300000, guid: a134985b80044004fb443cd8e9a4aa10, type: 3}
+  boyImage: {fileID: 21300000, guid: c46de1885448f0e458e3bb466bdc9d2c, type: 3}
 --- !u!114 &114199790899551624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7349,8 +7322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114254464863269890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7390,8 +7361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114256769281518892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7539,8 +7508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114273015455007416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8242,8 +8209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114329486543050030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8333,8 +8298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114345404656457174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8404,8 +8367,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114352474730711028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8482,8 +8443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114360643705837048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8899,8 +8858,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114411922917801168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8940,8 +8897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114418522411071838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9652,8 +9607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114462247032378976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10053,8 +10006,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114491905181885206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10211,8 +10162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114498314425800868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10258,8 +10207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114500788622456154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10272,8 +10219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114500801061508000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10286,8 +10231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114501227648248480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10333,8 +10276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114508949735420000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10447,8 +10388,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 114277425354799614}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114528337901019360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10461,8 +10400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114533395848749972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10475,8 +10412,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114537950604646600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10861,8 +10796,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114572497133647598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10927,8 +10860,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114576336028124844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11202,8 +11133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114614348255574734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11373,8 +11302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114627519199579022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11426,8 +11353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114637425771358218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11815,8 +11740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114676472776166722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11929,8 +11852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114693254102489628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11970,8 +11891,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114694179776006764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12050,8 +11969,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114702632926481428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12255,8 +12172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114723273103290910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12302,8 +12217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114728208582494746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12469,8 +12382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114740853999489264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12573,8 +12484,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114744666407278406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12606,8 +12515,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114746171064451060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12620,8 +12527,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114746484657862042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12673,8 +12578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114751107797617250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12931,8 +12834,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114779954066552498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13020,8 +12921,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114791917929986884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13224,8 +13123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114821772322538620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13298,8 +13195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114828627478819208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13345,8 +13240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114832805718432460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13658,8 +13551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114882226064986198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13744,8 +13635,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114890069536484758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13803,8 +13692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114893175463495240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13943,8 +13830,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114919827811620908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14089,8 +13974,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114936152173329940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14407,20 +14290,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114963967516473852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1208892244158394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!114 &114964425790284940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14597,8 +14466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114979801645083158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14795,8 +14662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114997608552559510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18806,7 +18671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224520588839940676
@@ -20660,7 +20525,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -48, y: 53.9}
-  m_SizeDelta: {x: 170, y: 170}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224878578981159336
 RectTransform:
