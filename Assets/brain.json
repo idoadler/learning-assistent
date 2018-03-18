@@ -5,230 +5,1047 @@
   "communication-error": "commerr",
   "intent-unknown": "intenterr",
   "conversations": {
-      "verifybeforeexit": {
+    "generaltimeerror": {
+      "text-f2f": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
+      "text-f2m": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
+      "text-m2f": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
+      "text-m2m": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה"
+    },
+    "general-good-bye": {
+      "text-f2f": "להתראות, נפגש שוב בקרוב !",
+      "text-f2m": "להתראות, נפגש שוב בקרוב !",
+      "text-m2f": "להתראות, נפגש שוב בקרוב !",
+      "text-m2m": "להתראות, נפגש שוב בקרוב !",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "introduction": {
+          "hi": "how-can-i-help"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        }
+      },
+      "next": "how-can-i-help"
+    },
+    "generalMotivation": {
+      "text-f2f": "יש!!!!!!!!!!!!!!!",
+      "text-f2m": "יש!!!!!!!!!!!!!!!",
+      "text-m2f": "יש!!!!!!!!!!!!!!!",
+      "text-m2m": "יש!!!!!!!!!!!!!!!",
+      "intentions": {
+        "small_talk": {
+          "negetive": "general-good-bye",
+          "positive": "re-negetive",
+          "tnx": "re-negetive"
+        }
+      },
+      "next": "verifybeforeexit"
+    },
+    "verifybeforeexit": {
       "text-f2f": "האם ברצונך לצאת למסך הראשי?",
       "text-f2m": "האם ברצונך לצאת למסך הראשי?",
       "text-m2f": "האם ברצונך לצאת למסך הראשי?",
       "text-m2m": "האם ברצונך לצאת למסך הראשי?"
     },
-	 "generalerr": {
+    "generalerr": {
       "text-f2f": "שגיאה: קלט לא מזוהה",
       "text-f2m": "שגיאה: קלט לא מזוהה",
       "text-m2f": "שגיאה: קלט לא מזוהה",
       "text-m2m": "שגיאה: קלט לא מזוהה"
     },
-	  "commerr": {
+    "commerr": {
       "text-f2f": "שגיאה: בעית תקשורת",
       "text-f2m": "שגיאה: בעית תקשורת",
       "text-m2f": "שגיאה: בעית תקשורת",
       "text-m2m": "שגיאה: בעית תקשורת"
     },
-   "intenterr": {
+    "intenterr": {
       "text-f2f": "אין לי מושג למה התכוונת",
       "text-f2m": "אין לי מושג למה התכוונת",
       "text-m2f": "אין לי מושג למה התכוונת",
-      "text-m2m": "אין לי מושג למה התכוונת" ,
+      "text-m2m": "אין לי מושג למה התכוונת"
     },
-	
-    "generaltimeerror": {
-      "text-f2f": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
-      "text-f2m": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
-      "text-m2f": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
-      "text-m2m": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
-    },
-	
-    "general-good-bye": {
-      "text-f2f": "להתראות, נפגש שוב בקרוב !",
-      "text-f2m": "להתראות, נפגש שוב בקרוב !",
-      "text-m2f": "להתראות, נפגש שוב בקרוב !",
-      "text-m2m": "להתראות, נפגש שוב בקרוב !"
-    },
-    "generalMotivation": {
-      "text-f2f": "%סרטון תמונה חמודים%",
-      "text-f2m": "%סרטון תמונה חמודים%",
-      "text-m2f": "%סרטון תמונה חמודים%",
-      "text-m2m": "%סרטון תמונה חמודים%",
-    },
-	
-	
-	  "warning": {
-      "text-f2f": "היי, אני עלמה, ואני עדיין לומדת לדבר.\nרוצה לכתוב לי משהו?",
-      "text-f2m": "היי, אני עלמה, ואני עדיין לומדת לדבר.\nרוצה לכתוב לי משהו?",
-      "text-m2f": "היי, אני יוני, ואני עדיין לומד לדבר.\nרוצה לכתוב לי משהו?",
-      "text-m2m": "היי, אני יוני, ואני עדיין לומד לדבר.\nרוצה לכתוב לי משהו?",
+    "negetive": {
+      "text-f2f": " היי! זה לא היה לעניין \n שנסיים את השיחה?",
+      "text-f2m": " היי! זה לא היה לעניין \n שנסיים את השיחה?",
+      "text-m2f": " היי! זה לא היה לעניין \n שנסיים את השיחה?",
+      "text-m2m": " היי! זה לא היה לעניין \n שנסיים את השיחה?",
       "intentions": {
+        "small_talk": {
+          "negetive": "general-good-bye",
+          "positive": "re-negetive",
+          "tnx": "re-negetive"
+        },
         "yes_no": {
-          "no": "welcome"
+          "yes": "general-good-bye",
+          "no": "re-negetive"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        }
+      },
+      "next": "re-negetive"
+    },
+    "re-negetive": {
+      "text-f2f": " שנחזור לעניין?",
+      "text-f2m": " שנחזור לעניין?",
+      "text-m2f": " שנחזור לעניין?",
+      "text-m2m": " שנחזור לעניין?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "general-good-bye",
+          "positive": "#reback#",
+          "tnx": "#reback#"
+        },
+        "yes_no": {
+          "yes": "#reback#",
+          "no": "general-good-bye"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        }
+      },
+      "next": "#reback#"
+    },
+    "positive": {
+      "text-f2f": "מתוקה!אז מה את אומרת?",
+      "text-f2m": "מתוק!אז מה בעצם אתה אומר?",
+      "text-m2f": "מתוקה!אז מה את אומרת?",
+      "text-m2m": "מתוק!אז מה בעצם אתה אומר?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "focuse",
+          "tnx": "focuse"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "yes_no": {
+          "yes": "#yes#",
+          "no": "#no#"
+        },
+        "task": {
+          "מבחן": "#test#",
+          "שיעורים": "#homework#"
+        },
+        "sex": {
+          "girl": "#girl#",
+          "boy": "#boy#"
+        }
+      },
+      "next": "focuse"
+    },
+    "tnx": {
+      "text-f2f": "בכיף! אבל לא ענית לי!",
+      "text-f2m": "בכיף! אבל לא ענית לי!",
+      "text-m2f": "בכיף! אבל לא ענית לי!",
+      "text-m2m": "בכיף! אבל לא ענית לי!",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "focuse"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "yes_no": {
+          "yes": "#yes#",
+          "no": "#no#"
+        },
+        "task": {
+          "מבחן": "#test#",
+          "שיעורים": "#homework#"
+        },
+        "sex": {
+          "girl": "#girl#",
+          "boy": "#boy#"
+        }
+      },
+      "next": "focuse"
+    },
+    "help-focuse": {
+      "text-f2f": "אני מבינה שאת קצת אבודה :)\n אבל בואי ננסה לבחור באחד מהקשיים הבאים\nבעיות #options# .",
+      "text-f2m": "אני מבינה שאתה קצת אבוד :)\n אבל בואי ננסה לבחור באחד מהקשיים הבאים:\n בעיות #options#.",
+      "text-m2f": "אני מבין שאת קצת אבודה :)\n .אבל בואי ננסה לבחור באחד מהקשיים הבאים:\n בעיות #options#",
+      "text-m2m": "אני מבין שאתה קצת אבוד :)\n .אבל בואי ננסה לבחור באחד מהקשיים הבאים:\nבעיות #options#",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
         },
         "introduction": {
-          "hi": "meetassistent"
+          "hi": "re-focuse"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
         }
       },
-      "next": "meetassistent"
+      "next": "re-focuse"
     },
-	
-	    "welcome": {
-      "text-f2f": "היי שוב, איך הולך?",
-      "text-f2m": "היי שוב, איך הולך?",
-      "text-m2f": "היי שוב, איך הולך?",
-      "text-m2m": "היי שוב, איך הולך?",
+    "focuse": {
+      "text-f2f": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n #options# .",
+      "text-f2m": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n  #options# .",
+      "text-m2f": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n #options# .",
+      "text-m2m": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n  #options#.",
       "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
         "introduction": {
-          "hi": "meetassistent"
+          "hi": "re-focuse"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "yes_no": {
+          "yes": "#yes#",
+          "no": "#no#"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        },
+        "sex": {
+          "girl": "#girl#",
+          "boy": "#boy#"
         }
       },
-      "back": true,
-      "next": "meetassistent"
+      "next": "re-focuse"
     },
-	
-    "meetassistent": {
-      "text-f2f": "אני פה כדי לעזור לך לסדר את הזמן שלך ולהצליח בלימודים. בוא קודם כל תספר לי, איך קוראים לך?",
-      "text-f2m": "אני פה כדי לעזור לך לסדר את הזמן שלך ולהצליח בלימודים. בוא קודם כל תספר לי, איך קוראים לך?",
-      "text-m2f": "אני פה כדי לעזור לך לסדר את הזמן שלך ולהצליח בלימודים. בוא קודם כל תספר לי, איך קוראים לך?",
-      "text-m2m": "אני יוני, אני פה כדי לעזור לך לסדר את הזמן שלך ולהצליח בלימודים. בוא קודם כל תספר לי, איך קוראים לך?",
+    "re-focuse": {
+      "text-f2f": "נא לבחור אחת מהאופציות הבאות\n #options# .",
+      "text-f2m": "נא לבחור אחת מהאופציות הבאות\n  #options# .",
+      "text-m2f": "נא לבחור אחת מהאופציות הבאות\n #options# .",
+      "text-m2m": "נא לבחור אחת מהאופציות הבאות\n  #options#.",
+      "intentions": {
+        "small_talk": {
+          "negetive": "#reback#",
+          "positive": "positive",
+          "tnx": "#reback#"
+        },
+        "introduction": {
+          "hi": "#reback#"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "yes_no": {
+          "yes": "#yes#",
+          "no": "#no#"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        },
+        "sex": {
+          "girl": "#girl#",
+          "boy": "#boy#"
+        }
+      },
+      "next": "#reback#"
+    },
+    "warning": {
+      "text-f2f": "היי, אני עלמה\n פעם ראשונה שלך עם בוט?",
+      "text-f2m": "היי, אני עלמה\n פעם ראשונה שלך עם בוט?",
+      "text-m2f": "היי, אני יוני\n פעם ראשונה שלך עם בוט?",
+      "text-m2m": "היי, אני יוני\n פעם ראשונה שלך עם בוט?",
+      "intentions": {
+        "yes_no": {
+          "yes": "J1-warning",
+          "no": "J2-warning"
+        },
+        "introduction": {
+          "hi": "J2-warning"
+        },
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        }
+      },
       "save": {
-        "var": "NAME",
+        "ctx": {
+          "options": "כן / לא",
+          "yes": "J1-warning",
+          "no": "J2-warning",
+          "hi": "J2-warning",
+          "reback": "warning"
+        }
+      },
+      "next": "focuse"
+    },
+    "J1-warning": {
+      "text-f2f": "תמיד יש פעם ראשונה:)  \n אז איך קוראים לך?",
+      "text-f2m": "תמיד יש פעם ראשונה:)  \n אז איך קוראים לך?",
+      "text-m2f": "תמיד יש פעם ראשונה:)  \n אז איך קוראים לך?",
+      "text-m2m": "תמיד יש פעם ראשונה:)  \n אז איך קוראים לך?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "save": {
+        "var": "name",
         "intentions": {
-          "contact" : ""
+          "contact": ""
+        },
+        "ctx": {
+          "reback": "J3-warning"
         }
       },
       "next": "choosesex"
-      },
-	  
-    "choosesex": {
-      "text-f2f": "נעים מאוד #NAME#, בן או בת?",
-      "text-f2m": "נעים מאוד #NAME#, בן או בת?",
-      "text-m2f": "נעים מאוד #NAME#, בן או בת?",
-      "text-m2m": "נעים מאוד #NAME#, בן או בת?",
-	   "intentions": {
-          "sex": {
-            "girl": "how-can-i-help",
-			"boy" : "how-can-i-help"
-          }
+    },
+    "J2-warning": {
+      "text-f2f": "רק תדע שאני שונה! \n אז איך קוראים לך?",
+      "text-f2m": "רק תדע שאני שונה! \n אז איך קוראים לך?",
+      "text-m2f": "רק תדע שאני שונה! \n אז איך קוראים לך?",
+      "text-m2m": "רק תדע שאני שונה! \n אז איך קוראים לך?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
         },
+        "exit": {
+          "bye": "general-good-bye"
+        }
+      },
       "save": {
-        "var": "SEX",
+        "var": "name",
+        "intentions": {
+          "contact": ""
+        },
+        "ctx": {
+          "reback": "J3-warning"
+        }
+      },
+      "next": "choosesex"
+    },
+    "J3-warning": {
+      "text-f2f": " אז איך קוראים לך?",
+      "text-f2m": " אז איך קוראים לך?",
+      "text-m2f": " אז איך קוראים לך?",
+      "text-m2m": " אז איך קוראים לך?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        }
+      },
+      "save": {
+        "var": "name",
+        "intentions": {
+          "contact": ""
+        },
+        "ctx": {
+          "reback": "J3-warning"
+        }
+      },
+      "next": "choosesex"
+    },
+    "choosesex": {
+      "text-f2f": "נעים מאוד #name# :), אני פה כדי לעזור לך.\n דרך-אגב, בן או בת?",
+      "text-f2m": "נעים מאוד #name# :), אני פה כדי לעזור לך.\n דרך-אגב, בן או בת?",
+      "text-m2f": "נעים מאוד #name# :), אני פה כדי לעזור לך.\n דרך-אגב, בן או בת?",
+      "text-m2m": "נעים מאוד #name# :), אני פה כדי לעזור לך.\n דרך-אגב, בן או בת?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "exit": {
+          "bye": "general-good-bye"
+        },
+        "sex": {
+          "girl": "choosesex-J",
+          "boy": "choosesex-J"
+        }
+      },
+      "save": {
+        "var": "sex",
         "intentions": {
           "sex": ""
+        },
+        "ctx": {
+          "reback": "choosesex2",
+          "options": "בת / בן",
+          "girl": "choosesex-J",
+          "boy": "choosesex-J"
         }
-		}
-	    "next"  : "choosesex"},
-		
-        "how-can-i-help": {
-          "text-f2f": "אחלה, אז במה אפשר לעזור?",
-          "text-f2m": "אחלה, אז במה אפשר לעזור?",
-          "text-m2f": "אחלה, אז במה אפשר לעזור?",
-          "text-m2m": "אחלה, אז במה אפשר לעזור?",
-        "intentions": {
-          "task": {
-            "מבחן": "test-task",
-			"שיעורים" :  "homework-task"
-          }
-        },
-          "next": "how-can-i-help"
-        },
-		
-	 "test-task": {
-        "text-f2f": "באיזה נושא המבחן?",
-        "text-f2m": "באיזה נושא המבחן?",
-        "text-m2f": "באיזה נושא המבחן?",
-        "text-m2m": "באיזה נושא המבחן?",
-        "next": "homework-time"
       },
-	  
-        "homework-task": {
-          "text-f2f": "אז במה יש לך שיעורי בית?",
-          "text-f2m": "אז במה יש לך שיעורי בית?",
-          "text-m2f": "אז במה יש לך שיעורי בית?",
-          "text-m2m": "אז במה יש לך שיעורי בית?",
-          "var": "hw",
-          "next": "homework-time"
+      "next": "focuse"
+    },
+    "choosesex2": {
+      "text-f2f": "אז בן או בת?:)",
+      "text-f2m": "אז בן או בת?:)",
+      "text-m2f": "אז בן או בת?:)",
+      "text-m2m": "אז בן או בת?:)",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
         },
-        "homework-time": {
-          "text-f2f": "באיזו שעה תרצה לשבת?",
-          "text-f2m": "באיזו שעה תרצה לשבת?",
-          "text-m2f": "באיזו שעה תרצה לשבת?",
-          "text-m2m": "באיזו שעה תרצה לשבת?",	
-          "save": {
-           "var": "TIME",
-           "intentions": {
-           "datetime" : ""
-           }
-         },		  
-
-          "next": "homework-scdual"
+        "exit": {
+          "bye": "general-good-bye"
         },
-        "homework-scdual": {
-          "text-f2f": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
-          "text-f2m": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
-          "text-m2f": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
-          "text-m2m": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
-          "intentions": {
-          "yes_no": {
-            "yes": "how-can-i-help",
-			"no" : "general-good-bye"
-          }
-        },
-		   "next": "homework-scdual"
-        },
-		
-        "task-notification": {
-          "text-f2f": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-          "text-f2m": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-          "text-m2f": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-          "text-m2m": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-          "next": "task-online"
-        },
-        "task-online": {
-          "text-f2f": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-          "text-f2m": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-          "text-m2f": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-          "text-m2m": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-          "next": "task-ver"
-        },
-        "task-ver": {
-          "text-f2f": "סיימנו - איך היה?",
-          "text-f2m": "סיימנו - איך היה?",
-          "text-m2f": "סיימנו - איך היה?",
-          "text-m2m": "סיימנו - איך היה?",
-          "next": "task-flow"
-        },
-        "next-task-notification": {
-          "text-f2f": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-          "text-f2m": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-          "text-m2f": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-          "text-m2m": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-          "next": "task-flow"
-        },
-        "task-summary": {
-          "text-f2f": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-          "text-f2m": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-          "text-m2f": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-          "text-m2m": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-          "next": "general-Motivation",
-          "next-step": "general-goodbye"
-        },
-        "re-scdual": {
-          "text-f2f": "אז מתי נשב על זה שוב? ",
-          "text-f2m": "אז מתי נשב על זה שוב? ",
-          "text-m2f": "אז מתי נשב על זה שוב? ",
-          "text-m2m": "אז מתי נשב על זה שוב? ",
-          "next": "task-flow"
-        },
-        "study-support": {
-          "text-f2f": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-          "text-f2m": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-          "text-m2f": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-          "text-m2m": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-          "next": "re-scdual"
-        },
-        "class-support": {
-          "text-f2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
-          "text-f2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב?",
-          "text-m2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
-          "text-m2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
-          "next": "re-scdual"
+        "sex": {
+          "girl": "choosesex-J",
+          "boy": "choosesex-J"
         }
-      }
+      },
+      "save": {
+        "var": "sex",
+        "intentions": {
+          "sex": ""
+        },
+        "ctx": {
+          "reback": "choosesex2",
+          "options": "בת / בן",
+          "girl": "choosesex-J",
+          "boy": "choosesex-J"
+        }
+      },
+      "next": "focuse"
+    },
+    "choosesex-J": {
+      "text-f2f": "בלי לחשוב יותר מידי.... איזה משחק את הכי אוהבת?",
+      "text-f2m": "בלי לחשוב יותר מידי.... איזה משחק אתה הכי אוהב?",
+      "text-m2f": "בלי לחשוב יותר מידי.... איזה משחק את הכי אוהבת?",
+      "text-m2m": "בלי לחשוב יותר מידי.... איזה משחק אתה הכי אוהב?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "pre4-how-can-i-help",
+          "tnx": "pre4-how-can-i-help"
+        }
+      },
+      "save": {
+        "var": "mainHOBBY",
+        "intentions": {
+          "contact": "",
+          "ctx": {
+            "reback": "pre4-how-can-i-help",
+            "options": "בישול או בלט???"
+          }
+        }
+      },
+      "next": "choosesex-J2"
+    },
+    "pre4-how-can-i-help": {
+      "text-f2f": "בקיצור \n אני פה בשבילך ..ביחד נצליח להגשים את יעדים שלך - מתחילים?! ",
+      "text-f2m": "בקיצור \n אני פה בשבילך ..ביחד נצליח להגשים את יעדים שלך - מתחילים?! ",
+      "text-m2f": "בקיצור \n אני פה בשבילך ..ביחד נצליח להגשים את יעדים שלך - מתחילים?! ",
+      "text-m2m": "בקיצור \n אני פה בשבילך ..ביחד נצליח להגשים את יעדים שלך - מתחילים?! ",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "yes_no": {
+          "yes": "first-conv-st1",
+          "no": "general-good-bye"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "pre4-how-can-i-help",
+          "options": "כן/לא",
+          "yes": "first-conv-st1",
+          "no": "general-good-bye"
+        }
+      },
+      "next": "first-conv-st1"
+    },
+    "choosesex-J2": {
+      "text-f2f": "#mainHOBBY# , יכולתי לנחש :) אני אוהבת לאפות פיצות! \nרוצה לדעת איך תוכלי להיעזר בי? ",
+      "text-f2m": "#mainHOBBY# , יכולתי לנחש :) אני אוהבת לסרוג צעיפים עבים \nרוצה לדעת איך תוכל להיעזר בי?",
+      "text-m2f": "#mainHOBBY# , יכולתי לנחש :)  אני אוהב לנטוע נטיעות \nרוצה לדעת איך תוכלי להיעזר בי?",
+      "text-m2m": "#mainHOBBY# , יכולתי לנחש :) אני חובב אסטרונומיה \nרוצה לדעת איך תוכל להיעזר בי?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "yes_no": {
+          "yes": "pre-how-can-i-help",
+          "no": "pre4-how-can-i-help"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "pre4-how-can-i-help",
+          "options": "כן/לא",
+          "yes": "pre-how-can-i-help",
+          "no": "pre4-how-can-i-help"
+        }
+      },
+      "next": "pre-how-can-i-help"
+    },
+    "pre-how-can-i-help": {
+      "text-f2f": "טוב ששאלת!\nמה את מעדיפה לעשות? שיעורי בית או לשחק #mainHOBBY#?",
+      "text-f2m": "טוב ששאלת!\nמה אתה מעדיף לעשות? שיעורי בית או לשחק #mainHOBBY#?",
+      "text-m2f": "טוב ששאלת!\nמה את מעדיפה לעשות? שיעורי בית או לשחק #mainHOBBY#?",
+      "text-m2m": "טוב ששאלת!\nמה אתה מעדיף לעשות? שיעורי בית או לשחק #mainHOBBY#?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "yes_no": {
+          "yes": "pre2-how-can-i-help",
+          "no": "pre4-how-can-i-help"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "pre4-how-can-i-help",
+          "options": "כן/לא",
+          "yes": "pre2-how-can-i-help",
+          "no": "pre4-how-can-i-help"
+        }
+      },
+      "next": "pre2-how-can-i-help"
+    },
+    "pre2-how-can-i-help": {
+      "text-f2f": "וכמה פעמים יצא לך להחמיץ  #mainHOBBY# בגלל זה?",
+      "text-f2m": "וכמה פעמים יצא לך להחמיץ  #mainHOBBY# בגלל זה?",
+      "text-m2f": "וכמה פעמים יצא לך להחמיץ  #mainHOBBY# בגלל זה?",
+      "text-m2m": "וכמה פעמים יצא לך להחמיץ  #mainHOBBY# בגלל זה?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "pre4-how-can-i-help",
+          "options": "מספר או מלל:)"
+        }
+      },
+      "next": "pre3-how-can-i-help"
+    },
+    "pre3-how-can-i-help": {
+      "text-f2f": "כל מה שאת צריכה זה לארגן נכון את הזמן שלך \nאבל זה לא חייב להיות משעמם! לא איתי!\n נתחיל?",
+      "text-f2m": "כל מה שאתה צריך זה לארגן נכון את הזמן שלך \nאבל זה לא חייב להיות משעמם! לא איתי!\n נתחיל?",
+      "text-m2f": "כל מה שאת צריכה זה לארגן נכון את הזמן שלך \nאבל זה לא חייב להיות משעמם! לא איתי!\n נתחיל?",
+      "text-m2m": "כל מה שאתה צריך זה לארגן נכון את הזמן שלך \nאבל זה לא חייב להיות משעמם! לא איתי!\n נתחיל?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "yes_no": {
+          "yes": "first-conv-st1",
+          "no": "pre4-how-can-i-help"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "pre4-how-can-i-help",
+          "options": "שיעורי בית/ #mainHOBBY#",
+          "yes": "first-conv-st1",
+          "no": "pre4-how-can-i-help"
+        }
+      },
+      "next": "first-conv-st1"
+    },
+    "first-conv-st1": {
+      "text-f2f": "בשביל לעזור לך אני חייבת לשאול עוד כמה דברים קטנים, בא לך לדבר עוד קצת?",
+      "text-f2m": "בשביל לעזור לך אני חייבת לשאול עוד כמה דברים קטנים, בא לך לדבר עוד קצת?",
+      "text-m2f": "בשביל לעזור לך אני חייב לשאול עוד כמה דברים קטנים, בא לך לדבר עוד קצת?",
+      "text-m2m": "בשביל לעזור לך אני חייב לשאול עוד כמה דברים קטנים, בא לך לדבר עוד קצת?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "yes_no": {
+          "yes": "how-can-i-help",
+          "no": "how-can-i-help"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "first-conv-st1",
+          "options": "כן/לא",
+          "yes": "how-can-i-help",
+          "no": "how-can-i-help"
+        }
+      },
+      "next": "how-can-i-help"
+    },
+    "first-conv-st2": {
+      "text-f2f": "אפתח לך עכשיו לוח בו תוכלי לשבץ את הפעילויות הקבועות שלך במהלך השבוע \n מלאי וחזרי אלי:) בסדר?",
+      "text-f2m": "אפתח לך עכשיו לוח בו תוכל לשבץ את הפעילויות הקבועות שלך במהלך השבוע \n מלא וחזור  אלי:) בסדר?",
+      "text-m2f": "אפתח לך עכשיו לוח בו תוכלי לשבץ את הפעילויות הקבועות שלך במהלך השבוע \n מלאי וחזרי אלי:) בסדר?",
+      "text-m2m": "אפתח לך עכשיו לוח בו תוכל לשבץ את הפעילויות הקבועות שלך במהלך השבוע \n מלא וחזור אלי:) בסדר?",
+      "next": "first-conv-st2"
+    },
+    "how-can-i-help-first": {
+      "text-f2f": "תמיד תוכלי לחזור לזה דרך הגדרת הפרופיל שלך במערכת, אז במה אפשר לעזור?",
+      "text-f2m": "תמיד תוכל לחזור לזה דרך הגדרת הפרופיל שלך במערכת, אז במה אפשר לעזור?",
+      "text-m2f": "תמיד תוכלי לחזור לזה דרך הגדרת הפרופיל שלך במערכת, אז במה אפשר לעזור?",
+      "text-m2m": "תמיד תוכל לחזור לזה דרך הגדרת הפרופיל שלך במערכת, אז במה אפשר לעזור?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "מבחן": "test-task",
+          "שיעורים": "homework-task"
+        }
+      },
+      "save": {
+        "ctx": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support",
+          "מבחן": "test-task",
+          "שיעורים": "homework-task",
+          "reback": "re-focuse",
+          "options": "התייעצות /מבחן / שיעורי בית "
+        }
+      },
+      "next": "focuse"
+    },
+    "how-can-i-help": {
+      "text-f2f": "אז #name# \n איך אפשר לעזור?",
+      "text-f2m": "אז #name# \n איך אפשר לעזור?",
+      "text-m2f": "אז #name# \n איך אפשר לעזור?",
+      "text-m2m": "אז #name# \n איך אפשר לעזור?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "study-support",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "re-focuse",
+          "options": "קושי אחר:) /מבחן / שיעורי בית "
+        }
+      },
+      "next": "re-focuse"
+    },
+    "test-task": {
+      "text-f2f": "באיזה נושא המבחן?",
+      "text-f2m": "באיזה נושא המבחן?",
+      "text-m2f": "באיזה נושא המבחן?",
+      "text-m2m": "באיזה נושא המבחן?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        }
+      },
+      "save": {
+        "var": "task",
+        "intentions": {
+          "contact": ""
+        },
+        "ctx": {
+          "reback": "test-task",
+          "options": "כן/לא"
+        }
+      },
+      "next": "test-task-2"
+    },
+    "test-task-2": {
+      "text-f2f": "אני הייתי ממליצה לחלק את החומר לנושאים מרכזים-  לא יותר מ8 -בסדר?",
+      "text-f2m": "אני הייתי ממליצה לחלק את החומר לנושאים מרכזים-  לא יותר מ8 -בסדר?",
+      "text-m2f": "אני הייתי ממליץ לחלק את החומר לנושאים מרכזים-  לא יותר מ8 -בסדר?",
+      "text-m2m": "אני הייתי ממליץ לחלק את החומר לנושאים מרכזים-  לא יותר מ8 -בסדר?",
+      "intentions": {
+    
+
+        "yes_no": {
+          "yes": "test-task-3",
+          "no": "homework-time"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "homework-time",
+          "options": "כן/לא"
+        }
+      },
+      "next": "test-task-3"
+    },
+    "test-task-3": {
+      "text-f2f": "עכשיו -לדרג את הנושאים לפי חשיבות - מצליחה?",
+      "text-f2m": "עכשיו -לדרג את הנושאים לפי חשיבות - מצליח?",
+      "text-m2f": "עכשיו -לדרג את הנושאים לפי חשיבות - מצליחה?",
+      "text-m2m": "עכשיו -לדרג את הנושאים לפי חשיבות - מצליח?",
+      "intentions": {
+ 
+
+        "yes_no": {
+          "yes":"homework-time",
+          "no": "homework-time"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "homework-time",
+          "options": "כן/לא"
+        }
+      },
+      "next":"homework-time"
+    },
+
+
+    "homework-task": {
+      "text-f2f": "אז במה יש לך שיעורי בית?",
+      "text-f2m": "אז במה יש לך שיעורי בית?",
+      "text-m2f": "אז במה יש לך שיעורי בית?",
+      "text-m2m": "אז במה יש לך שיעורי בית?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        }
+      },
+      "save": {
+        "var": "task",
+        "intentions": {
+          "contact": ""
+        },
+        "ctx": {
+          "reback": "test-task",
+          "options": "כן/לא"
+        }
+      },
+      "next": "homework-time"
+    },
+    "homework-time": {
+      "text-f2f": "באיזו שעה תרצה לשבת?",
+      "text-f2m": "באיזו שעה תרצה לשבת?",
+      "text-m2f": "באיזו שעה תרצה לשבת?",
+      "text-m2m": "באיזו שעה תרצה לשבת?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "datetime": "homework-scdual",
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        }
+      },
+      "save": {
+        "var": "TIME",
+        "intentions": {
+          "datetime": ""
+        },
+        "ctx": {
+          "reback": "homework-time",
+          "options": "תאריך או שעה :)"
+        }
+      },
+      "next": "focuse"
+    },
+    "homework-scdual": {
+      "text-f2f": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
+      "text-f2m": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
+      "text-m2f": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
+      "text-m2m": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "yes_no": {
+          "yes": "how-can-i-help",
+          "no": "general-good-bye"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "homework-scdual",
+          "options": "כן או לא!:)",
+          "yes": "how-can-i-help",
+          "no": "general-good-bye"
+        }
+      },
+      "next": "focus"
+    },
+    "task-notification": {
+      "text-f2f": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
+      "text-f2m": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
+      "text-m2f": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
+      "text-m2m": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
+      "next": "task-online"
+    },
+    "task-online": {
+      "text-f2f": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "text-f2m": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "text-m2f": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "text-m2m": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "next": "task-ver"
+    },
+    "task-ver": {
+      "text-f2f": "סיימנו - איך היה?",
+      "text-f2m": "סיימנו - איך היה?",
+      "text-m2f": "סיימנו - איך היה?",
+      "text-m2m": "סיימנו - איך היה?",
+      "next": "task-flow"
+    },
+    "next-task-notification": {
+      "text-f2f": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
+      "text-f2m": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
+      "text-m2f": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
+      "text-m2m": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
+      "next": "task-flow"
+    },
+    "task-summary": {
+      "text-f2f": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
+      "text-f2m": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
+      "text-m2f": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
+      "text-m2m": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
+      "next": "general-Motivation",
+      "next-step": "general-goodbye"
+    },
+    "re-scdual-2": {
+      "text-f2f": "אז מתי נשב על זה שוב? ",
+      "text-f2m": "אז מתי נשב על זה שוב? ",
+      "text-m2f": "אז מתי נשב על זה שוב? ",
+      "text-m2m": "אז מתי נשב על זה שוב? ",
+      "next": "task-flow"
+    },
+    "study-support-2": {
+      "text-f2f": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
+      "text-f2m": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
+      "text-m2f": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
+      "text-m2m": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
+      "next": "re-scdual"
+    },
+    "class-support-2": {
+      "text-f2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
+      "text-f2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב?",
+      "text-m2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
+      "text-m2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
+      "next": "re-scdual"
+    },
+    "re-scdual": {
+      "text-f2f": "אני עוד לומדת בעצמי :)\n אבל תמיד טוב לרשום מראש את הנושאים\n ולהקצות להם זמן ואז בצעדים קטנים\n להגיע רחוק!! ",
+      "text-f2m": "אני עוד לומד בעצמי :)\n אבל תמיד טוב לרשום מראש את הנושאים\n ולהקצות להם זמן ואז בצעדים קטנים\n להגיע רחוק!! ",
+      "text-m2f": "אני עוד לומדת בעצמי :)\n אבל תמיד טוב לרשום מראש את הנושאים\n ולהקצות להם זמן ואז בצעדים קטנים\n להגיע רחוק!! ",
+      "text-m2m": "אני עוד לומד בעצמי :)\n אבל תמיד טוב לרשום מראש את הנושאים\n ולהקצות להם זמן ואז בצעדים קטנים\n להגיע רחוק!! ",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "re-focuse",
+          "options": "כל קושי אחר:) /מבחן / שיעורי בית "
+        }
+      },
+      "next": "focuse"
+    },
+    "study-support": {
+      "text-f2f": "תנסי לחשוב על הדבר שהכי מסיח את דעתך\n  אני בטוחה שתצליחי הרבה יותר אם\n  תנטרלי אותו אפילו לשעה ",
+      "text-f2m": "תנסה לחשוב על הדבר שהכי מסיח את דעתך\n  אני בטוחה שתצליח הרבה יותר אם\n  תנטרל אותו אפילו לשעה ",
+      "text-m2f": "תנסי לחשוב על הדבר שהכי מסיח את דעתך\n  אני בטוח שתצליחי הרבה יותר אם\n  תנטרלי אותו אפילו לשעה ",
+      "text-m2m": "תנסה לחשוב על הדבר שהכי מסיח את דעתך\n  אני בטוח שתצליח הרבה יותר אם\n  תנטרל אותו אפילו לשעה ",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "re-focuse",
+          "options": "התייעצות כל קושי אחר /מבחן / שיעורי בית "
+        }
+      },
+      "next": "focuse"
+    },
+    "class-support": {
+      "text-f2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב? ",
+      "text-f2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב ?",
+      "text-m2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב ? ",
+      "text-m2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב ? ",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "re-focuse",
+          "options": "התייעצות כל קושי אחר /מבחן / שיעורי בית "
+        }
+      },
+      "next": "focuse"
     }
-  
+  }
+}

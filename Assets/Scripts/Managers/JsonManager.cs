@@ -9,13 +9,13 @@ public static class JsonManager
  
     private const string NODE_FIRST = "firstrun";
     private const string NODE_COMMUNICATION_ERROR = "communication-error";
-//    private const string NODE_GENERAL_ERROR = "general-error";
     private const string NODE_EXIT = "exit";
     private const string NODE_CONVERSATIONS = "conversations";
     private const string NODE_INTENTIONS = "intentions";
     private const string NODE_NEXT = "next";
     private const string NODE_OPTIONS = "options";
     private const string NODE_ENTITIES = "entities";
+    private const string NODE_CTX = "ctx";
     private const string NODE_VALUE = "value";
     private const string NODE_BACK = "back";
     private const string NODE_SAVE_DATA = "save";
@@ -76,7 +76,16 @@ public static class JsonManager
         Result result = new Result();
         result.goBack = initialBack;
 
+
+
         // save results to vars
+
+        JSONNode ctx = currentState[NODE_SAVE_DATA][NODE_CTX];
+        foreach (string i in ctx.Keys)
+        {
+            PlayerPrefs.SetString(i, ctx[i]);
+        }
+
         JSONNode intentions = currentState[NODE_SAVE_DATA][NODE_INTENTIONS];
         KeyValuePair<string, string> intent = MatchBestIntent(entities, intentions);
         if (!string.IsNullOrEmpty(intent.Key))
@@ -95,10 +104,13 @@ public static class JsonManager
         intent = MatchBestIntent(entities, intentions);
         if (!string.IsNullOrEmpty(intent.Key) && intentions[intent.Key][intent.Value])
         {
+            intentions[intent.Key][intent.Value].Value = GetParam(intentions[intent.Key][intent.Value].Value);
+            if (intentions[intent.Key][intent.Value].Value == null) intentions[intent.Key][intent.Value].Value = "reback";
             state = intentions[intent.Key][intent.Value].Value;
         }
         else
         {
+            currentState[NODE_NEXT].Value = GetParam(currentState[NODE_NEXT].Value);
             state = currentState[NODE_NEXT].Value;
         }
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
@@ -136,6 +148,7 @@ public static class JsonManager
 
         return result;
     }
+
 
     internal static Result AskForExit()
     {
@@ -217,6 +230,17 @@ public static class JsonManager
         }
     }
 
+
+
+
+    private static string GetParam(string value)
+    {
+        if (value[0] == '#')
+            return PlayerPrefs.GetString(value.Substring(1, value.Length - 2));
+        else return value;
+    }
+
+
     private static string[] FormatBotText(string botText)
     {
         string result = botText;
@@ -242,4 +266,5 @@ public static class JsonManager
             //options = null;
         }
     }
+
 }
