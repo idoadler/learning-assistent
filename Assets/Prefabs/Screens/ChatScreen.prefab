@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &114005782811729076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,8 +436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114261993310204198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -882,8 +880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114621426860977082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -981,8 +977,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 0}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!114 &114875978627018388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1049,8 +1043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefrenceInput: {fileID: 114474231426472864}
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!222 &222124410295038020
 CanvasRenderer:
   m_ObjectHideFlags: 1
