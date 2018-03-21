@@ -38,6 +38,11 @@ public static class JsonManager
 
     public static void InitConversationJson(string json)
     {
+        if (ChatManager.IS_TESTING)
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
         brain = JSON.Parse(json);
         conversation = brain[NODE_CONVERSATIONS];
         string state = PlayerPrefs.GetString(PREFS_LAST_STATE);
