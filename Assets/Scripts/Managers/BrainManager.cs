@@ -27,7 +27,6 @@ public class BrainManager : MonoBehaviour {
 
         set
         {
-            Debug.Log("new ver:" +remoteBrainVer);
             remoteBrainVer = value;
             if (remoteBrainVer > localBrainVer)
             {
@@ -53,9 +52,8 @@ public class BrainManager : MonoBehaviour {
         }
     }
 
-    public void UpdateBrain()
+    public void InitConversationBrain()
     {
-
         JsonManager.InitConversationJson(BrainData);
     }
 
@@ -73,7 +71,7 @@ public class BrainManager : MonoBehaviour {
                 yield return www;
                 BrainData = www.text;
                 Debug.Log(brainURL + ":\n" + BrainData);
-                UpdateBrain();
+                InitConversationBrain();
                 localBrainVer = remoteBrainVer;
             }
         }

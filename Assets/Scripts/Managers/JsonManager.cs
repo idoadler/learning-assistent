@@ -40,12 +40,14 @@ public static class JsonManager
         brain = JSON.Parse(json);
         conversation = brain[NODE_CONVERSATIONS];
         string state = PlayerPrefs.GetString(PREFS_LAST_STATE);
-        currentState = conversation["warning"];
-    }
-
-    public static void ChgCnvNode (string state)
-    {
-        currentState = conversation[state];
+        if (string.IsNullOrEmpty(state))
+        {
+            ResetConversation();
+        } else
+        {
+            currentState = conversation[state];
+            lastState = currentState;
+        }
     }
 
     public static void ResetConversation()
@@ -66,9 +68,9 @@ public static class JsonManager
         return result;
     }
 
-    public static string CurrentText()
+    public static string[] CurrentTexts()
     {
-        return currentState[SPEACH_NODE_INITIAL + ConversationGender];
+        return FormatBotText(currentState[SPEACH_NODE_INITIAL + ConversationGender]);
     }
 
     public static Result RetrieveResponse(JSONNode entities, bool initialBack = false)
@@ -76,10 +78,7 @@ public static class JsonManager
         Result result = new Result();
         result.goBack = initialBack;
 
-
-
         // save results to vars
-
         JSONNode ctx = currentState[NODE_SAVE_DATA][NODE_CTX];
         foreach (string i in ctx.Keys)
         {
@@ -121,11 +120,7 @@ public static class JsonManager
             result.goBack = true;
         }
 
-        result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ FormatBotText(CurrentText());
-        //if (currentState[NODE_OPTIONS] != null)
-        //{
-        //    result.options = new List<string>(currentState[NODE_OPTIONS]);
-        //}
+        result.displayTexts = CurrentTexts();
 
         return result;
     }
@@ -160,56 +155,13 @@ public static class JsonManager
         JSONNode entities = JSON.Parse(json)[NODE_ENTITIES];
 
         return (JSON.Parse(json)[NODE_ENTITIES][INTENT_YESNO][0][NODE_VALUE] == INTENT_YES);
-/*
-        string intention = "";
-        string key = "";
-
-        // normal result
-        foreach (string intent in entities.Keys)
-        {
-            intention = intent;
-        }
-
-        key = entities[intention][0][NODE_VALUE];
-        return (key == INTENT_YES);*/
     }
-
-    //public static Result RetrieveOption(string option)
-    //{
-    //    Result result = new Result();
-    //    try
-    //    {
-    //        string state;
-    //        if (currentState[NODE_OPTIONS] != null && currentState[NODE_OPTIONS][option] != null)
-    //        {
-    //            state = currentState[NODE_OPTIONS][option].Value;
-    //        }
-    //        else
-    //        {
-    //            state = currentState[NODE_NEXT].Value;
-    //        }
-    //        PlayerPrefs.SetString(PREFS_LAST_STATE, state);
-    //        lastState = currentState;
-    //        currentState = conversation[state];
-
-    //        result.displayTexts = /* "זוהתה כוונה\n" + intention + "," + key + "\n" + */ CurrentText().Split(MESSAGE_SPLIT);
-    //        if (currentState[NODE_OPTIONS] != null)
-    //        {
-    //            result.options = new List<string>(currentState[NODE_OPTIONS]);
-    //        }
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        result.displayTexts = new string[] { "זוהתה כוונה\n" + option + "\n" + "Error parsing:" + e.Message };
-    //    }
-    //    return result;
-    //}
 
     public static Result RetriveLast()
     {
         Result result = new Result();
         currentState = lastState;
-        result.displayTexts = FormatBotText(CurrentText());
+        result.displayTexts = CurrentTexts();
         result.goBack = currentState[NODE_BACK];
         return result;
     }

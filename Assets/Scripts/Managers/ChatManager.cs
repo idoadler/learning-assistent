@@ -11,22 +11,13 @@ public class ChatManager : MonoBehaviour {
     public static bool IsAssistentGirl = true;
     public static bool IsUserGirl = true;
 
-    private WitAi witai;
-
-    public void SetAsistentGender(bool isGirl)
-    {
-        IsAssistentGirl = isGirl;
-        if (!isGirl)
-        {
-            JsonManager.ConversationGender = "m2f";
-        }
-    }
-
     public GameObject[] screens;
     private int currentScreen = 0;
     public ScrollRect chatScroll;
     public InputField input;
     public ConversationManager conversation;
+
+    private WitAi witai;
 
     private void Awake()
     {
@@ -44,7 +35,11 @@ public class ChatManager : MonoBehaviour {
 
     private void Start()
     {
-        GetComponent<BrainManager>().UpdateBrain();
+        GetComponent<BrainManager>().InitConversationBrain();
+        foreach (string text in JsonManager.CurrentTexts())
+        {
+            SetBotText(text);
+        }
     }
 
     public void NextScreen()
@@ -79,6 +74,15 @@ public class ChatManager : MonoBehaviour {
         }
 
         // TODO: adjust UI height by TouchScreenKeyboard.area.height
+    }
+
+    public void SetAsistentGender(bool isGirl)
+    {
+        IsAssistentGirl = isGirl;
+        if (!isGirl)
+        {
+            JsonManager.ConversationGender = "m2f";
+        }
     }
 
     public void SendText()

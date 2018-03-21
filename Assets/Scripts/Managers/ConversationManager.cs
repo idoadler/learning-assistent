@@ -8,13 +8,6 @@ public class ConversationManager : MonoBehaviour {
     public GameObject userPrefab;
     public List<ChatLine> conversation = new List<ChatLine>();
 
-    private void Start()
-    {
-       // if miss
-     //   JsonManager.ChgCnvNode("task-ver");
-        BotSay(JsonManager.CurrentText());
-    }
-
     public void BotSay(string text)
     {
         SayText(botPrefab, text);
