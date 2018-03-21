@@ -30,6 +30,7 @@ public static class JsonManager
     private const string JSON_CONFIDENCE = "confidence";
     private const float REQUIRED_CONFIDENCE = 0.8f;
 
+    private static JSONNode ctx;
     private static JSONNode brain;
     private static JSONNode conversation;
     private static JSONNode lastState;
@@ -43,7 +44,8 @@ public static class JsonManager
         if (string.IsNullOrEmpty(state))
         {
             ResetConversation();
-        } else
+        }
+        else
         {
             currentState = conversation[state];
             lastState = currentState;
@@ -79,7 +81,8 @@ public static class JsonManager
         result.goBack = initialBack;
 
         // save results to vars
-        JSONNode ctx = currentState[NODE_SAVE_DATA][NODE_CTX];
+        if (currentState[NODE_SAVE_DATA][NODE_CTX][0])
+            ctx = currentState[NODE_SAVE_DATA][NODE_CTX];
         foreach (string i in ctx.Keys)
         {
             PlayerPrefs.SetString(i, ctx[i]);
@@ -103,13 +106,12 @@ public static class JsonManager
         intent = MatchBestIntent(entities, intentions);
         if (!string.IsNullOrEmpty(intent.Key) && intentions[intent.Key][intent.Value])
         {
-            intentions[intent.Key][intent.Value].Value = GetParam(intentions[intent.Key][intent.Value].Value);
-            if (intentions[intent.Key][intent.Value].Value == null) intentions[intent.Key][intent.Value].Value = "reback";
+            intentions[intent.Key][intent.Value].Value = GetParam(intentions[intent.Key][intent.Value].Value,ctx);
             state = intentions[intent.Key][intent.Value].Value;
         }
         else
         {
-            currentState[NODE_NEXT].Value = GetParam(currentState[NODE_NEXT].Value);
+            currentState[NODE_NEXT].Value = GetParam(currentState[NODE_NEXT].Value,ctx);
             state = currentState[NODE_NEXT].Value;
         }
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
@@ -185,11 +187,16 @@ public static class JsonManager
 
 
 
-    private static string GetParam(string value)
+    private static string GetParam(string value, JSONNode ctx)
     {
         if (value[0] == '#')
-            return PlayerPrefs.GetString(value.Substring(1, value.Length - 2));
-        else return value;
+        {
+            string val = value.Substring(1, value.Length - 2);
+            if (ctx[val])
+            return PlayerPrefs.GetString(val);
+            else return  "re-focuse" ;
+        }
+        return value;
     }
 
 

@@ -12,7 +12,6 @@ public class ConversationManager : MonoBehaviour {
     {
         SayText(botPrefab, text);
         AnalyticsManager.ChatMessageSent(text, false);
-
     }
 
     public void UserSay(string text)

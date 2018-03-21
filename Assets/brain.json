@@ -123,6 +123,12 @@
       "text-f2m": "מתוק!אז מה בעצם אתה אומר?",
       "text-m2f": "מתוקה!אז מה את אומרת?",
       "text-m2m": "מתוק!אז מה בעצם אתה אומר?",
+      "save": {
+        "var": "sex",
+        "intentions": {
+          "sex": ""
+        }
+      },
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -152,6 +158,12 @@
       "text-f2m": "בכיף! אבל לא ענית לי!",
       "text-m2f": "בכיף! אבל לא ענית לי!",
       "text-m2m": "בכיף! אבל לא ענית לי!",
+      "save": {
+        "var": "sex",
+        "intentions": {
+          "sex": ""
+        }
+      },
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -208,6 +220,12 @@
       "text-f2m": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n  #options# .",
       "text-m2f": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n #options# .",
       "text-m2m": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n  #options#.",
+      "save": {
+        "var": "sex",
+        "intentions": {
+          "sex": ""
+        }
+      },
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -249,6 +267,12 @@
       "text-f2m": "נא לבחור אחת מהאופציות הבאות\n  #options# .",
       "text-m2f": "נא לבחור אחת מהאופציות הבאות\n #options# .",
       "text-m2m": "נא לבחור אחת מהאופציות הבאות\n  #options#.",
+      "save": {
+        "var": "sex",
+        "intentions": {
+          "sex": ""
+        }
+      },
       "intentions": {
         "small_talk": {
           "negetive": "#reback#",
@@ -286,10 +310,10 @@
       "next": "#reback#"
     },
     "warning": {
-      "text-f2f": "היי, אני עלמה\n פעם ראשונה שלך עם בוט?",
-      "text-f2m": "היי, אני עלמה\n פעם ראשונה שלך עם בוט?",
-      "text-m2f": "היי, אני יוני\n פעם ראשונה שלך עם בוט?",
-      "text-m2m": "היי, אני יוני\n פעם ראשונה שלך עם בוט?",
+      "text-f2f": "היי, אני עלמה\n פעם ראשונה שלך עם עוזרת אישית?",
+      "text-f2m": "היי, אני עלמה\n פעם ראשונה שלך עם עוזרת אישית?",
+      "text-m2f": "היי, אני יוני\n פעם ראשונה שלך עם עוזר אישי?",
+      "text-m2m": "היי, אני יוני\n פעם ראשונה שלך עם עוזר אישי?",
       "intentions": {
         "yes_no": {
           "yes": "J1-warning",
@@ -313,6 +337,7 @@
           "yes": "J1-warning",
           "no": "J2-warning",
           "hi": "J2-warning",
+		  "name": ":)",
           "reback": "warning"
         }
       },
@@ -352,7 +377,7 @@
           "contact": ""
         },
         "ctx": {
-          "reback": "J3-warning"
+		"reback": "J3-warning"
         }
       },
       "next": "choosesex"
@@ -526,10 +551,10 @@
       "next": "first-conv-st1"
     },
     "choosesex-J2": {
-      "text-f2f": "#mainHOBBY# , יכולתי לנחש :) אני אוהבת לאפות פיצות! \nרוצה לדעת איך תוכלי להיעזר בי? ",
-      "text-f2m": "#mainHOBBY# , יכולתי לנחש :) אני אוהבת לסרוג צעיפים עבים \nרוצה לדעת איך תוכל להיעזר בי?",
-      "text-m2f": "#mainHOBBY# , יכולתי לנחש :)  אני אוהב לנטוע נטיעות \nרוצה לדעת איך תוכלי להיעזר בי?",
-      "text-m2m": "#mainHOBBY# , יכולתי לנחש :) אני חובב אסטרונומיה \nרוצה לדעת איך תוכל להיעזר בי?",
+      "text-f2f": "#mainHOBBY# , יכולתי לנחש :) אני אוהבת לצוד חלומות! \nרוצה לדעת איך תוכלי להיעזר בי? ",
+      "text-f2m": "#mainHOBBY# , יכולתי לנחש :) אני אוהבת לצוד חלומות! \nרוצה לדעת איך תוכל להיעזר בי?",
+      "text-m2f": "#mainHOBBY# , יכולתי לנחש :)  אני אוהב לצוד חלומות! \nרוצה לדעת איך תוכלי להיעזר בי?",
+      "text-m2m": "#mainHOBBY# , יכולתי לנחש :) אני אוהב לצוד חלומות! \nרוצה לדעת איך תוכל להיעזר בי?",
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -695,10 +720,10 @@
       "next": "focuse"
     },
     "how-can-i-help": {
-      "text-f2f": "אז #name# \n איך אפשר לעזור?",
-      "text-f2m": "אז #name# \n איך אפשר לעזור?",
-      "text-m2f": "אז #name# \n איך אפשר לעזור?",
-      "text-m2m": "אז #name# \n איך אפשר לעזור?",
+      "text-f2f": "היי #name# \n איך אפשר לעזור?",
+      "text-f2m": "היי #name# \n איך אפשר לעזור?",
+      "text-m2f": "היי #name# \n איך אפשר לעזור?",
+      "text-m2m": "היי #name# \n איך אפשר לעזור?",
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -764,8 +789,6 @@
       "text-m2f": "אני הייתי ממליץ לחלק את החומר לנושאים מרכזים-  לא יותר מ8 -בסדר?",
       "text-m2m": "אני הייתי ממליץ לחלק את החומר לנושאים מרכזים-  לא יותר מ8 -בסדר?",
       "intentions": {
-    
-
         "yes_no": {
           "yes": "test-task-3",
           "no": "homework-time"
@@ -785,10 +808,8 @@
       "text-m2f": "עכשיו -לדרג את הנושאים לפי חשיבות - מצליחה?",
       "text-m2m": "עכשיו -לדרג את הנושאים לפי חשיבות - מצליח?",
       "intentions": {
- 
-
         "yes_no": {
-          "yes":"homework-time",
+          "yes": "homework-time",
           "no": "homework-time"
         }
       },
@@ -798,10 +819,8 @@
           "options": "כן/לא"
         }
       },
-      "next":"homework-time"
+      "next": "homework-time"
     },
-
-
     "homework-task": {
       "text-f2f": "אז במה יש לך שיעורי בית?",
       "text-f2m": "אז במה יש לך שיעורי בית?",
