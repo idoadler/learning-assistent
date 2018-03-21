@@ -310,10 +310,10 @@
       "next": "#reback#"
     },
     "warning": {
-      "text-f2f": "היי, אני עלמה\n פעם ראשונה שלך עם בוט?",
-      "text-f2m": "היי, אני עלמה\n פעם ראשונה שלך עם בוט?",
-      "text-m2f": "היי, אני יוני\n פעם ראשונה שלך עם בוט?",
-      "text-m2m": "היי, אני יוני\n פעם ראשונה שלך עם בוט?",
+      "text-f2f": "היי, אני עלמה\n פעם ראשונה שלך עם עוזרת אישית?",
+      "text-f2m": "היי, אני עלמה\n פעם ראשונה שלך עם עוזרת אישית?",
+      "text-m2f": "היי, אני יוני\n פעם ראשונה שלך עם עוזר אישי?",
+      "text-m2m": "היי, אני יוני\n פעם ראשונה שלך עם עוזר אישי?",
       "intentions": {
         "yes_no": {
           "yes": "J1-warning",
@@ -337,6 +337,7 @@
           "yes": "J1-warning",
           "no": "J2-warning",
           "hi": "J2-warning",
+		  "name": ":)",
           "reback": "warning"
         }
       },
@@ -376,7 +377,7 @@
           "contact": ""
         },
         "ctx": {
-          "reback": "J3-warning"
+		"reback": "J3-warning"
         }
       },
       "next": "choosesex"
@@ -719,10 +720,10 @@
       "next": "focuse"
     },
     "how-can-i-help": {
-      "text-f2f": "אז #name# \n איך אפשר לעזור?",
-      "text-f2m": "אז #name# \n איך אפשר לעזור?",
-      "text-m2f": "אז #name# \n איך אפשר לעזור?",
-      "text-m2m": "אז #name# \n איך אפשר לעזור?",
+      "text-f2f": "היי #name# \n איך אפשר לעזור?",
+      "text-f2m": "היי #name# \n איך אפשר לעזור?",
+      "text-m2f": "היי #name# \n איך אפשר לעזור?",
+      "text-m2m": "היי #name# \n איך אפשר לעזור?",
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
