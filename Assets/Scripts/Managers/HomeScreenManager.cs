@@ -11,6 +11,7 @@ public class HomeScreenManager : MonoBehaviour {
     private List<EventsData.TestEvent> tests;
     private SortedDictionary<DateTime, DateLine> missionDates = new SortedDictionary<DateTime, DateLine>();
     private SortedDictionary<DateTime, DateLine> testDates = new SortedDictionary<DateTime, DateLine>();
+    private Dictionary<DateTime, string> eventsDuplicates = new Dictionary<DateTime, string>();
 
     public MissionLine missionLinePrefab;
     public DateLine dateLinePrefab;
@@ -22,6 +23,25 @@ public class HomeScreenManager : MonoBehaviour {
     public GameObject[] screens;
     public GameObject addMissionMenu;
 
+    private void Start()
+    {
+        LoadEvents();
+        SetScreen((int)Screens.DAILY);
+    }
+
+    private void OnEnable()
+    {
+        HideMenus();
+    }
+
+    private void HideMenus()
+    {
+        foreach (GameObject menu in menusToHide)
+        {
+            menu.SetActive(false);
+        }
+    }
+
     public void SetScreen(int target)
     {
         for (int i = 0; i < screens.Length; i++)
@@ -32,15 +52,9 @@ public class HomeScreenManager : MonoBehaviour {
         AnalyticsManager.ScreenVisit(screens[target].name);
     }
 
-    private void Start()
-    {
-        LoadEvents();
-        SetScreen((int)Screens.DAILY);
-    }
-
     private void LoadEvents()
     {
-        EventsData.AllEvents allEvents = EventsData.LoadEventsData();
+        EventsData.AllEvents allEvents = EventsData.Load();
         long now = DateTime.Now.ToFileTimeUtc();
 
         others = new List<EventsData.GeneralEvent>();
@@ -79,20 +93,19 @@ public class HomeScreenManager : MonoBehaviour {
             homeworks = homeworks.ToArray(),
             tests = tests.ToArray()
         };
-        EventsData.SaveEventsData(allEvents);
+        EventsData.Save(allEvents);
     }
 
-    private void HideMenus()
+    public string CheckForEventAtTime(DateTime time)
     {
-        foreach (GameObject menu in menusToHide)
+        if (eventsDuplicates.ContainsKey(time))
         {
-            menu.SetActive(false);
+            return eventsDuplicates[time];
         }
-    }
-
-    private void OnEnable() 
-    {
-        HideMenus();
+        else
+        {
+            return "";
+        }
     }
 
     public void AddMissions()
@@ -109,6 +122,14 @@ public class HomeScreenManager : MonoBehaviour {
 
     public void CreateMission(string title, DateTime from, DateTime to)
     {
+        if(eventsDuplicates.ContainsKey(from))
+        {
+            Debug.Log("adding event at the same time of event: " + eventsDuplicates[from]);
+        } else
+        {
+            eventsDuplicates.Add(from, title);
+        }
+
         homeworks.Add(new EventsData.HomeworkEvent {description=title,utcFrom=from.ToFileTimeUtc(),utcTo=to.ToFileTimeUtc()});
 
         if (!missionDates.ContainsKey(from.Date))
@@ -144,8 +165,11 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.MISSIONS);
         }
 
-#if UNITY_ANDROID
         //  set reminder
+#if UNITY_EDITOR
+        Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
+        Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
+#elif UNITY_ANDROID
         int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
         int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
@@ -155,6 +179,15 @@ public class HomeScreenManager : MonoBehaviour {
 
     public void CreateTest(string title, DateTime from, DateTime to)
     {
+        if (eventsDuplicates.ContainsKey(from))
+        {
+            Debug.Log("adding event at the same time of event: " + eventsDuplicates[from]);
+        }
+        else
+        {
+            eventsDuplicates.Add(from, title);
+        }
+
         tests.Add(new EventsData.TestEvent { description = title, utcFrom = from.ToFileTimeUtc(), utcTo = to.ToFileTimeUtc() });
 
         if (!testDates.ContainsKey(from.Date))
@@ -190,8 +223,11 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.TESTS);
         }
 
-#if UNITY_ANDROID
         //  set reminder
+#if UNITY_EDITOR
+        Debug.Log("Added notification: " + "היי,\n" + "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text);
+        Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
+#elif UNITY_ANDROID
         int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
         int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);

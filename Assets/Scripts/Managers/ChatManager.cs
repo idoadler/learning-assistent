@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class ChatManager : MonoBehaviour {
     public static bool IS_TESTING = false;
 
-    public static bool IsAssistentGirl = true;
     public static bool IsUserGirl = true;
 
     public GameObject[] screens;
@@ -21,6 +20,11 @@ public class ChatManager : MonoBehaviour {
 
     private void Awake()
     {
+        if(IS_TESTING)
+        {
+            Debug.LogWarning("TESTING MODE");
+        }
+
         witai = GetComponent<WitAi>();
         WitAi.request_success += SetBotTextJSON;
         WitAi.request_failure += SetBotErrorMsg;
@@ -36,9 +40,30 @@ public class ChatManager : MonoBehaviour {
     private void Start()
     {
         GetComponent<BrainManager>().InitConversationBrain();
-        foreach (string text in JsonManager.CurrentTexts())
+
+        ChatHistoryData.Chat chatData = ChatHistoryData.Load();
+
+        if (chatData.texts.Length > 0)
         {
-            SetBotText(text);
+            foreach(ChatHistoryData.ChatText chatLine in chatData.texts)
+            {
+                if(chatLine.isBot)
+                {
+                    conversation.BotSay(chatLine.text);
+                }
+                else
+                {
+                    conversation.UserSay(chatLine.text);
+                }
+            }
+            ScrollToBottom();
+        }
+        else
+        {
+            foreach (string text in JsonManager.CurrentTexts())
+            {
+                SetBotText(text);
+            }
         }
     }
 
@@ -78,11 +103,7 @@ public class ChatManager : MonoBehaviour {
 
     public void SetAsistentGender(bool isGirl)
     {
-        IsAssistentGirl = isGirl;
-        if (!isGirl)
-        {
-            JsonManager.ConversationGender = "m2f";
-        }
+        JsonManager.IsBotFemale = isGirl;
     }
 
     public void SendText()

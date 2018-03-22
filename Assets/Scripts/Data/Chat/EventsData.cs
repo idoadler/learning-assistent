@@ -6,7 +6,7 @@ public class EventsData
 {
     private const string eventsDataProjectFilePath = "/StreamingAssets/events.json";
 
-    public static AllEvents LoadEventsData()
+    public static AllEvents Load()
     {
         AllEvents events;
 
@@ -30,7 +30,7 @@ public class EventsData
         return events;
     }
 
-    public static void SaveEventsData(AllEvents events)
+    public static void Save(AllEvents events)
     {
         string dataAsJson = JsonUtility.ToJson(events);
 

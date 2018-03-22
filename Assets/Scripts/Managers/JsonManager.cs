@@ -1,12 +1,14 @@
 ﻿using SimpleJSON;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
 public static class JsonManager
 {
-    public static string ConversationGender = "f2f";
- 
+    private static bool isUserFemale = true;
+    private static bool isBotFemale = true;
+
     private const string NODE_FIRST = "firstrun";
     private const string NODE_COMMUNICATION_ERROR = "communication-error";
     private const string NODE_EXIT = "exit";
@@ -26,7 +28,9 @@ public static class JsonManager
     private const string INTENT_YESNO = "yes_no";
     private const string INTENT_YES = "yes";
     private const string PREFS_LAST_STATE = "LASTSTATE";
-    private const string PREFS_USER_SEX = "SEX";
+    private const string PREFS_USER_MALE = "USER_MALE";
+    private const string PREFS_BOT_MALE = "BOT_MALE";
+    private const string DEFAULT_GENDER = "f2f";
     private const string JSON_CONFIDENCE = "confidence";
     private const float REQUIRED_CONFIDENCE = 0.8f;
 
@@ -35,6 +39,48 @@ public static class JsonManager
     private static JSONNode conversation;
     private static JSONNode lastState;
     private static JSONNode currentState;
+
+    public static bool IsUserFemale
+    {
+        get
+        {
+            return isUserFemale;
+        }
+
+        set
+        {
+            isUserFemale = value;
+            if (value)
+            {
+                PlayerPrefs.DeleteKey(PREFS_USER_MALE);
+            }
+            else
+            {
+                PlayerPrefs.SetInt(PREFS_USER_MALE, 0);
+            }
+        }
+    }
+
+    public static bool IsBotFemale
+    {
+        get
+        {
+            return isBotFemale;
+        }
+
+        set
+        {
+            isBotFemale = value;
+            if (value)
+            {
+                PlayerPrefs.DeleteKey(PREFS_BOT_MALE);
+            }
+            else
+            {
+                PlayerPrefs.SetInt(PREFS_BOT_MALE, 0);
+            }
+        }
+    }
 
     public static void InitConversationJson(string json)
     {
@@ -46,6 +92,8 @@ public static class JsonManager
         brain = JSON.Parse(json);
         conversation = brain[NODE_CONVERSATIONS];
         string state = PlayerPrefs.GetString(PREFS_LAST_STATE);
+        IsBotFemale = PlayerPrefs.HasKey(PREFS_BOT_MALE);
+        IsUserFemale = PlayerPrefs.HasKey(PREFS_USER_MALE);
         if (string.IsNullOrEmpty(state))
         {
             ResetConversation();
@@ -66,18 +114,23 @@ public static class JsonManager
         AnalyticsManager.UserSignup();
     }
 
+    private static string TextGender()
+    {
+        return SPEACH_NODE_INITIAL + (isBotFemale ? "f" : "m") + "2" + (isUserFemale ? "f" : "m");
+    }
+
     public static Result SaySpecial(string state)
     {
         Result result = new Result();
         result.goBack = true;
         string specialState = brain[state].Value;
-        result.displayTexts = FormatBotText(conversation[specialState][SPEACH_NODE_INITIAL + ConversationGender]);
+        result.displayTexts = FormatBotText(conversation[specialState][TextGender()]);
         return result;
     }
 
     public static string[] CurrentTexts()
     {
-        return FormatBotText(currentState[SPEACH_NODE_INITIAL + ConversationGender]);
+        return FormatBotText(currentState[TextGender()]);
     }
 
     public static Result RetrieveResponse(JSONNode entities, bool initialBack = false)
@@ -101,7 +154,7 @@ public static class JsonManager
             // TODO: hack, move to someplace that make sense
             if (intent.Key == "sex" && intent.Value == "boy")
             {
-                ConversationGender = ConversationGender.Substring(0, ConversationGender.Length - 1) + 'm';
+                IsUserFemale = false;
             }
         }
 

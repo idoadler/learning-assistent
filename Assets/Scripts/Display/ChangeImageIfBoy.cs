@@ -8,7 +8,7 @@ public class ChangeImageIfBoy : MonoBehaviour {
     // Use this for initialization
     private void OnEnable()
     {
-        if (!ChatManager.IsAssistentGirl)
+        if (!JsonManager.IsBotFemale)
         {
             GetComponent<Image>().sprite = boyImage;
         }
