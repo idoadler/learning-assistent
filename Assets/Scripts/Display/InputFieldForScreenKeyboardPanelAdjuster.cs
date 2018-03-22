@@ -60,7 +60,9 @@ public class InputFieldForScreenKeyboardPanelAdjuster : MonoBehaviour
 
     private float GetKeyboardHeightRatio()
     {
-#if UNITY_ANDROID
+#if UNITY_EDITOR
+        return 0.4f; // fake TouchScreenKeyboard height ratio for debug in editor        
+#elif UNITY_ANDROID
         using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
         {
             AndroidJavaObject View = UnityClass.GetStatic<AndroidJavaObject>("currentActivity").Get<AndroidJavaObject>("mUnityPlayer").Call<AndroidJavaObject>("getView");
@@ -70,13 +72,12 @@ public class InputFieldForScreenKeyboardPanelAdjuster : MonoBehaviour
                 return (float)(Screen.height - rect.Call<int>("height")) / Screen.height;
             }
         }
-#endif
-
-#if UNITY_IOS
+#elif UNITY_IOS
         return (float)TouchScreenKeyboard.area.height / Screen.height;
+#else
+        Debug.LogError("Uknwon platform: " + Application.platform);
+        return 0;
 #endif
-
-        return 0.4f; // fake TouchScreenKeyboard height ratio for debug in editor        
     }
 
 }

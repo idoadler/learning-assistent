@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class MissionLine : MonoBehaviour {
+public class MissionLine : MonoBehaviour
+{
     public ArabicText time;
     public ArabicText desc;
 
@@ -8,5 +9,4 @@ public class MissionLine : MonoBehaviour {
     {
         Destroy(gameObject);
     }
-
-    }
+}

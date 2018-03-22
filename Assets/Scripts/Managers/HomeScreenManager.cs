@@ -1,15 +1,16 @@
 ﻿using Assets.SimpleAndroidNotifications;
 using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Contexts;
 using UnityEngine;
 
 public class HomeScreenManager : MonoBehaviour {
-    private enum Screens {DAILY = 0, MISSIONS = 1, TESTS = 2 };
+    private enum Screens { DAILY = 0, MISSIONS = 1, TESTS = 2 };
 
-//    private List<MissionLine> todayMissions = new List<MissionLine>();
-    private SortedDictionary<DateTime, MissionList> missions = new SortedDictionary<DateTime, MissionList>();
-    private SortedDictionary<DateTime, MissionList> tests = new SortedDictionary<DateTime, MissionList>();
+    private List<EventsData.GeneralEvent> others;
+    private List<EventsData.HomeworkEvent> homeworks;
+    private List<EventsData.TestEvent> tests;
+    private SortedDictionary<DateTime, DateLine> missionDates = new SortedDictionary<DateTime, DateLine>();
+    private SortedDictionary<DateTime, DateLine> testDates = new SortedDictionary<DateTime, DateLine>();
 
     public MissionLine missionLinePrefab;
     public DateLine dateLinePrefab;
@@ -20,7 +21,7 @@ public class HomeScreenManager : MonoBehaviour {
     public GameObject[] menusToHide;
     public GameObject[] screens;
     public GameObject addMissionMenu;
-    private bool isTest;
+
     public void SetScreen(int target)
     {
         for (int i = 0; i < screens.Length; i++)
@@ -33,8 +34,52 @@ public class HomeScreenManager : MonoBehaviour {
 
     private void Start()
     {
+        LoadEvents();
         SetScreen((int)Screens.DAILY);
-        // TODO: read and display all existing data
+    }
+
+    private void LoadEvents()
+    {
+        EventsData.AllEvents allEvents = EventsData.LoadEventsData();
+        long now = DateTime.Now.ToFileTimeUtc();
+
+        others = new List<EventsData.GeneralEvent>();
+        foreach (EventsData.GeneralEvent e in allEvents.others)
+        {
+            if(e.utcTo > now)
+            {
+                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+            }
+        }
+
+        homeworks = new List<EventsData.HomeworkEvent>();
+        foreach (EventsData.HomeworkEvent e in allEvents.homeworks)
+        {
+            if (e.utcTo > now)
+            {
+                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+            }
+        }
+
+        tests = new List<EventsData.TestEvent>();
+        foreach (EventsData.TestEvent e in allEvents.tests)
+        {
+            if (e.utcTo > now)
+            {
+                CreateTest(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+            }
+        }
+    }
+
+    public void SaveEvents()
+    {
+        EventsData.AllEvents allEvents = new EventsData.AllEvents
+        {
+            others = others.ToArray(),
+            homeworks = homeworks.ToArray(),
+            tests = tests.ToArray()
+        };
+        EventsData.SaveEventsData(allEvents);
     }
 
     private void HideMenus()
@@ -64,19 +109,27 @@ public class HomeScreenManager : MonoBehaviour {
 
     public void CreateMission(string title, DateTime from, DateTime to)
     {
-        if (!missions.ContainsKey(from.Date))
+        homeworks.Add(new EventsData.HomeworkEvent {description=title,utcFrom=from.ToFileTimeUtc(),utcTo=to.ToFileTimeUtc()});
+
+        if (!missionDates.ContainsKey(from.Date))
         {
             DateLine date = Instantiate(dateLinePrefab, allMissions.transform);
             date.label.Text = SetDateLabel.DateFormat(from);
-            missions.Add(from.Date, new MissionList(date));
+            foreach (KeyValuePair<DateTime, DateLine> kvp in missionDates)
+            {
+                if (kvp.Key > from)
+                {
+                    date.GetComponent<RectTransform>().SetSiblingIndex(kvp.Value.GetComponent<RectTransform>().GetSiblingIndex());
+                    break;
+                }
+            }
+            missionDates.Add(from.Date, date);
         }
 
         MissionLine mission = Instantiate(missionLinePrefab, allMissions.transform);
         mission.desc.Text = title;
         mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-  //      try { 
-  //      missions[from.Date].missions.Add(from, mission);
-  //      }        catch { Debug.LogError("can't add to events at the same time"); }
+        mission.GetComponent<RectTransform>().SetSiblingIndex(missionDates[from.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
 
         if (from.Date == DateTime.Today)
         {
@@ -84,13 +137,13 @@ public class HomeScreenManager : MonoBehaviour {
             MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
             today.desc.Text = title;
             today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-//            todayMissions.Add(today);
         }
         else
         {
             // go to mission screen
             SetScreen((int)Screens.MISSIONS);
         }
+
 #if UNITY_ANDROID
         //  set reminder
         int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
@@ -100,34 +153,29 @@ public class HomeScreenManager : MonoBehaviour {
 #endif
     }
 
-    public struct MissionList
-    {
-        public DateLine date;
-        public SortedList<DateTime, MissionLine> missions;
-
-        public MissionList(DateLine d)
-        {
-            date = d;
-            missions = new SortedList<DateTime, MissionLine>();
-        }
-    }
-
     public void CreateTest(string title, DateTime from, DateTime to)
     {
-        // TODO: Test screen
-        if (!tests.ContainsKey(from.Date))
+        tests.Add(new EventsData.TestEvent { description = title, utcFrom = from.ToFileTimeUtc(), utcTo = to.ToFileTimeUtc() });
+
+        if (!testDates.ContainsKey(from.Date))
         {
             DateLine date = Instantiate(dateLinePrefab, allTests.transform);
             date.label.Text = SetDateLabel.DateFormat(from);
-            tests.Add(from.Date, new MissionList(date));
+            foreach (KeyValuePair<DateTime, DateLine> kvp in testDates)
+            {
+                if (kvp.Key > from)
+                {
+                    date.GetComponent<RectTransform>().SetSiblingIndex(kvp.Value.GetComponent<RectTransform>().GetSiblingIndex());
+                    break;
+                }
+            }
+            testDates.Add(from.Date, date);
         }
 
         MissionLine mission = Instantiate(missionLinePrefab, allTests.transform);
         mission.desc.Text = title;
         mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-//        try        {
-//            missions[from.Date].missions.Add(from, mission);
-//        }        catch { Debug.LogError("can't add to events at the same time"); }
+        mission.GetComponent<RectTransform>().SetSiblingIndex(testDates[from.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
 
         if (from.Date == DateTime.Today)
         {
@@ -135,18 +183,17 @@ public class HomeScreenManager : MonoBehaviour {
             MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
             today.desc.Text = title;
             today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
-//            todayMissions.Add(today);
         }
         else
         {
             // go to mission screen
             SetScreen((int)Screens.TESTS);
         }
+
+#if UNITY_ANDROID
         //  set reminder
         int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
         int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
-#if UNITY_ANDROID
-
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif

@@ -59,8 +59,8 @@ public class CalendarComponent : MonoBehaviour {
     {
         if (!string.IsNullOrEmpty(input.text))
         {
-            DateTime from = DateTime.Today.AddDays((dates.localPosition.y - datesHeight) / 80).AddHours(16 + Math.Round((hoursFrom.localPosition.y - hoursFromHeight) / 160));
-            DateTime to = DateTime.Today.AddDays((dates.localPosition.y - datesHeight) / 80).AddHours(16.5 + Math.Round((hoursTo.localPosition.y - hoursToHeight) / 160));
+            DateTime from = DateTime.Today.AddDays((dates.localPosition.y - datesHeight) / 80).AddHours(16 + (Math.Round((hoursFrom.localPosition.y - hoursFromHeight) / 80))/2);
+            DateTime to = DateTime.Today.AddDays((dates.localPosition.y - datesHeight) / 80).AddHours(16.5 + (Math.Round((hoursTo.localPosition.y - hoursToHeight) / 80))/2);
 
             if (isTest)
             {
@@ -70,6 +70,7 @@ public class CalendarComponent : MonoBehaviour {
             {
                 home.CreateMission(input.text, from, to);
             }
+            home.SaveEvents();
             gameObject.SetActive(false);
         }
     }
