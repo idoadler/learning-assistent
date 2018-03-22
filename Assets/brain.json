@@ -6,10 +6,68 @@
   "intent-unknown": "intenterr",
   "conversations": {
     "generaltimeerror": {
-      "text-f2f": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
-      "text-f2m": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
-      "text-m2f": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה",
-      "text-m2m": "נראה לי שקצת התבלבלת, אי אפשר לקבוע 2 מטלות על אותו זמן בדיוק. תנסה לשנות את זה"
+      "text-f2f": "את בטוחה שאת רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# ",
+      "text-f2m": "אתה בטוח שאתה רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# ",
+      "text-m2f": "את בטוחה שאת רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# ",
+      "text-m2m": "אתה בטוח שאתה רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# "
+    },
+    "DupMissionerr": {
+      "text-f2f": "את בטוחה שאת רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# ",
+      "text-f2m": "אתה בטוח שאתה רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# ",
+      "text-m2f": "את בטוחה שאת רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# ",
+      "text-m2m": "אתה בטוח שאתה רוצה לקבוע? \n בשעה הזאת יש לך משימה ב#task# ",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "datetime": {
+          "datetime": "homework-time"
+        },
+        "yes_no": {
+          "no": "homework-time",
+          "yes": "homework-scdual"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        }
+      },
+      "next": "homework-time"
+    },
+    "MissionDateerr": {
+      "text-f2f": "היי! נראה לי שהתבלבלת קצת \nהמועד הזה כבר עבר:)\n מתי נח לך?",
+      "text-f2m": "היי! נראה לי שהתבלבלת קצת \nהמועד הזה כבר עבר:)\n מתי נח לך?",
+      "text-m2f": "היי! נראה לי שהתבלבלת קצת \nהמועד הזה כבר עבר:)\n מתי נח לך?",
+      "text-m2m": "היי! נראה לי שהתבלבלת קצת \nהמועד הזה כבר עבר:)\n מתי נח לך?",
+      "save": {
+        "var": "TIME",
+        "intentions": {
+          "datetime": ""
+        }
+      },
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "datetime": {
+          "datetime": "homework-scdual"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        }
+      },
+      "next": "homework-time"
     },
     "general-good-bye": {
       "text-f2f": "להתראות, נפגש שוב בקרוב !",
@@ -19,7 +77,7 @@
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
-          "positive": "positive",
+          "positive": "how-can-i-help",
           "tnx": "tnx"
         },
         "introduction": {
@@ -124,9 +182,9 @@
       "text-m2f": "מתוקה!אז מה את אומרת?",
       "text-m2m": "מתוק!אז מה בעצם אתה אומר?",
       "save": {
-        "var": "sex",
+        "var": "TIME",
         "intentions": {
-          "sex": ""
+          "datetime": ""
         }
       },
       "intentions": {
@@ -149,6 +207,9 @@
         "sex": {
           "girl": "#girl#",
           "boy": "#boy#"
+        },
+        "datetime": {
+          "datetime": "#datetime#"
         }
       },
       "next": "focuse"
@@ -159,9 +220,9 @@
       "text-m2f": "בכיף! אבל לא ענית לי!",
       "text-m2m": "בכיף! אבל לא ענית לי!",
       "save": {
-        "var": "sex",
+        "var": "TIME",
         "intentions": {
-          "sex": ""
+          "datetime": ""
         }
       },
       "intentions": {
@@ -184,6 +245,9 @@
         "sex": {
           "girl": "#girl#",
           "boy": "#boy#"
+        },
+        "datetime": {
+          "datetime": "#datetime#"
         }
       },
       "next": "focuse"
@@ -221,9 +285,9 @@
       "text-m2f": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n #options# .",
       "text-m2m": "לא הבנתי:) \n נא לבחור אחת מהאופציות הבאות\n  #options#.",
       "save": {
-        "var": "sex",
+        "var": "TIME",
         "intentions": {
-          "sex": ""
+          "datetime": ""
         }
       },
       "intentions": {
@@ -255,6 +319,9 @@
           "read": "homework-task",
           "gn": "homework-task"
         },
+        "datetime": {
+          "datetime": "#datetime#"
+        },
         "sex": {
           "girl": "#girl#",
           "boy": "#boy#"
@@ -268,9 +335,9 @@
       "text-m2f": "נא לבחור אחת מהאופציות הבאות\n #options# .",
       "text-m2m": "נא לבחור אחת מהאופציות הבאות\n  #options#.",
       "save": {
-        "var": "sex",
+        "var": "TIME",
         "intentions": {
-          "sex": ""
+          "datetime": ""
         }
       },
       "intentions": {
@@ -301,6 +368,9 @@
           "homework": "homework-task",
           "read": "homework-task",
           "gn": "homework-task"
+        },
+        "datetime": {
+          "datetime": "#datetime#"
         },
         "sex": {
           "girl": "#girl#",
@@ -337,7 +407,7 @@
           "yes": "J1-warning",
           "no": "J2-warning",
           "hi": "J2-warning",
-		  "name": ":)",
+          "name": ":)",
           "reback": "warning"
         }
       },
@@ -377,7 +447,7 @@
           "contact": ""
         },
         "ctx": {
-		"reback": "J3-warning"
+          "reback": "J3-warning"
         }
       },
       "next": "choosesex"
@@ -720,10 +790,10 @@
       "next": "focuse"
     },
     "how-can-i-help": {
-      "text-f2f": "היי #name# \n איך אפשר לעזור?",
-      "text-f2m": "היי #name# \n איך אפשר לעזור?",
-      "text-m2f": "היי #name# \n איך אפשר לעזור?",
-      "text-m2m": "היי #name# \n איך אפשר לעזור?",
+      "text-f2f": "אז #name# \n איך אפשר לעזור?",
+      "text-f2m": "אז #name# \n איך אפשר לעזור?",
+      "text-m2f": "אז #name# \n איך אפשר לעזור?",
+      "text-m2m": "אז #name# \n איך אפשר לעזור?",
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -853,9 +923,9 @@
       "next": "homework-time"
     },
     "homework-time": {
-      "text-f2f": "באיזו שעה תרצה לשבת?",
+      "text-f2f": "באיזו שעה תרצי לשבת?",
       "text-f2m": "באיזו שעה תרצה לשבת?",
-      "text-m2f": "באיזו שעה תרצה לשבת?",
+      "text-m2f": "באיזו שעה תרצי לשבת?",
       "text-m2m": "באיזו שעה תרצה לשבת?",
       "intentions": {
         "small_talk": {
@@ -863,7 +933,9 @@
           "positive": "positive",
           "tnx": "tnx"
         },
-        "datetime": "homework-scdual",
+        "datetime": {
+          "datetime": "homework-scdual"
+        },
         "help": {
           "good": "generalMotivation",
           "study-support": "how-can-i-help",
@@ -878,6 +950,7 @@
           "datetime": ""
         },
         "ctx": {
+          "datetime": "homework-scdual",
           "reback": "homework-time",
           "options": "תאריך או שעה :)"
         }
