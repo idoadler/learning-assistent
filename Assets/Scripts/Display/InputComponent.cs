@@ -21,7 +21,7 @@ public class InputComponent : MonoBehaviour {
 
     public void ChooseResult(string text)
     {
-        manager.ChooseResult(text);
+        //manager.ChooseResult(text);
         foreach (InputOption input in inputs)
         {
             Destroy(input.gameObject);

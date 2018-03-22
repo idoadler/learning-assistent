@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using System;
 
 public static class JsonManager
 {
@@ -97,8 +96,8 @@ public static class JsonManager
         brain = JSON.Parse(json);
         conversation = brain[NODE_CONVERSATIONS];
         string state = PlayerPrefs.GetString(PREFS_LAST_STATE);
-        IsBotFemale = PlayerPrefs.HasKey(PREFS_BOT_MALE);
-        IsUserFemale = PlayerPrefs.HasKey(PREFS_USER_MALE);
+        IsBotFemale = !PlayerPrefs.HasKey(PREFS_BOT_MALE);
+        IsUserFemale = !PlayerPrefs.HasKey(PREFS_USER_MALE);
         if (string.IsNullOrEmpty(state))
         {
             ResetConversation();

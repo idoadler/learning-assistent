@@ -10,7 +10,7 @@ public class EventsData
     {
         AllEvents events;
 
-        string filePath = Application.dataPath + eventsDataProjectFilePath;
+        string filePath = eventsDataProjectFilePath.FullPath();
 
         if (!ChatManager.IS_TESTING && File.Exists(filePath))
         {
@@ -34,7 +34,7 @@ public class EventsData
     {
         string dataAsJson = JsonUtility.ToJson(events);
 
-        string filePath = Application.dataPath + eventsDataProjectFilePath;
+        string filePath = eventsDataProjectFilePath.FullPath();
         File.WriteAllText(filePath, dataAsJson);
     }
 

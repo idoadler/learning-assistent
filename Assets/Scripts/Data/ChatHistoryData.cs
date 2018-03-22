@@ -12,7 +12,7 @@ public class ChatHistoryData
     {
         Chat conversation;
 
-        string filePath = Application.dataPath + eventsDataProjectFilePath;
+        string filePath = eventsDataProjectFilePath.FullPath();
 
         if (!ChatManager.IS_TESTING && File.Exists(filePath))
         {
@@ -43,7 +43,7 @@ public class ChatHistoryData
 
         string dataAsJson = JsonUtility.ToJson(conversation);
 
-        string filePath = Application.dataPath + eventsDataProjectFilePath;
+        string filePath = eventsDataProjectFilePath.FullPath();
         File.WriteAllText(filePath, dataAsJson);
     }
 

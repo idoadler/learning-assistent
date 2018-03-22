@@ -62,7 +62,7 @@ public class HomeScreenManager : MonoBehaviour {
         {
             if(e.utcTo > now)
             {
-                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo), false);
             }
         }
 
@@ -71,7 +71,7 @@ public class HomeScreenManager : MonoBehaviour {
         {
             if (e.utcTo > now)
             {
-                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo), false);
             }
         }
 
@@ -80,7 +80,7 @@ public class HomeScreenManager : MonoBehaviour {
         {
             if (e.utcTo > now)
             {
-                CreateTest(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+                CreateTest(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo), false);
             }
         }
     }
@@ -120,7 +120,7 @@ public class HomeScreenManager : MonoBehaviour {
         calendar.DisplayTests();
     }
 
-    public void CreateMission(string title, DateTime from, DateTime to)
+    public void CreateMission(string title, DateTime from, DateTime to, bool original = true)
     {
         if(eventsDuplicates.ContainsKey(from))
         {
@@ -165,19 +165,24 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.MISSIONS);
         }
 
-        //  set reminder
+        if (original)
+        {
+            AnalyticsManager.AddedHomeworkEvent(title,from,to);
+
+            //  set reminder
 #if UNITY_EDITOR
-        Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
-        Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
+            Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
+            Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
 #elif UNITY_ANDROID
         int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
         int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
+        }
     }
 
-    public void CreateTest(string title, DateTime from, DateTime to)
+    public void CreateTest(string title, DateTime from, DateTime to, bool original = true)
     {
         if (eventsDuplicates.ContainsKey(from))
         {
@@ -223,15 +228,20 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.TESTS);
         }
 
-        //  set reminder
+        if (original)
+        {
+            AnalyticsManager.AddedTestEvent(title, from, to);
+
+            //  set reminder
 #if UNITY_EDITOR
-        Debug.Log("Added notification: " + "היי,\n" + "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text);
-        Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
+            Debug.Log("Added notification: " + "היי,\n" + "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text);
+            Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
 #elif UNITY_ANDROID
         int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
         int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
+        }
     }
 }

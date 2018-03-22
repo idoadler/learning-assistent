@@ -8,36 +8,44 @@ using UnityEngine.UI;
 public class ChatManager : MonoBehaviour {
     public static bool IS_TESTING = true;
 
-    public static bool IsUserGirl = true;
-
     public GameObject[] screens;
-    private int currentScreen = 0;
+    private int currentScreen;
     public ScrollRect chatScroll;
     public InputField input;
     public ConversationManager conversation;
 
     private WitAi witai;
 
+    private JsonManager.Result lastBeforeBack = new JsonManager.Result();
+    private static string PREFS_USED_SCREEN = "USED_SCREEN";
+
     private void Awake()
     {
         if(IS_TESTING)
         {
             Debug.LogWarning("TESTING MODE");
+            PlayerPrefs.DeleteAll();
         }
 
         witai = GetComponent<WitAi>();
         WitAi.request_success += SetBotTextJSON;
         WitAi.request_failure += SetBotErrorMsg;
+    }
 
+    private void Start()
+    {
         // reset screens
         foreach (GameObject g in screens)
         {
             g.SetActive(false);
         }
-        screens[0].SetActive(true);
+        currentScreen = PlayerPrefs.GetInt(PREFS_USED_SCREEN, 0);
+        screens[currentScreen].SetActive(true);
+
+        InitConversation();
     }
 
-    private void Start()
+    private void InitConversation()
     {
         GetComponent<BrainManager>().InitConversationBrain();
 
@@ -53,17 +61,10 @@ public class ChatManager : MonoBehaviour {
                 }
                 else
                 {
-                    conversation.UserSay(chatLine.text);
+                    conversation.UserSay(chatLine.text, false);
                 }
             }
             ScrollToBottom();
-        }
-        else
-        {
-            foreach (string text in JsonManager.CurrentTexts())
-            {
-                SetBotText(text);
-            }
         }
     }
 
@@ -74,6 +75,7 @@ public class ChatManager : MonoBehaviour {
             screens[currentScreen].SetActive(false);
             currentScreen++;
             screens[currentScreen].SetActive(true);
+            PlayerPrefs.SetInt(PREFS_USED_SCREEN, currentScreen);
         }
     }
 
@@ -84,6 +86,7 @@ public class ChatManager : MonoBehaviour {
             screens[currentScreen].SetActive(false);
             currentScreen--;
             screens[currentScreen].SetActive(true);
+            PlayerPrefs.SetInt(PREFS_USED_SCREEN, currentScreen);
         }
     }
 
@@ -91,7 +94,8 @@ public class ChatManager : MonoBehaviour {
     void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            //Application.Quit();
+            // TODO: show quit question
         }
         else if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter) /*|| !input.isFocused*/)
         {
@@ -104,6 +108,12 @@ public class ChatManager : MonoBehaviour {
     public void SetAsistentGender(bool isGirl)
     {
         JsonManager.IsBotFemale = isGirl;
+
+        // assistent introduction
+        foreach (string text in JsonManager.CurrentTexts())
+        {
+            SetBotText(text);
+        }
     }
 
     public void SendText()
@@ -128,7 +138,6 @@ public class ChatManager : MonoBehaviour {
         SetBotText("התקבלה שגיאה:\n" + error);
     }
 
-    private JsonManager.Result lastBeforeBack = new JsonManager.Result();
     private void SetBotTextJSON(string json)
     {
         // Testing for exit attempt
@@ -162,11 +171,6 @@ public class ChatManager : MonoBehaviour {
                 }
             }
         }
-    }
-
-    internal void ChooseResult(string text)
-    {
-        throw new NotImplementedException();
     }
 
     private void ScrollToBottom()

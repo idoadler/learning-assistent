@@ -44,7 +44,7 @@ public class GameBrainEditor : EditorWindow
 
     private void LoadBrainData()
     {
-        string filePath = Application.dataPath + brainDataProjectFilePath;
+        string filePath = brainDataProjectFilePath.FullPath();
 
         if (File.Exists(filePath))
         {
@@ -63,7 +63,7 @@ public class GameBrainEditor : EditorWindow
 //        brainData.PrepareForSave();
         string dataAsJson = JsonUtility.ToJson(brainData);
 
-        string filePath = Application.dataPath + brainDataProjectFilePath;
+        string filePath = brainDataProjectFilePath.FullPath();
         File.WriteAllText(filePath, dataAsJson);
 
     }

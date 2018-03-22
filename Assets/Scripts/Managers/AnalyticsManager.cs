@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine.Analytics;
 
 public static class AnalyticsManager {
@@ -24,5 +25,23 @@ public static class AnalyticsManager {
         Dictionary<string, object> data = new Dictionary<string, object>();
         data.Add("previous", lastScreen);
         return AnalyticsEvent.ScreenVisit(screen, data);
+    }
+
+    public static AnalyticsResult AddedHomeworkEvent(string desc, DateTime from, DateTime to)
+    {
+        Dictionary<string, object> data = new Dictionary<string, object>();
+        data.Add("desc", desc);
+        data.Add("from", from);
+        data.Add("to", to);
+        return AnalyticsEvent.Custom("AddHomework",data);
+    }
+
+    public static AnalyticsResult AddedTestEvent(string desc, DateTime from, DateTime to)
+    {
+        Dictionary<string, object> data = new Dictionary<string, object>();
+        data.Add("desc", desc);
+        data.Add("from", from);
+        data.Add("to", to);
+        return AnalyticsEvent.Custom("AddTest",data);
     }
 }
