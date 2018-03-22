@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System;
 
 public static class JsonManager
 {
@@ -28,7 +29,11 @@ public static class JsonManager
     private const string PREFS_LAST_STATE = "LASTSTATE";
     private const string PREFS_USER_SEX = "SEX";
     private const string JSON_CONFIDENCE = "confidence";
+    private const string INTENT_DATE = "datetime";
+    private const string INTENT_DUP_DATE = "DupMission";
+    private const string INTENT_WRONG_DATE = "MissionDateerr";
     private const float REQUIRED_CONFIDENCE = 0.8f;
+
 
     private static JSONNode ctx;
     private static JSONNode brain;
@@ -109,10 +114,22 @@ public static class JsonManager
         string state;
         intentions = currentState[NODE_INTENTIONS];
         intent = MatchBestIntent(entities, intentions);
-        if (!string.IsNullOrEmpty(intent.Key) && intentions[intent.Key][intent.Value])
+        if((!string.IsNullOrEmpty(intent.Key) && (!string.IsNullOrEmpty(intentions[intent.Key][intent.Value])))|| (intent.Key == INTENT_DATE))
         {
-            intentions[intent.Key][intent.Value].Value = GetParam(intentions[intent.Key][intent.Value].Value,ctx);
-            state = intentions[intent.Key][intent.Value].Value;
+            if (intent.Key == INTENT_DATE)
+            {
+
+                string tempValue = CheckMissionDate(DateTime.Parse(intent.Value));
+                if (tempValue == null)
+                    intentions[intent.Key][INTENT_DATE].Value = GetParam(intentions[intent.Key][INTENT_DATE].Value, ctx);
+                else intentions[intent.Key][INTENT_DATE].Value = tempValue;
+                state = intentions[intent.Key][INTENT_DATE].Value;
+            }
+            else
+            {
+                intentions[intent.Key][intent.Value].Value = GetParam(intentions[intent.Key][intent.Value].Value, ctx);
+                state = intentions[intent.Key][intent.Value].Value;
+            }
         }
         else
         {
@@ -203,6 +220,17 @@ public static class JsonManager
         }
         return value;
     }
+
+
+
+    private static string CheckMissionDate(DateTime date)
+    {
+        if (DateTime.Compare(DateTime.Now, date) > 0)
+            return INTENT_WRONG_DATE;
+
+        return null;
+    }
+
 
 
     private static string[] FormatBotText(string botText)
