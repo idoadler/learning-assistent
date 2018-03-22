@@ -11,7 +11,7 @@ public class HomeScreenManager : MonoBehaviour {
     private List<EventsData.TestEvent> tests;
     private SortedDictionary<DateTime, DateLine> missionDates = new SortedDictionary<DateTime, DateLine>();
     private SortedDictionary<DateTime, DateLine> testDates = new SortedDictionary<DateTime, DateLine>();
-    private Dictionary<DateTime, string> eventsDuplicates = new Dictionary<DateTime, string>();
+    private static Dictionary<DateTime, string> eventsDuplicates = new Dictionary<DateTime, string>();
 
     public MissionLine missionLinePrefab;
     public DateLine dateLinePrefab;
@@ -22,6 +22,13 @@ public class HomeScreenManager : MonoBehaviour {
     public GameObject[] menusToHide;
     public GameObject[] screens;
     public GameObject addMissionMenu;
+
+    private static HomeScreenManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -96,7 +103,7 @@ public class HomeScreenManager : MonoBehaviour {
         EventsData.Save(allEvents);
     }
 
-    public string CheckForEventAtTime(DateTime time)
+    public static string CheckForEventAtTime(DateTime time)
     {
         if (eventsDuplicates.ContainsKey(time))
         {
@@ -104,7 +111,7 @@ public class HomeScreenManager : MonoBehaviour {
         }
         else
         {
-            return "";
+            return null;
         }
     }
 
@@ -120,9 +127,14 @@ public class HomeScreenManager : MonoBehaviour {
         calendar.DisplayTests();
     }
 
+    public static void StaticCreateMission(string title, DateTime from, DateTime to)
+    {
+        Instance.CreateMission(title, from, to);
+    }
+
     public void CreateMission(string title, DateTime from, DateTime to)
     {
-        if(eventsDuplicates.ContainsKey(from))
+        if (eventsDuplicates.ContainsKey(from))
         {
             Debug.Log("adding event at the same time of event: " + eventsDuplicates[from]);
         } else
@@ -175,6 +187,11 @@ public class HomeScreenManager : MonoBehaviour {
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
+    }
+
+    public static void StaticCreateTest(string title, DateTime from, DateTime to)
+    {
+        Instance.CreateTest(title, from, to);
     }
 
     public void CreateTest(string title, DateTime from, DateTime to)

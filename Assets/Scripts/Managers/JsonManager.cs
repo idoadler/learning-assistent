@@ -34,8 +34,9 @@ public static class JsonManager
     private const string DEFAULT_GENDER = "f2f";
     private const string JSON_CONFIDENCE = "confidence";
     private const string INTENT_DATE = "datetime";
-    private const string INTENT_DUP_DATE = "DupMission";
+    private const string INTENT_DUP_DATE = "DupMissionerr";
     private const string INTENT_WRONG_DATE = "MissionDateerr";
+    private const string INTENT_SAVE_TSK = "homework-scdual";
     private const float REQUIRED_CONFIDENCE = 0.8f;
 
 
@@ -167,7 +168,7 @@ public static class JsonManager
         string state;
         intentions = currentState[NODE_INTENTIONS];
         intent = MatchBestIntent(entities, intentions);
-        if((!string.IsNullOrEmpty(intent.Key) && (!string.IsNullOrEmpty(intentions[intent.Key][intent.Value])))|| (intent.Key == INTENT_DATE))
+        if ((!string.IsNullOrEmpty(intent.Key) && (!string.IsNullOrEmpty(intentions[intent.Key][intent.Value]))) || (intent.Key == INTENT_DATE))
         {
             if (intent.Key == INTENT_DATE)
             {
@@ -186,9 +187,11 @@ public static class JsonManager
         }
         else
         {
-            currentState[NODE_NEXT].Value = GetParam(currentState[NODE_NEXT].Value,ctx);
+            currentState[NODE_NEXT].Value = GetParam(currentState[NODE_NEXT].Value, ctx);
             state = currentState[NODE_NEXT].Value;
         }
+        if (state == INTENT_SAVE_TSK)
+            HomeScreenManager.StaticCreateMission("מאור", DateTime.Now, DateTime.Now);
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
         lastState = currentState;
         currentState = conversation[state];
@@ -280,8 +283,13 @@ public static class JsonManager
     {
         if (DateTime.Compare(DateTime.Now, date) > 0)
             return INTENT_WRONG_DATE;
-
-        return null;
+        string temp = HomeScreenManager.CheckForEventAtTime(date);
+        if (temp == null)
+            return null;
+        else {
+            PlayerPrefs.SetString("INTENT_DUP_DATE", temp);
+            return INTENT_DUP_DATE;
+        }
     }
 
 
