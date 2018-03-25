@@ -207,9 +207,14 @@ public static class JsonManager
         }
              if (state == INTENT_SAVE_TSK )
            {
-               TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
-               HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, DateTime.Now);
-           }
+            TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
+            DateTime to = TSK_DATE;
+            to.AddMinutes(30.0f);
+            if (TSK_TYPE == "TST")
+                HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, to);
+            else
+                HomeScreenManager.StaticCreateTest(TSK_NAME, TSK_DATE, to);
+        }
 
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
         lastState = currentState;
@@ -310,8 +315,6 @@ public static class JsonManager
             return INTENT_DUP_DATE;
         }
     }
-
-
 
     private static string[] FormatBotText(string botText)
     {
