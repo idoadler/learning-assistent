@@ -2,7 +2,6 @@
 using UnityEngine;
 
 public class ConversationManager : MonoBehaviour {
-
     public GameObject botPrefab;
     public GameObject userPrefab;
     public List<ChatHistoryData.ChatText> conversation = new List<ChatHistoryData.ChatText>();
@@ -12,15 +11,18 @@ public class ConversationManager : MonoBehaviour {
         SayText(botPrefab, text);
         conversation.Add(new ChatHistoryData.ChatText { isBot = true, text = text });
         ChatHistoryData.Save(conversation);
-        AnalyticsManager.ChatMessageSent(text, false);
+        //AnalyticsManager.ChatMessageSent(text, false);
     }
 
-    public void UserSay(string text)
+    public void UserSay(string text, bool sendAnalytics = true)
     {
         SayText(userPrefab, text);
         conversation.Add(new ChatHistoryData.ChatText { isBot = false, text = text });
         ChatHistoryData.Save(conversation);
-        AnalyticsManager.ChatMessageSent(text, true);
+        if (sendAnalytics)
+        {
+            AnalyticsManager.ChatMessageSent(text, true);
+        }
     }
 
     private void SayText(GameObject prefab, string text)

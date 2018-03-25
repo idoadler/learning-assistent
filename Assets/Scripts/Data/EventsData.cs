@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class EventsData
 {
-    private const string eventsDataProjectFilePath = "/StreamingAssets/events.json";
+    private const string PREF_EVENTS_DATA = "EVENTS";
+//    private const string eventsDataProjectFilePath = "/StreamingAssets/events.json";
 
     public static AllEvents Load()
     {
         AllEvents events;
+        string dataAsJson = PlayerPrefs.GetString(PREF_EVENTS_DATA, "");
+//        string filePath = eventsDataProjectFilePath.FullPath();
 
-        string filePath = Application.dataPath + eventsDataProjectFilePath;
-
-        if (!ChatManager.IS_TESTING && File.Exists(filePath))
+        if (!ChatManager.IS_TESTING && !string.IsNullOrEmpty(dataAsJson))
         {
-            string dataAsJson = File.ReadAllText(filePath);
+//            string dataAsJson = File.ReadAllText(filePath);
             events = JsonUtility.FromJson<AllEvents>(dataAsJson);
         }
         else
@@ -33,9 +34,10 @@ public class EventsData
     public static void Save(AllEvents events)
     {
         string dataAsJson = JsonUtility.ToJson(events);
+        PlayerPrefs.SetString(PREF_EVENTS_DATA, dataAsJson);
 
-        string filePath = Application.dataPath + eventsDataProjectFilePath;
-        File.WriteAllText(filePath, dataAsJson);
+        //string filePath = eventsDataProjectFilePath.FullPath();
+        //File.WriteAllText(filePath, dataAsJson);
     }
 
     [Serializable]

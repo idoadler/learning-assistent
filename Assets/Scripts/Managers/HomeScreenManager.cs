@@ -69,7 +69,7 @@ public class HomeScreenManager : MonoBehaviour {
         {
             if(e.utcTo > now)
             {
-                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo), false);
             }
         }
 
@@ -78,7 +78,7 @@ public class HomeScreenManager : MonoBehaviour {
         {
             if (e.utcTo > now)
             {
-                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+                CreateMission(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo), false);
             }
         }
 
@@ -87,7 +87,7 @@ public class HomeScreenManager : MonoBehaviour {
         {
             if (e.utcTo > now)
             {
-                CreateTest(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo));
+                CreateTest(e.description, DateTime.FromFileTimeUtc(e.utcFrom), DateTime.FromFileTimeUtc(e.utcTo), false);
             }
         }
     }
@@ -129,10 +129,10 @@ public class HomeScreenManager : MonoBehaviour {
 
     public static void StaticCreateMission(string title, DateTime from, DateTime to)
     {
-        Instance.CreateMission(title, from, to);
+        Instance.CreateMission(title, from, to, true, true);
     }
 
-    public void CreateMission(string title, DateTime from, DateTime to)
+    public void CreateMission(string title, DateTime from, DateTime to, bool original = true, bool chat = false)
     {
         if (eventsDuplicates.ContainsKey(from))
         {
@@ -177,24 +177,29 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.MISSIONS);
         }
 
-        //  set reminder
+        if (original)
+        {
+            AnalyticsManager.AddedHomeworkEvent(title, from, to, chat);
+
+            //  set reminder
 #if UNITY_EDITOR
-        Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
-        Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
+            Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
+            Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
 #elif UNITY_ANDROID
-        int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
-        int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
-        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
-        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
+            int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
+            int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
+            NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
+            NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
+        }
     }
 
     public static void StaticCreateTest(string title, DateTime from, DateTime to)
     {
-        Instance.CreateTest(title, from, to);
+        Instance.CreateTest(title, from, to, true, true);
     }
 
-    public void CreateTest(string title, DateTime from, DateTime to)
+    public void CreateTest(string title, DateTime from, DateTime to, bool original = true, bool chat = false)
     {
         if (eventsDuplicates.ContainsKey(from))
         {
@@ -240,6 +245,10 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.TESTS);
         }
 
+        if (original)
+        {
+            AnalyticsManager.AddedTestEvent(title, from, to, chat);
+
         //  set reminder
 #if UNITY_EDITOR
         Debug.Log("Added notification: " + "היי,\n" + "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text);
@@ -250,5 +259,6 @@ public class HomeScreenManager : MonoBehaviour {
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "אל תשכח להתחיל ללמוד למבחן ב" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
+        }
     }
 }
