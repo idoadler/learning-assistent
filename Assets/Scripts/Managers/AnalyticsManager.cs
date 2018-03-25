@@ -27,21 +27,23 @@ public static class AnalyticsManager {
         return AnalyticsEvent.ScreenVisit(screen, data);
     }
 
-    public static AnalyticsResult AddedHomeworkEvent(string desc, DateTime from, DateTime to)
+    public static AnalyticsResult AddedHomeworkEvent(string desc, DateTime from, DateTime to, bool chat)
     {
         Dictionary<string, object> data = new Dictionary<string, object>();
         data.Add("desc", desc);
         data.Add("from", from);
         data.Add("to", to);
+        data.Add("chat", chat);
         return AnalyticsEvent.Custom("AddHomework",data);
     }
 
-    public static AnalyticsResult AddedTestEvent(string desc, DateTime from, DateTime to)
+    public static AnalyticsResult AddedTestEvent(string desc, DateTime from, DateTime to, bool chat)
     {
         Dictionary<string, object> data = new Dictionary<string, object>();
         data.Add("desc", desc);
         data.Add("from", from);
         data.Add("to", to);
+        data.Add("chat", chat);
         return AnalyticsEvent.Custom("AddTest",data);
     }
 }

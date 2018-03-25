@@ -33,11 +33,18 @@ public static class JsonManager
     private const string DEFAULT_GENDER = "f2f";
     private const string JSON_CONFIDENCE = "confidence";
     private const string INTENT_DATE = "datetime";
-    private const string INTENT_DUP_DATE = "DupMission";
+    private const string INTENT_DUP_DATE = "DupMissionerr";
     private const string INTENT_WRONG_DATE = "MissionDateerr";
+    private const string INTENT_SAVE_TSK = "homework-scdual";
+    private const string INTENT_TSK = "task";
+    private const string INTENT_TIME = "TIME";
+    private const string INTENT_TEST_TSK = "test-task-2";
+    private const string INTENT_HW_TSK = "homework-task-2";
     private const float REQUIRED_CONFIDENCE = 0.8f;
 
-
+    private static string TSK_NAME ;
+    private static string TSK_TYPE;
+    private static DateTime TSK_DATE ; 
     private static JSONNode ctx;
     private static JSONNode brain;
     private static JSONNode conversation;
@@ -166,7 +173,7 @@ public static class JsonManager
         string state;
         intentions = currentState[NODE_INTENTIONS];
         intent = MatchBestIntent(entities, intentions);
-        if((!string.IsNullOrEmpty(intent.Key) && (!string.IsNullOrEmpty(intentions[intent.Key][intent.Value])))|| (intent.Key == INTENT_DATE))
+        if ((!string.IsNullOrEmpty(intent.Key) && (!string.IsNullOrEmpty(intentions[intent.Key][intent.Value]))) || (intent.Key == INTENT_DATE))
         {
             if (intent.Key == INTENT_DATE)
             {
@@ -185,9 +192,24 @@ public static class JsonManager
         }
         else
         {
-            currentState[NODE_NEXT].Value = GetParam(currentState[NODE_NEXT].Value,ctx);
+            currentState[NODE_NEXT].Value = GetParam(currentState[NODE_NEXT].Value, ctx);
             state = currentState[NODE_NEXT].Value;
         }
+
+        if ((state == INTENT_TEST_TSK) || (state == INTENT_HW_TSK))
+        {
+            TSK_NAME = PlayerPrefs.GetString(INTENT_TSK);
+            if (state == INTENT_HW_TSK)
+                TSK_TYPE = "TST";
+            else TSK_TYPE = "HW";
+
+        }
+             if (state == INTENT_SAVE_TSK )
+           {
+               TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
+               HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, DateTime.Now);
+           }
+
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
         lastState = currentState;
         currentState = conversation[state];
@@ -279,8 +301,13 @@ public static class JsonManager
     {
         if (DateTime.Compare(DateTime.Now, date) > 0)
             return INTENT_WRONG_DATE;
-
-        return null;
+        string temp = HomeScreenManager.CheckForEventAtTime(date);
+        if (temp == null)
+            return null;
+        else {
+            PlayerPrefs.SetString("INTENT_DUP_DATE", temp);
+            return INTENT_DUP_DATE;
+        }
     }
 
 
