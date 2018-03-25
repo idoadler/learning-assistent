@@ -585,12 +585,12 @@
       "save": {
         "var": "mainHOBBY",
         "intentions": {
-          "contact": "",
+          "contact": ""},
           "ctx": {
             "reback": "pre4-how-can-i-help",
             "options": "בישול או בלט???"
           }
-        }
+        
       },
       "next": "choosesex-J2"
     },
@@ -831,7 +831,8 @@
         "small_talk": {
           "negetive": "negetive",
           "positive": "positive",
-          "tnx": "tnx"
+          "tnx": "tnx",
+          "type": "tst"
         },
         "help": {
           "good": "generalMotivation",
@@ -845,10 +846,6 @@
         "var": "task",
         "intentions": {
           "contact": ""
-        },
-        "ctx": {
-          "reback": "test-task",
-          "options": "כן/לא"
         }
       },
       "next": "test-task-2"
@@ -917,6 +914,33 @@
         },
         "ctx": {
           "reback": "test-task",
+          "options": "כן/לא"
+        }
+      },
+      "next": "homework-time"
+    },
+    "homework-task-2": {
+      "text-f2f": "אז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
+      "text-f2m": "ז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
+      "text-m2f": "ז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
+      "text-m2m": "ז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "homework-time",
           "options": "כן/לא"
         }
       },
