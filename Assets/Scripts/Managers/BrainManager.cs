@@ -35,7 +35,7 @@ public class BrainManager : MonoBehaviour {
             }
         }
     }
-
+    
     public string BrainData
     {
         get

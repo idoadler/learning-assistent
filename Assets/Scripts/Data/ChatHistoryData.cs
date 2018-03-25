@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class ChatHistoryData
 {
+    private const string PREF_HISTORY_DATA = "HISTORY";
     private const int MAX_CHAT_HISTORY = 10;
-    private const string eventsDataProjectFilePath = "/StreamingAssets/history.json";
+//    private const string eventsDataProjectFilePath = "/StreamingAssets/history.json";
 
     public static Chat Load()
     {
         Chat conversation;
+        string dataAsJson = PlayerPrefs.GetString(PREF_HISTORY_DATA, "");
+//        string filePath = eventsDataProjectFilePath.FullPath();
 
-        string filePath = eventsDataProjectFilePath.FullPath();
-
-        if (!ChatManager.IS_TESTING && File.Exists(filePath))
+        if (!ChatManager.IS_TESTING && !string.IsNullOrEmpty(dataAsJson))
         {
-            string dataAsJson = File.ReadAllText(filePath);
+//            string dataAsJson = File.ReadAllText(filePath);
             conversation = JsonUtility.FromJson<Chat>(dataAsJson);
         }
         else
@@ -38,13 +39,14 @@ public class ChatHistoryData
             conversation.texts = chatTexts.ToArray();
         } else
         {
-            conversation.texts = chatTexts.GetRange(chatTexts.Count - MAX_CHAT_HISTORY - 1, MAX_CHAT_HISTORY).ToArray();
+            conversation.texts = chatTexts.GetRange(chatTexts.Count - MAX_CHAT_HISTORY, MAX_CHAT_HISTORY).ToArray();
         }
 
         string dataAsJson = JsonUtility.ToJson(conversation);
 
-        string filePath = eventsDataProjectFilePath.FullPath();
-        File.WriteAllText(filePath, dataAsJson);
+        PlayerPrefs.SetString(PREF_HISTORY_DATA, dataAsJson);
+//        string filePath = eventsDataProjectFilePath.FullPath();
+//        File.WriteAllText(filePath, dataAsJson);
     }
 
     [Serializable]
