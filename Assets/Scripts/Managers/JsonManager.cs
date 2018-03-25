@@ -207,8 +207,7 @@ public static class JsonManager
              if (state == INTENT_SAVE_TSK )
            {
             TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
-            DateTime to = TSK_DATE;
-            to.AddMinutes(30.0f);
+            DateTime to = TSK_DATE.AddMinutes(30);
             if (TSK_TYPE == "TST")
                 HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, to);
             else
