@@ -585,12 +585,12 @@
       "save": {
         "var": "mainHOBBY",
         "intentions": {
-          "contact": ""},
-          "ctx": {
-            "reback": "pre4-how-can-i-help",
-            "options": "בישול או בלט???"
-          }
-        
+          "contact": ""
+        },
+        "ctx": {
+          "reback": "pre4-how-can-i-help",
+          "options": "בישול או בלט???"
+        }
       },
       "next": "choosesex-J2"
     },
@@ -920,10 +920,10 @@
       "next": "homework-task-2"
     },
     "homework-task-2": {
-      "text-f2f": "אז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
-      "text-f2m": "ז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
-      "text-m2f": "ז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
-      "text-m2m": "ז ההמלצה שלי היא להכין את כל החומר מראש:) ככה נוכל ללמוד בצורה הטובה ביותר! אוקי??",
+      "text-f2f": "אז ההמלצה שלי היא להכין את כל החומר מראש:)\n ככה נוכל ללמוד בצורה הטובה ביותר!\n אוקי??",
+      "text-f2m": "אז ההמלצה שלי היא להכין את כל החומר מראש:)\n ככה נוכל ללמוד בצורה הטובה ביותר!\n אוקי??",
+      "text-m2f": "אז ההמלצה שלי היא להכין את כל החומר מראש:)\n ככה נוכל ללמוד בצורה הטובה ביותר!\n אוקי??",
+      "text-m2m": "אז ההמלצה שלי היא להכין את כל החומר מראש:)\n ככה נוכל ללמוד בצורה הטובה ביותר!\n אוקי??",
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -931,7 +931,6 @@
           "tnx": "tnx"
         },
         "help": {
-          "good": "generalMotivation",
           "study-support": "how-can-i-help",
           "focuse": "help-focuse",
           "re-scdual": "re-scdual",
@@ -992,9 +991,22 @@
           "positive": "positive",
           "tnx": "tnx"
         },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
         "yes_no": {
           "yes": "how-can-i-help",
           "no": "general-good-bye"
+        },
+        "task": {
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
         }
       },
       "save": {
@@ -1002,7 +1014,16 @@
           "reback": "homework-scdual",
           "options": "כן או לא!:)",
           "yes": "how-can-i-help",
-          "no": "general-good-bye"
+          "no": "general-good-bye",
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support",
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
         }
       },
       "next": "focus"
@@ -1158,7 +1179,7 @@
       "save": {
         "ctx": {
           "reback": "re-focuse",
-          "options": "התייעצות כל קושי אחר /מבחן / שיעורי בית "
+          "options": "קושי לימודי /מבחן / שיעורי בית "
         }
       },
       "next": "focuse"

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(WitAi))]
 [RequireComponent(typeof(BrainManager))]
 public class ChatManager : MonoBehaviour {
-    public static bool IS_TESTING = true;
+    public static bool IS_TESTING = false;
 
     public GameObject[] screens;
     private int currentScreen;
