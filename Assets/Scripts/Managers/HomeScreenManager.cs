@@ -261,4 +261,26 @@ public class HomeScreenManager : MonoBehaviour {
 #endif
         }
     }
+
+    public static EntryPoint StaticGetEntryPoint()
+    {
+        return Instance.GetEntryPoint();
+    }
+
+    public EntryPoint GetEntryPoint()
+    {
+        return new EntryPoint {task = CurrentTask.NONE, description = "example", time = -1 };
+    }
+
+    public enum CurrentTask
+    {
+        NONE, TEST, HW, ELSE
+    }
+
+    public struct EntryPoint
+    {
+        public CurrentTask task;
+        public string description;
+        public int time;
+    }
 }
