@@ -42,6 +42,7 @@ public static class JsonManager
     private const string INTENT_HW_TSK = "homework-task-2";
     private const float REQUIRED_CONFIDENCE = 0.8f;
 
+
     private static string TSK_NAME ;
     private static string TSK_TYPE;
     private static DateTime TSK_DATE ; 
@@ -99,7 +100,6 @@ public static class JsonManager
         {
             PlayerPrefs.DeleteAll();
         }
-
         brain = JSON.Parse(json);
         conversation = brain[NODE_CONVERSATIONS];
         string state = PlayerPrefs.GetString(PREFS_LAST_STATE);
@@ -152,6 +152,7 @@ public static class JsonManager
         // save results to vars
         if (currentState[NODE_SAVE_DATA][NODE_CTX][0])
             ctx = currentState[NODE_SAVE_DATA][NODE_CTX];
+        if (ctx!=null)
         foreach (string i in ctx.Keys)
         {
             PlayerPrefs.SetString(i, ctx[i]);
@@ -206,9 +207,13 @@ public static class JsonManager
         }
              if (state == INTENT_SAVE_TSK )
            {
-               TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
-               HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, DateTime.Now);
-           }
+            TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
+            DateTime to = TSK_DATE.AddMinutes(30);
+            if (TSK_TYPE == "TST")
+                HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, to);
+            else
+                HomeScreenManager.StaticCreateTest(TSK_NAME, TSK_DATE, to);
+        }
 
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
         lastState = currentState;
@@ -285,10 +290,10 @@ public static class JsonManager
 
     private static string GetParam(string value, JSONNode ctx)
     {
-        if (value[0] == '#')
+        if ((value!=null)&&(value[0] == '#'))
         {
             string val = value.Substring(1, value.Length - 2);
-            if (ctx[val])
+            if ((ctx==null) || (ctx[val]))
             return PlayerPrefs.GetString(val);
             else return  "re-focuse" ;
         }
@@ -309,8 +314,6 @@ public static class JsonManager
             return INTENT_DUP_DATE;
         }
     }
-
-
 
     private static string[] FormatBotText(string botText)
     {

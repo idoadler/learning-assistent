@@ -137,12 +137,13 @@ public class HomeScreenManager : MonoBehaviour {
         if (eventsDuplicates.ContainsKey(from))
         {
             Debug.Log("adding event at the same time of event: " + eventsDuplicates[from]);
-        } else
+        }
+        else
         {
             eventsDuplicates.Add(from, title);
         }
 
-        homeworks.Add(new EventsData.HomeworkEvent {description=title,utcFrom=from.ToFileTimeUtc(),utcTo=to.ToFileTimeUtc()});
+        homeworks.Add(new EventsData.HomeworkEvent { description = title, utcFrom = from.ToFileTimeUtc(), utcTo = to.ToFileTimeUtc() });
 
         if (!missionDates.ContainsKey(from.Date))
         {
@@ -193,6 +194,8 @@ public class HomeScreenManager : MonoBehaviour {
 #endif
         }
     }
+
+
 
     public static void StaticCreateTest(string title, DateTime from, DateTime to)
     {
