@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MissionLine : MonoBehaviour
 {
@@ -8,5 +9,11 @@ public class MissionLine : MonoBehaviour
     public void Finished()
     {
         Destroy(gameObject);
+    }
+
+    public void OnDrag(BaseEventData eventData)
+    {
+        PointerEventData data = (PointerEventData)eventData;
+        Debug.Log(data.delta);
     }
 }

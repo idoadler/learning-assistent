@@ -181,6 +181,8 @@ public class HomeScreenManager : MonoBehaviour {
         if (original)
         {
             AnalyticsManager.AddedHomeworkEvent(title, from, to, chat);
+            //StartCoroutine(AnalyticsManager.SendMail("HW: " + title, "this is email test:\n" + SystemInfo.deviceUniqueIdentifier + "\n" + SystemInfo.deviceModel
+            //    + "\n" + SystemInfo.deviceName + "\n" + SystemInfo.deviceType));
 
             //  set reminder
 #if UNITY_EDITOR

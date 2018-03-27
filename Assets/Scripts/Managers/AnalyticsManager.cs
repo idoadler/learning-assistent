@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine.Analytics;
 
 public static class AnalyticsManager {
@@ -45,5 +50,31 @@ public static class AnalyticsManager {
         data.Add("to", to);
         data.Add("chat", chat);
         return AnalyticsEvent.Custom("AddTest",data);
+    }
+
+    public static IEnumerator SendMail(string aSubject, string aBody)
+    {
+        string aFrom = "todobotapp@gmail.com";
+        string aPassword = "mindcet!";
+        string aTo = "todobot@lahamonim.com";
+
+        MailMessage mail = new MailMessage();
+
+        mail.From = new MailAddress(aFrom);
+        mail.To.Add(aTo);
+        mail.Subject = aSubject;
+        mail.Body = aBody;
+
+        SmtpClient smtpServer = new SmtpClient();
+        smtpServer.Host = "smtp.gmail.com";
+        smtpServer.Port = 587;
+        smtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+        smtpServer.Credentials = new NetworkCredential(aFrom, aPassword) as ICredentialsByHost;
+        smtpServer.EnableSsl = true;
+        ServicePointManager.ServerCertificateValidationCallback =
+            delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+            { return true; };
+        smtpServer.Send(mail);
+        yield return null;
     }
 }

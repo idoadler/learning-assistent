@@ -34,6 +34,8 @@ public class ChatManager : MonoBehaviour {
 
     private void Start()
     {
+        InitConversation();
+
         // reset screens
         foreach (GameObject g in screens)
         {
@@ -41,8 +43,6 @@ public class ChatManager : MonoBehaviour {
         }
         currentScreen = PlayerPrefs.GetInt(PREFS_USED_SCREEN, 0);
         screens[currentScreen].SetActive(true);
-
-        InitConversation();
     }
 
     private void InitConversation()
