@@ -535,7 +535,7 @@
           "boy": "choosesex-J"
         }
       },
-      "next": "focuse"
+      "next": "choosesex2"
     },
     "choosesex2": {
       "text-f2f": "אז בן או בת?:)",
@@ -1029,32 +1029,130 @@
       "next": "focus"
     },
     "task-notification": {
-      "text-f2f": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-      "text-f2m": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-      "text-m2f": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-      "text-m2m": "אני רואה שעוד 10 דקות הגיע הזמן ל%TASK-TYPE% ב%TASK-NAME% , הכל מוכן?",
-      "next": "task-online"
+      "text-f2f": "אני רואה שעוד מעט הגיע הזמן לשבת על #task-name# , הכל מוכן?",
+      "text-f2m": "אני רואה שעוד מעט הגיע הזמן לשבת על #task-name# , הכל מוכן?",
+      "text-m2f": "אני רואה שעוד מעט הגיע הזמן לשבת על #task-name# , הכל מוכן?",
+      "text-m2m": "אני רואה שעוד מעט הגיע הזמן לשבת על #task-name# , הכל מוכן?",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "study-support",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "yes_no": {
+          "yes": "#task-type#",
+          "no": "help-focuse"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "homework-scdual",
+          "options": "כן או לא!:)",
+          "yes": "how-can-i-help",
+          "no": "general-good-bye",
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support",
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "next": "focus"
     },
     "task-online": {
-      "text-f2f": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-      "text-f2m": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-      "text-m2f": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-      "text-m2m": "מתחילים :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-      "next": "task-ver"
+      "text-f2f": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "text-f2m": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "text-m2f": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "text-m2m": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "study-support",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "yes_no": {
+          "yes": "#task-type#",
+          "no": "help-focuse"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "homework-scdual",
+          "options": "כן או לא!:)",
+          "yes": "how-can-i-help",
+          "no": "general-good-bye",
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support",
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "next": "focus"
     },
     "task-ver": {
       "text-f2f": "סיימנו - איך היה?",
       "text-f2m": "סיימנו - איך היה?",
       "text-m2f": "סיימנו - איך היה?",
       "text-m2m": "סיימנו - איך היה?",
-      "next": "task-flow"
-    },
-    "next-task-notification": {
-      "text-f2f": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-      "text-f2m": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-      "text-m2f": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-      "text-m2m": "המשימה הבאה היא %TASK-TYPE% ב%TASK-NAME% בשעה %TASK-TIME% , הכל מוכן?",
-      "next": "task-flow"
+      "intentions": {
+        "small_talk": {
+          "negetive": "negetive",
+          "positive": "positive",
+          "tnx": "tnx"
+        },
+        "help": {
+          "good": "generalMotivation",
+          "study-support": "study-support",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support"
+        },
+        "yes_no": {
+          "yes": "#task-type#",
+          "no": "help-focuse"
+        }
+      },
+      "save": {
+        "ctx": {
+          "reback": "homework-scdual",
+          "options": "כן או לא!:)",
+          "yes": "how-can-i-help",
+          "no": "general-good-bye",
+          "good": "generalMotivation",
+          "study-support": "how-can-i-help",
+          "focuse": "help-focuse",
+          "re-scdual": "re-scdual",
+          "class-support": "class-support",
+          "test": "test-task",
+          "homework": "homework-task",
+          "read": "homework-task",
+          "gn": "homework-task"
+        }
+      },
+      "next": "focus"
     },
     "task-summary": {
       "text-f2f": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",

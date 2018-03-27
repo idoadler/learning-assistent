@@ -272,10 +272,46 @@ public class HomeScreenManager : MonoBehaviour {
 
     public EntryPoint GetEntryPoint()
     {
-        return new EntryPoint {task = CurrentTask.NONE, description = "example", time = -1 };
+
+        homeworks = new List<EventsData.HomeworkEvent>();
+        EventsData.AllEvents allEvents = EventsData.Load();
+        long now = DateTime.Now.ToFileTimeUtc();
+        long flg = 6000000000*100;
+        int time = -2;
+        foreach (EventsData.HomeworkEvent e in allEvents.homeworks)
+        {
+            if ((e.utcFrom < now) && (e.utcTo > now)) time = 0;
+            else
+            {
+                if ((0 <   e.utcFrom - now ) && (e.utcFrom - now < flg)) time = -1;
+                else
+                    if ((0 < now - e.utcTo)&& (now - e.utcTo < flg)) time = 1;
+            }
+            if (time != -2)
+                return new EntryPoint { task = CurrentTask.HW, description = e.description, time = time };
+        }
+
+        foreach (EventsData.TestEvent e in allEvents.tests)
+        {
+            if ((e.utcFrom < now) && (e.utcTo > now)) time = 0;
+            else
+            {
+                if ((0 < e.utcFrom - now) && (e.utcFrom - now < flg)) time = -1;
+                else
+                    if ((0 < now - e.utcTo) && (now - e.utcTo < flg)) time = 1;
+            }
+            if (time != -2)
+                return new EntryPoint { task = CurrentTask.TEST, description = e.description, time = time };
+        }
+        return new EntryPoint { task = CurrentTask.NONE, description ="", time = time };
     }
 
-    public enum CurrentTask
+
+
+       
+    
+
+    public  enum CurrentTask
     {
         NONE, TEST, HW, ELSE
     }
