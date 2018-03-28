@@ -37,12 +37,12 @@ public static class AnalyticsManager {
         return AnalyticsEvent.Custom("AddHomework",data);
     }
 
-    public static AnalyticsResult AddedTestEvent(string desc, DateTime from, DateTime to, bool chat)
+    public static AnalyticsResult AddedTestEvent(string desc, DateTime at, string[] subjects, bool chat)
     {
         Dictionary<string, object> data = new Dictionary<string, object>();
         data.Add("desc", desc);
-        data.Add("from", from);
-        data.Add("to", to);
+        data.Add("at", at);
+        data.Add("subjects", subjects);
         data.Add("chat", chat);
         return AnalyticsEvent.Custom("AddTest",data);
     }

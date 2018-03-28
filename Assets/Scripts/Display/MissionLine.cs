@@ -14,12 +14,7 @@ public class MissionLine : MonoBehaviour
         time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
         data = eventData;
     }
-
-    public void Finished()
-    {
-        Destroy(gameObject);
-    }
-
+    
     public void OnDrag(BaseEventData eventData)
     {
         PointerEventData data = (PointerEventData)eventData;

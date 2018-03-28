@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableTest : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public int requiredDrag = 200;
-    public MissionLine parent;
+    public TestLine parent;
     public RectTransform data;
     private ScrollRect scroll;
     private bool vertical;

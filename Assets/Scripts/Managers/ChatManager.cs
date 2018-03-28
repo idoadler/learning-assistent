@@ -63,7 +63,7 @@ public class ChatManager : MonoBehaviour {
                 }
             }
         }
-        SetBotTextByErr(GetComponent<BrainManager>().GetExtra());
+        //SetBotTextByErr(GetComponent<BrainManager>().GetExtra());
         ScrollToBottom();
    }
 
