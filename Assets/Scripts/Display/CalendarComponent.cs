@@ -64,7 +64,7 @@ public class CalendarComponent : MonoBehaviour {
 
             if (isTest)
             {
-                home.CreateTest(input.text, from, to);
+                home.CreateTest(input.text, from, null);
             }
             else
             {

@@ -59,9 +59,9 @@ public class EventsData
     [Serializable]
     public struct TestEvent
     {
-        public long utcFrom;
-        public long utcTo;
+        public long utcAt;
         public string description;
+        public string[] titles;
     }
 
     [Serializable]

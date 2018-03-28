@@ -54,9 +54,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7761820fa27be49b68ed8e177eba35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brainAsset: {fileID: 4900000, guid: f7d65c8f7447ddf4c9ebc2273fad7e48, type: 3}
-  localBrainVer: 0
+  brainAsset: {fileID: 4900000, guid: ff6ad08dbde18ba489665a9a1bb47361, type: 3}
+  localBrainVer: 15
   brainURL: 
+  conversation: {fileID: 0}
+  Chat: {fileID: 114643658413422310}
 --- !u!114 &114198355770113902
 MonoBehaviour:
   m_ObjectHideFlags: 1
