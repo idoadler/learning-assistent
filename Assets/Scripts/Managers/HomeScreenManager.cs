@@ -1,5 +1,4 @@
-﻿using Assets.SimpleAndroidNotifications;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +10,7 @@ public class HomeScreenManager : MonoBehaviour {
     private List<EventsData.TestEvent> tests;
     private SortedDictionary<DateTime, DateLine> missionDates = new SortedDictionary<DateTime, DateLine>();
     private SortedDictionary<DateTime, DateLine> testDates = new SortedDictionary<DateTime, DateLine>();
+    private Dictionary<EventsData.HomeworkEvent, List<MissionLine>> homeworksUI = new Dictionary<EventsData.HomeworkEvent, List<MissionLine>>();
     private static Dictionary<DateTime, string> eventsDuplicates = new Dictionary<DateTime, string>();
 
     public MissionLine missionLinePrefab;
@@ -143,8 +143,6 @@ public class HomeScreenManager : MonoBehaviour {
             eventsDuplicates.Add(from, title);
         }
 
-        homeworks.Add(new EventsData.HomeworkEvent { description = title, utcFrom = from.ToFileTimeUtc(), utcTo = to.ToFileTimeUtc() });
-
         if (!missionDates.ContainsKey(from.Date))
         {
             DateLine date = Instantiate(dateLinePrefab, allMissions.transform);
@@ -160,23 +158,28 @@ public class HomeScreenManager : MonoBehaviour {
             missionDates.Add(from.Date, date);
         }
 
+        EventsData.HomeworkEvent data = new EventsData.HomeworkEvent { description = title, utcFrom = from.ToFileTimeUtc(), utcTo = to.ToFileTimeUtc() };
+        homeworks.Add(data);
+
         MissionLine mission = Instantiate(missionLinePrefab, allMissions.transform);
-        mission.desc.Text = title;
-        mission.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
+        mission.Init(title, from, to, data);
         mission.GetComponent<RectTransform>().SetSiblingIndex(missionDates[from.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
+        List<MissionLine> ui = new List<MissionLine>();
+        ui.Add(mission);
 
         if (from.Date == DateTime.Today)
         {
             // add daily mission
             MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
-            today.desc.Text = title;
-            today.time.Text = from.ToString("HH:mm") + "-" + to.ToString("HH:mm");
+            today.Init(title, from, to, data);
+            ui.Add(today);
         }
         else
         {
             // go to mission screen
             SetScreen((int)Screens.MISSIONS);
         }
+        homeworksUI.Add(data, ui);
 
         if (original)
         {
@@ -275,6 +278,16 @@ public class HomeScreenManager : MonoBehaviour {
     public EntryPoint GetEntryPoint()
     {
         return new EntryPoint {task = CurrentTask.NONE, description = "example", time = -1 };
+    }
+
+    public static void RemoveHomeworkTask(EventsData.HomeworkEvent item)
+    {
+        Instance.homeworks.Remove(item);
+        foreach (MissionLine mission in Instance.homeworksUI[item])
+        {
+            Destroy(mission.gameObject);
+        }
+        Instance.homeworksUI.Remove(item);
     }
 
     public enum CurrentTask
