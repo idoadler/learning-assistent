@@ -6,13 +6,22 @@ public class ConversationManager : MonoBehaviour {
     public GameObject userPrefab;
     public List<ChatHistoryData.ChatText> conversation = new List<ChatHistoryData.ChatText>();
 
-    public void BotSay(string text)
+    private static ConversationManager Instance;
+
+
+
+    public  void BotSay(string text)
     {
+        if (text == null) return;
         SayText(botPrefab, text);
         conversation.Add(new ChatHistoryData.ChatText { isBot = true, text = text });
         ChatHistoryData.Save(conversation);
         //AnalyticsManager.ChatMessageSent(text, false);
     }
+
+
+
+
 
     public void UserSay(string text, bool sendAnalytics = true)
     {

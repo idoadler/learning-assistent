@@ -13,7 +13,6 @@ public class ChatManager : MonoBehaviour {
     public ScrollRect chatScroll;
     public InputField input;
     public ConversationManager conversation;
-
     private WitAi witai;
 
     private JsonManager.Result lastBeforeBack = new JsonManager.Result();
@@ -48,14 +47,13 @@ public class ChatManager : MonoBehaviour {
     private void InitConversation()
     {
         GetComponent<BrainManager>().InitConversationBrain();
-
+        
         ChatHistoryData.Chat chatData = ChatHistoryData.Load();
-
         if (chatData.texts.Length > 0)
         {
-            foreach(ChatHistoryData.ChatText chatLine in chatData.texts)
+            foreach (ChatHistoryData.ChatText chatLine in chatData.texts)
             {
-                if(chatLine.isBot)
+                if (chatLine.isBot)
                 {
                     conversation.BotSay(chatLine.text);
                 }
@@ -64,9 +62,10 @@ public class ChatManager : MonoBehaviour {
                     conversation.UserSay(chatLine.text, false);
                 }
             }
-            ScrollToBottom();
         }
-    }
+        SetBotTextByErr(GetComponent<BrainManager>().GetExtra());
+        ScrollToBottom();
+   }
 
     public void NextScreen()
     {
@@ -115,6 +114,16 @@ public class ChatManager : MonoBehaviour {
             SetBotText(text);
         }
     }
+
+
+    public void SetBotTextByErr(string [] texts)
+    {
+        foreach (string text in texts)
+        {
+            SetBotText(text);
+        }
+    }
+
 
     public void SendText()
     {

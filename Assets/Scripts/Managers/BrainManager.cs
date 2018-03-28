@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class BrainManager : MonoBehaviour {
@@ -8,7 +9,8 @@ public class BrainManager : MonoBehaviour {
     public int localBrainVer;
     private int remoteBrainVer;
     public string brainURL;
-
+    public ConversationManager conversation;
+    public ChatManager Chat;
     private void Awake()
     {
         if (remoteBrainVer > localBrainVer)
@@ -55,6 +57,11 @@ public class BrainManager : MonoBehaviour {
     public void InitConversationBrain()
     {
         JsonManager.InitConversationJson(BrainData);
+    }
+
+    public string [] GetExtra()
+    {
+        return JsonManager.EXTRA;
     }
 
     IEnumerator GetBrainFile()

@@ -8,7 +8,6 @@ public static class JsonManager
 {
     private static bool isUserFemale = true;
     private static bool isBotFemale = true;
-
     private const string NODE_FIRST = "firstrun";
     private const string NODE_COMMUNICATION_ERROR = "communication-error";
     private const string NODE_EXIT = "exit";
@@ -40,17 +39,21 @@ public static class JsonManager
     private const string INTENT_TIME = "TIME";
     private const string INTENT_TEST_TSK = "test-task-2";
     private const string INTENT_HW_TSK = "homework-task-2";
+    private const string INTENT_TASK_NAME = "task-name";
+    private const string INTENT_TASK_TYPE = "task-type";
     private const float REQUIRED_CONFIDENCE = 0.8f;
 
-
+    private readonly static string[] INTENT_POINT_NODE = { "task-notification", "task-online", "task-ver" };
     private static string TSK_NAME ;
-    private static string TSK_TYPE;
+    public static string TSK_TYPE;
+    public static string [] EXTRA;
     private static DateTime TSK_DATE ; 
     private static JSONNode ctx;
     private static JSONNode brain;
     private static JSONNode conversation;
     private static JSONNode lastState;
     private static JSONNode currentState;
+   
 
     public static bool IsUserFemale
     {
@@ -102,7 +105,20 @@ public static class JsonManager
         }
         brain = JSON.Parse(json);
         conversation = brain[NODE_CONVERSATIONS];
-        string state = PlayerPrefs.GetString(PREFS_LAST_STATE);
+        HomeScreenManager.EntryPoint point = HomeScreenManager.StaticGetEntryPoint();
+        string state;
+        EXTRA = null;
+        if (point.task == HomeScreenManager.CurrentTask.NONE)
+            state = PlayerPrefs.GetString(PREFS_LAST_STATE);
+        else
+        {
+            state = INTENT_POINT_NODE[point.time + 1];
+            PlayerPrefs.SetString(INTENT_TASK_NAME, point.description);
+            string nextByType = point.task.ToString() + "-"+state;
+            PlayerPrefs.SetString(INTENT_TASK_TYPE, nextByType);
+            EXTRA = FormatBotText(conversation[state][TextGender()]);
+        }
+
         IsBotFemale = !PlayerPrefs.HasKey(PREFS_BOT_MALE);
         IsUserFemale = !PlayerPrefs.HasKey(PREFS_USER_MALE);
         if (string.IsNullOrEmpty(state))
