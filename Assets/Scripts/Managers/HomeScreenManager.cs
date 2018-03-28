@@ -276,7 +276,7 @@ public class HomeScreenManager : MonoBehaviour {
         homeworks = new List<EventsData.HomeworkEvent>();
         EventsData.AllEvents allEvents = EventsData.Load();
         long now = DateTime.Now.ToFileTimeUtc();
-        long flg = 6000000000*100;
+        long flg = 6000000000;
         int time = -2;
         foreach (EventsData.HomeworkEvent e in allEvents.homeworks)
         {

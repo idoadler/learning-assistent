@@ -118,6 +118,7 @@ public class ChatManager : MonoBehaviour {
 
     public void SetBotTextByErr(string [] texts)
     {
+        if (texts == null) return; 
         foreach (string text in texts)
         {
             SetBotText(text);
