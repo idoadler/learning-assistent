@@ -231,7 +231,7 @@ public static class JsonManager
             if (TSK_TYPE == "TST")
                 HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, to);
             else
-                HomeScreenManager.StaticCreateTest(TSK_NAME, TSK_DATE);
+                HomeScreenManager.StaticCreateTest(TSK_NAME, TSK_DATE, new string[] { });
         }
 
 

@@ -42,7 +42,7 @@ public static class AnalyticsManager {
         Dictionary<string, object> data = new Dictionary<string, object>();
         data.Add("desc", desc);
         data.Add("at", at);
-        data.Add("subjects", subjects);
+        data.Add("subjects", string.Join(", ", subjects));
         data.Add("chat", chat);
         return AnalyticsEvent.Custom("AddTest",data);
     }

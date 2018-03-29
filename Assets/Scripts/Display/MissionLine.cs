@@ -24,5 +24,6 @@ public class MissionLine : MonoBehaviour
     internal void RemoveEvent()
     {
         HomeScreenManager.RemoveHomeworkTask(data);
+        Destroy(gameObject);
     }
 }

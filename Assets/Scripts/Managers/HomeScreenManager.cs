@@ -208,9 +208,44 @@ public class HomeScreenManager : MonoBehaviour {
 #endif
     }
 
+    private void CreateTestUI(string title, DateTime from)
+    {
+        if (eventsDuplicates.ContainsKey(from))
+        {
+            Debug.Log("adding event at the same time of event: " + eventsDuplicates[from]);
+        }
+        else
+        {
+            eventsDuplicates.Add(from, title);
+        }
+        MissionLine mission = Instantiate(missionLinePrefab, allMissions.transform);
+        mission.Init(title, from, from.AddMinutes(30), new EventsData.HomeworkEvent());
+        if (!missionDates.ContainsKey(from.Date))
+        {
+            DateLine date = Instantiate(dateLinePrefab, allMissions.transform);
+            date.label.Text = SetDateLabel.DateFormat(from);
+            foreach (KeyValuePair<DateTime, DateLine> kvp in missionDates)
+            {
+                if (kvp.Key > from)
+                {
+                    date.GetComponent<RectTransform>().SetSiblingIndex(kvp.Value.GetComponent<RectTransform>().GetSiblingIndex());
+                    break;
+                }
+            }
+            missionDates.Add(from.Date, date);
+        }
 
+        mission.GetComponent<RectTransform>().SetSiblingIndex(missionDates[from.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
 
-    public static void StaticCreateTest(string title, DateTime at, string[] subjects = null)
+        if (from.Date == DateTime.Today)
+        {
+            // add daily mission
+            MissionLine today = Instantiate(missionLinePrefab, dailyMissions.transform);
+            today.Init(title, from, from.AddMinutes(30), new EventsData.HomeworkEvent());
+        }
+    }
+
+    public static void StaticCreateTest(string title, DateTime at, string[] subjects)
     {
         Instance.CreateTest(title, at, subjects, true, true);
     }
@@ -231,7 +266,7 @@ public class HomeScreenManager : MonoBehaviour {
         DateTime day = previousDay(at);
         if (day > DateTime.Today)
         {
-            CreateMission("חזרה לקראת: " + title, day, day.AddMinutes(30), false);
+            CreateTestUI("חזרה לקראת: " + title, day);
             day = previousDay(day);
 
             if (subjects != null && subjects.Length > 0)
@@ -239,14 +274,14 @@ public class HomeScreenManager : MonoBehaviour {
                 max = subjects.Length;
                 for (sub = subjects.Length - 1; sub >= 0 && day > DateTime.Today; sub--, day = previousDay(day))
                 {
-                    CreateMission("ללמוד: " + subjects[sub], day, day.AddMinutes(30), false);
+                    CreateTestUI("ללמוד: " + subjects[sub], day);
                 }
             }
             else
             {
                 for (sub = 0; sub < DEFALUT_STUDY_DAYS && day > DateTime.Today; sub++, day = previousDay(day))
                 {
-                    CreateMission("ללמוד: " + title, day, day.AddMinutes(30), false);
+                    CreateTestUI("ללמוד: " + title, day);
                 }
             }
         }
@@ -346,12 +381,15 @@ public class HomeScreenManager : MonoBehaviour {
 
     public static void RemoveHomeworkTask(EventsData.HomeworkEvent item)
     {
-        Instance.homeworks.Remove(item);
-        foreach (MissionLine mission in Instance.homeworksUI[item])
+        if (Instance.homeworks.Contains(item))
         {
-            Destroy(mission.gameObject);
+            Instance.homeworks.Remove(item);
+            foreach (MissionLine mission in Instance.homeworksUI[item])
+            {
+                Destroy(mission.gameObject);
+            }
+            Instance.homeworksUI.Remove(item);
         }
-        Instance.homeworksUI.Remove(item);
     }
 
     public enum CurrentTask
