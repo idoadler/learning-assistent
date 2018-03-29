@@ -39,6 +39,8 @@ public static class JsonManager
     private const string INTENT_TIME = "TIME";
     private const string INTENT_TEST_TSK = "test-task-2";
     private const string INTENT_HW_TSK = "homework-task-2";
+    private const string INTENT_TEST_PRC = "test-task-6";
+    private const string INTENT_TEST_PRC_TMP = "SUB-TEST";
     private const string INTENT_TASK_NAME = "task-name";
     private const string INTENT_TASK_TYPE = "task-type";
     private const float REQUIRED_CONFIDENCE = 0.8f;
@@ -46,7 +48,8 @@ public static class JsonManager
     private readonly static string[] INTENT_POINT_NODE = { "task-notification", "task-online", "task-ver" };
     private static string TSK_NAME ;
     public static string TSK_TYPE;
-    public static string [] EXTRA;
+    public static string[] EXTRA;
+    public static string[] SUB_TEST;
     private static DateTime TSK_DATE ; 
     private static JSONNode ctx;
     private static JSONNode brain;
@@ -231,6 +234,12 @@ public static class JsonManager
                 HomeScreenManager.StaticCreateTest(TSK_NAME, TSK_DATE);
         }
 
+
+
+        if (state == INTENT_TEST_PRC)
+            SUB_TEST = PlayerPrefs.GetString(INTENT_TEST_PRC_TMP).Split('-');
+
+
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
         lastState = currentState;
         currentState = conversation[state];
@@ -342,6 +351,7 @@ public static class JsonManager
 
         return result.Split(MESSAGE_SPLIT);
     }
+
 
     public struct Result
     {
