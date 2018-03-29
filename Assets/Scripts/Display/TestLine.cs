@@ -8,7 +8,7 @@ public class TestLine : MonoBehaviour
     public ArabicText time;
     public ArabicText daysLeft;
     public ArabicText subjectsLeft;
-    private EventsData.TestEvent data;
+
 
     public void Init(string title, DateTime date, int subjectsNum, int subjectsStudied, EventsData.TestEvent eventData)
     {
@@ -16,7 +16,7 @@ public class TestLine : MonoBehaviour
         time.Text = date.ToString("d.M.yy");
         daysLeft.Text = "עוד "+(date-DateTime.Today).Days+" ימים";
         subjectsLeft.Text = "למדת " + subjectsStudied + " נושאים מתוך " + subjectsNum;
-        data = eventData;
+     //   data = eventData;
     }
 
     public void OnDrag(BaseEventData eventData)
