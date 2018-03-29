@@ -14,6 +14,7 @@ public class CalendarComponent : MonoBehaviour {
     private float hoursToHeight;
     private float hoursFromHeight;
     private bool isTest;
+    private bool isHomework;
 
     private void Init()
     {
@@ -25,15 +26,20 @@ public class CalendarComponent : MonoBehaviour {
 
     public void DisplayMissions()
     {
-        Display(false);
+        Display(false,true);
     }
 
     public void DisplayTests()
     {
-        Display(true);
+        Display(true, false);
     }
 
-    private void Display(bool test)
+    public void DisplayGeneral()
+    {
+        Display(false, false);
+    }
+
+    private void Display(bool test, bool homework)
     {
         if (firstTime)
         {
@@ -46,6 +52,7 @@ public class CalendarComponent : MonoBehaviour {
             hoursTo.localPosition = new Vector2(hoursTo.localPosition.x, hoursToHeight);
         }
         isTest = test;
+        isHomework = homework;
         input.text = "";
         gameObject.SetActive(true);
     }
@@ -65,6 +72,10 @@ public class CalendarComponent : MonoBehaviour {
             if (isTest)
             {
                 home.CreateTest(input.text, from, new string[] { });
+            }
+            else if(isHomework)
+            {
+                home.CreateMission("שיעורים ב" + input.text, from, to);
             }
             else
             {

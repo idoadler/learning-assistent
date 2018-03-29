@@ -139,6 +139,12 @@ public class HomeScreenManager : MonoBehaviour {
         calendar.DisplayTests();
     }
 
+    public void AddGeneral()
+    {
+        HideMenus();
+        calendar.DisplayGeneral();
+    }
+
     public static void StaticCreateMission(string title, DateTime from, DateTime to)
     {
         Instance.CreateMission(title, from, to, true, true);
