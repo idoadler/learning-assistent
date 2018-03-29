@@ -192,12 +192,13 @@ public class HomeScreenManager : MonoBehaviour {
         if (original)
         {
             AnalyticsManager.AddedHomeworkEvent(title, from, to, chat);
-            //StartCoroutine(AnalyticsManager.SendMail("HW: " + title, "this is email test:\n" + SystemInfo.deviceUniqueIdentifier + "\n" + SystemInfo.deviceModel
-            //    + "\n" + SystemInfo.deviceName + "\n" + SystemInfo.deviceType));
+        }
+        //StartCoroutine(AnalyticsManager.SendMail("HW: " + title, "this is email test:\n" + SystemInfo.deviceUniqueIdentifier + "\n" + SystemInfo.deviceModel
+        //    + "\n" + SystemInfo.deviceName + "\n" + SystemInfo.deviceType));
 
-            //  set reminder
+        //  set reminder
 #if UNITY_EDITOR
-            Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
+        Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
             Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
 #elif UNITY_ANDROID
             int delta = (((from.Date.Day - DateTime.Now.Day) * 24 + (from.Hour - DateTime.Now.Hour)) * 60) + (from.Minute - DateTime.Now.Minute);
@@ -205,7 +206,6 @@ public class HomeScreenManager : MonoBehaviour {
             NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
             NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
-        }
     }
 
 
@@ -226,28 +226,27 @@ public class HomeScreenManager : MonoBehaviour {
             eventsDuplicates.Add(at, title);
         }
 
+        int max = DEFALUT_STUDY_DAYS;
+        int sub = DEFALUT_STUDY_DAYS;
+        DateTime day = previousDay(at);
+        if (day > DateTime.Today)
         {
-            // TODO:
-            // ADDING MISSIONS DOESN'T WORK! WHYY????
-            DateTime day = at.AddDays(-1);
-            if (day > DateTime.Today)
-            {
-                CreateMission("חזרה לקראת מבחן: " + title, day, day.AddMinutes(30), false);
-                day = day.AddDays(-1);
+            CreateMission("חזרה לקראת: " + title, day, day.AddMinutes(30), false);
+            day = previousDay(day);
 
-                if (subjects != null && subjects.Length > 0)
+            if (subjects != null && subjects.Length > 0)
+            {
+                max = subjects.Length;
+                for (sub = subjects.Length - 1; sub >= 0 && day > DateTime.Today; sub--, day = previousDay(day))
                 {
-                    for (int sub = subjects.Length - 1; sub >= 0 && day > DateTime.Today; sub--, day = day.AddDays(-1))
-                    {
-                        CreateMission("ללמוד: " + subjects[sub], day, day.AddMinutes(30), false);
-                    }
+                    CreateMission("ללמוד: " + subjects[sub], day, day.AddMinutes(30), false);
                 }
-                else
+            }
+            else
+            {
+                for (sub = 0; sub < DEFALUT_STUDY_DAYS && day > DateTime.Today; sub++, day = previousDay(day))
                 {
-                    for (int sub = 0; sub < DEFALUT_STUDY_DAYS && day > DateTime.Today; sub++, day = day.AddDays(-1))
-                    {
-                        CreateMission("ללמוד: " + title, day, day.AddMinutes(30), false);
-                    }
+                    CreateMission("ללמוד: " + title, day, day.AddMinutes(30), false);
                 }
             }
         }
@@ -258,14 +257,14 @@ public class HomeScreenManager : MonoBehaviour {
         tests.Add(data);
 
         TestLine test = Instantiate(testLinePrefab, allTests.transform);
-        test.Init(title, at, 8, 0, data);
+        test.Init(title, at, max, sub, data);
 //        test.GetComponent<RectTransform>().SetSiblingIndex(testDates[at.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
 
         if (at.Date == DateTime.Today)
         {
             // add daily mission
             TestLine today = Instantiate(testLinePrefab, dailyMissions.transform);
-            today.Init(title, at, 8, 0, data);
+            today.Init(title, at, max, sub, data);
         }
         else
         {
@@ -288,6 +287,20 @@ public class HomeScreenManager : MonoBehaviour {
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "בהצלחה", "בהצלחה במבחן ב" + test.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
+    }
+
+    private DateTime previousDay(DateTime current)
+    {
+        DateTime result = current.AddDays(-1).Date.AddHours(16);
+        while (result.DayOfWeek == DayOfWeek.Friday || result.DayOfWeek == DayOfWeek.Saturday)
+        {
+            result = result.AddDays(-1);
+        }
+        while (eventsDuplicates.ContainsKey(result))
+        {
+            result = result.AddHours(1);
+        }
+        return result;
     }
 
     public static EntryPoint StaticGetEntryPoint()
