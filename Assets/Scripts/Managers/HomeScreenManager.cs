@@ -230,20 +230,21 @@ public class HomeScreenManager : MonoBehaviour {
             // TODO:
             // ADDING MISSIONS DOESN'T WORK! WHYY????
             DateTime day = at.AddDays(-1);
-            if (day < DateTime.Today)
+            if (day > DateTime.Today)
             {
                 CreateMission("חזרה לקראת מבחן: " + title, day, day.AddMinutes(30), false);
+                day = day.AddDays(-1);
 
                 if (subjects != null && subjects.Length > 0)
                 {
-                    for (int sub = subjects.Length - 1; sub >= 0 && day < DateTime.Today; sub--, day.AddDays(-1))
+                    for (int sub = subjects.Length - 1; sub >= 0 && day > DateTime.Today; sub--, day = day.AddDays(-1))
                     {
                         CreateMission("ללמוד: " + subjects[sub], day, day.AddMinutes(30), false);
                     }
                 }
                 else
                 {
-                    for (int sub = 0; sub < DEFALUT_STUDY_DAYS && day < DateTime.Today; sub++, day.AddDays(-1))
+                    for (int sub = 0; sub < DEFALUT_STUDY_DAYS && day > DateTime.Today; sub++, day = day.AddDays(-1))
                     {
                         CreateMission("ללמוד: " + title, day, day.AddMinutes(30), false);
                     }

@@ -1,9 +1,0 @@
-diff a/Assets/Scripts/Managers/HomeScreenManager.cs b/Assets/Scripts/Managers/HomeScreenManager.cs	(rejected hunks)
-@@ -11,7 +11,6 @@
-     private List<EventsData.TestEvent> tests;
-     private SortedDictionary<DateTime, DateLine> missionDates = new SortedDictionary<DateTime, DateLine>();
-     private SortedDictionary<DateTime, DateLine> testDates = new SortedDictionary<DateTime, DateLine>();
--    private Dictionary<EventsData.HomeworkEvent, List<MissionLine>> homeworksUI = new Dictionary<EventsData.HomeworkEvent, List<MissionLine>>();
-     private static Dictionary<DateTime, string> eventsDuplicates = new Dictionary<DateTime, string>();
- 
-     public MissionLine missionLinePrefab;
