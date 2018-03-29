@@ -108,7 +108,7 @@
           "tnx": "re-negetive"
         }
       },
-      "next": "verifybeforeexit"
+      "next": "#reback#"
     },
     "verifybeforeexit": {
       "text-f2f": "האם ברצונך לצאת למסך הראשי?",
@@ -981,10 +981,10 @@
       "next": "focuse"
     },
     "homework-scdual": {
-      "text-f2f": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
-      "text-f2m": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
-      "text-m2f": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
-      "text-m2m": "מצויין! - אזכיר לך לפני!\nיש עוד דברים לקבוע? ",
+      "text-f2f": "מצויין! - אזכיר לך לפני!\nהאם יש לך עוד משימות שתרצה לקבוע? ",
+      "text-f2m": "מצויין! - אזכיר לך לפני!\nהאם יש לך עוד משימות שתרצה לקבוע? ",
+      "text-m2f": "מצויין! - אזכיר לך לפני!\nהאם יש לך עוד משימות שתרצה לקבוע? ",
+      "text-m2m": "מצויין! - אזכיר לך לפני!\nהאם יש לך עוד משימות שתרצה לקבוע? ",
       "intentions": {
         "small_talk": {
           "negetive": "negetive",
@@ -1034,11 +1034,6 @@
       "text-m2f": "אני רואה שעוד מעט הגיע הזמן לשבת על #task-name# , הכל מוכן?",
       "text-m2m": "אני רואה שעוד מעט הגיע הזמן לשבת על #task-name# , הכל מוכן?",
       "intentions": {
-        "small_talk": {
-          "negetive": "negetive",
-          "positive": "positive",
-          "tnx": "tnx"
-        },
         "help": {
           "good": "generalMotivation",
           "study-support": "study-support",
@@ -1047,71 +1042,48 @@
           "class-support": "class-support"
         },
         "yes_no": {
-          "yes": "#task-type#",
+          "yes": "task-notification-2",
           "no": "help-focuse"
         }
       },
       "save": {
         "ctx": {
-          "reback": "homework-scdual",
+          "reback": "task-notification-2",
           "options": "כן או לא!:)",
-          "yes": "how-can-i-help",
-          "no": "general-good-bye",
-          "good": "generalMotivation",
-          "study-support": "how-can-i-help",
-          "focuse": "help-focuse",
-          "re-scdual": "re-scdual",
-          "class-support": "class-support",
-          "test": "test-task",
-          "homework": "homework-task",
-          "read": "homework-task",
-          "gn": "homework-task"
+          "yes": "task-notification-2",
+          "no": "help-focuse"
         }
       },
-      "next": "focus"
+      "next": "task-notification-2"
     },
+    "task-notification-2": {
+      "text-f2f": "יאאלה! מתחילים - מעכשיו ועד סוף המשימה אני לא אהיה זמינה",
+      "text-f2m": "יאאלה! מתחילים - מעכשיו ועד סוף המשימה אני לא אהיה זמינה",
+      "text-m2f": "יאאלה! מתחילים - מעכשיו ועד סוף המשימה אני לא אהיה זמין",
+      "text-m2m": "יאאלה! מתחילים - מעכשיו ועד סוף המשימה אני לא אהיה זמין",
+      "next": "task-online"
+    },
+	
+	
+	
     "task-online": {
-      "text-f2f": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-      "text-f2m": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-      "text-m2f": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
+      "text-f2f": "התחלנו :) וודאי שהסביבה נוחה לך ותתנתקי מהכל, נדבר עוד מעט",
+      "text-f2m": "התחלנו :) וודא שהסביבה נוחה לך ותתנתקי מהכל, נדבר עוד מעט",
+      "text-m2f": "התחלנו :) וודאי שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
       "text-m2m": "התחלנו :) וודא שהסביבה נוחה לך ותתנתק מהכל, נדבר עוד מעט",
-      "intentions": {
-        "small_talk": {
-          "negetive": "negetive",
-          "positive": "positive",
-          "tnx": "tnx"
-        },
-        "help": {
-          "good": "generalMotivation",
-          "study-support": "study-support",
-          "focuse": "help-focuse",
-          "re-scdual": "re-scdual",
-          "class-support": "class-support"
-        },
-        "yes_no": {
-          "yes": "#task-type#",
-          "no": "help-focuse"
-        }
-      },
-      "save": {
-        "ctx": {
-          "reback": "homework-scdual",
-          "options": "כן או לא!:)",
-          "yes": "how-can-i-help",
-          "no": "general-good-bye",
-          "good": "generalMotivation",
-          "study-support": "how-can-i-help",
-          "focuse": "help-focuse",
-          "re-scdual": "re-scdual",
-          "class-support": "class-support",
-          "test": "test-task",
-          "homework": "homework-task",
-          "read": "homework-task",
-          "gn": "homework-task"
-        }
-      },
-      "next": "focus"
+      "next": "task-notification-3"
     },
+	
+	   "task-notification-3": {
+      "text-f2f": "לא זמינה",
+      "text-f2m": "לא זמינה",
+      "text-m2f": "לא זמין",
+      "text-m2m": "לא זמין",
+      "next": "task-notification-3"
+    },
+	
+	
+	
     "task-ver": {
       "text-f2f": "סיימנו - איך היה?",
       "text-f2m": "סיימנו - איך היה?",
@@ -1119,70 +1091,156 @@
       "text-m2m": "סיימנו - איך היה?",
       "intentions": {
         "small_talk": {
-          "negetive": "negetive",
-          "positive": "positive",
+          "negetive":"help-focuse",
+          "positive":"#INTENT_TASK_TYPE#",
           "tnx": "tnx"
         },
         "help": {
-          "good": "generalMotivation",
-          "study-support": "study-support",
-          "focuse": "help-focuse",
-          "re-scdual": "re-scdual",
-          "class-support": "class-support"
+          "reback": "#INTENT_TASK_TYPE#",
+          "study-support": "study-support-2",
+          "focuse": "help-focuse-2",
+          "re-scdual": "re-scdual-2",
+          "class-support": "class-support-2"
         },
-        "yes_no": {
-          "yes": "#task-type#",
-          "no": "help-focuse"
-        }
       },
+	  
       "save": {
         "ctx": {
-          "reback": "homework-scdual",
-          "options": "כן או לא!:)",
-          "yes": "how-can-i-help",
-          "no": "general-good-bye",
-          "good": "generalMotivation",
-          "study-support": "how-can-i-help",
-          "focuse": "help-focuse",
-          "re-scdual": "re-scdual",
-          "class-support": "class-support",
-          "test": "test-task",
-          "homework": "homework-task",
-          "read": "homework-task",
-          "gn": "homework-task"
+          "reback": "#INTENT_TASK_TYPE#",
+          "study-support": "study-support-2",
+          "focuse": "help-focuse-2",
+          "re-scdual": "re-scdual-2",
+          "class-support": "class-support-2"
         }
       },
-      "next": "focus"
+      "next":  "#INTENT_TASK_TYPE#"
     },
-    "task-summary": {
-      "text-f2f": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-      "text-f2m": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-      "text-m2f": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-      "text-m2m": "סיימנו להיום , תראה מה הספקנו %TASK LIST%  נפגש מחר! ",
-      "next": "general-Motivation",
-      "next-step": "general-goodbye"
+	
+	
+	
+	    "re-scdual-2": {
+      "text-f2f":"טוב שהעלת את זה עכשיו!!\n אני חושבת שאת המשימות הבאות נדע לתכנן טוב יותר",
+      "text-f2m":"טוב שהעלת את זה עכשיו!!\n אני חושבת שאת המשימות הבאות נדע לתכנן טוב יותר",
+      "text-m2f":"טוב שהעלת את זה עכשיו!!\n אני חושב שאת המשימות הבאות נדע לתכנן טוב יותר",
+      "text-m2m":"טוב שהעלת את זה עכשיו!!\n אני חושב שאת המשימות הבאות נדע לתכנן טוב יותר",
+      "next": "#INTENT_TASK_TYPE#"
     },
-    "re-scdual-2": {
-      "text-f2f": "אז מתי נשב על זה שוב? ",
-      "text-f2m": "אז מתי נשב על זה שוב? ",
-      "text-m2f": "אז מתי נשב על זה שוב? ",
-      "text-m2m": "אז מתי נשב על זה שוב? ",
-      "next": "task-flow"
-    },
+	
     "study-support-2": {
-      "text-f2f": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-      "text-f2m": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-      "text-m2f": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-      "text-m2m": "נצא עכשיו להפסקה קצרה - ונתנתק קצת, כשנחזור ננטרל את כל מה שמפריע ונלמד כמו שצריך, שנקבע מתי חוזרים? ",
-      "next": "re-scdual"
+      "text-f2f": "עצם העבודה שאת מודעת לזה היא כבר חצי מהפתרון:) \nתנסי לדאוג לסביבה שקטה יותר\nנסי לארגן את החומר בצורה נגישה יותר\nקחי לעצמך 5 דקות של שקט לפני שנתחיל ללמוד שוב :)",
+      "text-f2m": "עצם העבודה שאת מודעת לזה היא כבר חצי מהפתרון:) \nתנסי לדאוג לסביבה שקטה יותר\nנסי לארגן את החומר בצורה נגישה יותר\nקח לעצמך 5 דקות של שקט לפני שנתחיל ללמוד שוב :)",
+      "text-m2f": "עצם העבודה שאתה מודע לזה היא כבר חצי מהפתרון:) \nתנסה לדאוג לסביבה שקטה יותר\nנסה לארגן את החומר בצורה נגישה יותר\nקח לעצמך 5 דקות של שקט לפני שנתחיל ללמוד שוב :)",
+      "text-m2m": "עצם העבודה שאתה מודע לזה היא כבר חצי מהפתרון:) \nתנסה לדאוג לסביבה שקטה יותר\nנסה לארגן את החומר בצורה נגישה יותר\nקח לעצמך 5 דקות של שקט לפני שנתחיל ללמוד שוב :)",
+      "next": "#INTENT_TASK_TYPE#"
     },
+	
     "class-support-2": {
-      "text-f2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
-      "text-f2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב?",
-      "text-m2f": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
-      "text-m2m": "ממולץ לשאול חברים או להתייעץ עם המורה :) חשוב גם שהחומר יהיה מסודר טוב שנקבע שוב? ",
-      "next": "re-scdual"
+      "text-f2f": "אולי ננסה לשאול חבר או אפילו את המורה?\n כך בפעם הבאה יהיה הרבה יותר קל ונח:)",
+      "text-f2m": "אולי ננסה לשאול חבר או אפילו את המורה?\n כך בפעם הבאה יהיה הרבה יותר קל ונח:)",
+      "text-m2f": "אולי ננסה לשאול חבר או אפילו את המורה?\n כך בפעם הבאה יהיה הרבה יותר קל ונח:)",
+      "text-m2m": "אולי ננסה לשאול חבר או אפילו את המורה?\n כך בפעם הבאה יהיה הרבה יותר קל ונח:)",
+      "next": "#INTENT_TASK_TYPE#"
+    }
+	
+	
+	
+	
+	    "task-ver-HW": {
+      "text-f2f": "סיימנו - איך היה?",
+      "text-f2m": "סיימנו - איך היה?",
+      "text-m2f": "סיימנו - איך היה?",
+      "text-m2m": "סיימנו - איך היה?",
+      "intentions": {
+        "small_talk": {
+          "negetive":"help-focuse",
+          "positive":"#INTENT_TASK_TYPE#",
+          "tnx": "tnx"
+        },
+        "help": {
+          "reback": "#INTENT_TASK_TYPE#",
+          "study-support": "study-support-2",
+          "focuse": "help-focuse-2",
+          "re-scdual": "re-scdual-2",
+          "class-support": "class-support-2"
+        },
+      },
+	  
+      "save": {
+        "ctx": {
+          "reback": "#INTENT_TASK_TYPE#",
+          "study-support": "study-support-2",
+          "focuse": "help-focuse-2",
+          "re-scdual": "re-scdual-2",
+          "class-support": "class-support-2"
+        }
+      },
+      "next": "task-end"
     },
+	
+	
+		
+	    "task-ver-TEST": {
+      "text-f2f": "סיימנו - איך היה?",
+      "text-f2m": "סיימנו - איך היה?",
+      "text-m2f": "סיימנו - איך היה?",
+      "text-m2m": "סיימנו - איך היה?",
+      "intentions": {
+        "small_talk": {
+          "negetive":"help-focuse",
+          "positive":"#INTENT_TASK_TYPE#",
+          "tnx": "tnx"
+        },
+        "help": {
+          "reback": "#INTENT_TASK_TYPE#",
+          "study-support": "study-support-2",
+          "focuse": "help-focuse-2",
+          "re-scdual": "re-scdual-2",
+          "class-support": "class-support-2"
+        },
+      },
+	  
+      "save": {
+        "ctx": {
+          "reback": "#INTENT_TASK_TYPE#",
+          "study-support": "study-support-2",
+          "focuse": "help-focuse-2",
+          "re-scdual": "re-scdual-2",
+          "class-support": "class-support-2"
+        }
+      },
+      "next":  "task-end"
+    },
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+"task-end": {
+      "text-f2f": "שמחתי לעזור! עוד נמשיך לעבוד ביחד:)",
+      "text-f2m":  "שמחתי לעזור! עוד נמשיך לעבוד ביחד:)",
+      "text-m2f":  "שמחתי לעזור! עוד נמשיך לעבוד ביחד:)",
+      "text-m2m":  "שמחתי לעזור! עוד נמשיך לעבוד ביחד:)",
+      "next": "how-can-i-help"
+    },
+	
+	
+	
+	
+	
+	
     "re-scdual": {
       "text-f2f": "אני עוד לומדת בעצמי :)\n אבל תמיד טוב לרשום מראש את הנושאים\n ולהקצות להם זמן ואז בצעדים קטנים\n להגיע רחוק!! ",
       "text-f2m": "אני עוד לומד בעצמי :)\n אבל תמיד טוב לרשום מראש את הנושאים\n ולהקצות להם זמן ואז בצעדים קטנים\n להגיע רחוק!! ",
