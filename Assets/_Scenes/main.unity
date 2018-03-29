@@ -4219,12 +4219,12 @@ Prefab:
     - target: {fileID: 224742944241749740, guid: 0446cc608ed7a4c4d8464ed7c7d4fcde,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 156.9
       objectReference: {fileID: 0}
     - target: {fileID: 224774884589165144, guid: 0446cc608ed7a4c4d8464ed7c7d4fcde,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 113.99765
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0446cc608ed7a4c4d8464ed7c7d4fcde, type: 2}

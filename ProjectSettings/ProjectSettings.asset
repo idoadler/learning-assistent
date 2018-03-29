@@ -246,7 +246,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/X/Documents/git/learning-assistent/mindcet.keystore
+  AndroidKeystoreName: C:/Git/assistent/mindcet.keystore
   AndroidKeyaliasName: todobot
   AndroidTVCompatibility: 0
   AndroidIsGame: 1

@@ -215,8 +215,6 @@ public class HomeScreenManager : MonoBehaviour {
             int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
             NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
             NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
-           delta = (((at.Date.Day - DateTime.Now.Day+1) * 24 + (at.Hour - DateTime.Now.Hour)) * 60) + (at.Minute - DateTime.Now.Minute);
-           NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), HI[rnd.Next(0,HI.Length-1)], new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
     }
 
@@ -333,8 +331,6 @@ public class HomeScreenManager : MonoBehaviour {
         int session = 60;
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "בהצלחה", "בהצלחה במבחן ב" + test.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
-        delta = (((at.Date.Day - DateTime.Now.Day+1) * 24 + (at.Hour - DateTime.Now.Hour)) * 60) + (at.Minute - DateTime.Now.Minute);
-        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), HI[rnd.Next(0,HI.Length-1)], new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
     }
 
