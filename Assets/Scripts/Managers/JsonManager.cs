@@ -171,11 +171,11 @@ public static class JsonManager
         // save results to vars
         if (currentState[NODE_SAVE_DATA][NODE_CTX][0])
             ctx = currentState[NODE_SAVE_DATA][NODE_CTX];
-        if (ctx!=null)
-        foreach (string i in ctx.Keys)
-        {
-            PlayerPrefs.SetString(i, ctx[i]);
-        }
+        if (ctx != null)
+            foreach (string i in ctx.Keys)
+            {
+                PlayerPrefs.SetString(i, ctx[i]);
+            }
 
         JSONNode intentions = currentState[NODE_SAVE_DATA][NODE_INTENTIONS];
         KeyValuePair<string, string> intent = MatchBestIntent(entities, intentions);
@@ -224,8 +224,8 @@ public static class JsonManager
             else TSK_TYPE = "HW";
 
         }
-             if (state == INTENT_SAVE_TSK )
-           {
+        if (state == INTENT_SAVE_TSK)
+        {
             TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
             DateTime to = TSK_DATE.AddMinutes(30);
             if (TSK_TYPE == "TST")
@@ -237,7 +237,11 @@ public static class JsonManager
 
 
         if (state == INTENT_TEST_PRC)
-            SUB_TEST = PlayerPrefs.GetString(INTENT_TEST_PRC_TMP).Split('-');
+        {
+         SUB_TEST = PlayerPrefs.GetString(INTENT_TEST_PRC_TMP).Split('-');
+         TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
+        HomeScreenManager.StaticCreateTest(TSK_NAME, TSK_DATE, SUB_TEST);
+        }
 
 
         PlayerPrefs.SetString(PREFS_LAST_STATE, state);
