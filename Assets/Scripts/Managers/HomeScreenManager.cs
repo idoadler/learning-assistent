@@ -30,6 +30,10 @@ public class HomeScreenManager : MonoBehaviour {
     public GameObject[] menusToHide;
     public GameObject[] screens;
     public GameObject addMissionMenu;
+    System.Random rnd = new System.Random();
+    private readonly static string[] HI = { "היי! אני פה :)", "טוק טוק :)", "מה נשמע??", "איש חכם אמר לי פעם ....", "מקווה שהיום שלך נפלא:)", "אני תמיד פה לעזור" };
+    
+
 
     private static HomeScreenManager Instance;
 
@@ -196,6 +200,7 @@ public class HomeScreenManager : MonoBehaviour {
             //    + "\n" + SystemInfo.deviceName + "\n" + SystemInfo.deviceType));
 
             //  set reminder
+
 #if UNITY_EDITOR
             Debug.Log("Added notification: " + "היי,\n" + "עוד מעט מתחילים ללמוד" + mission.desc.Text);
             Debug.Log("Added notification: " + "היי,\n" + "סיימנו! איך היה?");
@@ -204,6 +209,8 @@ public class HomeScreenManager : MonoBehaviour {
             int session = (to.Hour - from.Hour) * 60 + (to.Minute - from.Minute);
             NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "היי", "עוד מעט מתחילים ללמוד" + mission.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
             NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
+           delta = (((at.Date.Day - DateTime.Now.Day+1) * 24 + (at.Hour - DateTime.Now.Hour)) * 60) + (at.Minute - DateTime.Now.Minute);
+           NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), HI[rnd.Next(0,HI.Length-1)], new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
         }
     }
@@ -254,12 +261,12 @@ public class HomeScreenManager : MonoBehaviour {
 
         // TODO: sort by date
 
-        EventsData.TestEvent data = new EventsData.TestEvent { description = title, utcAt = at.ToFileTimeUtc(), titles = subjects};
+        EventsData.TestEvent data = new EventsData.TestEvent { description = title, utcAt = at.ToFileTimeUtc(), titles = subjects };
         tests.Add(data);
 
         TestLine test = Instantiate(testLinePrefab, allTests.transform);
         test.Init(title, at, subjects.Length, 0, data);
-//        test.GetComponent<RectTransform>().SetSiblingIndex(testDates[at.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
+        //        test.GetComponent<RectTransform>().SetSiblingIndex(testDates[at.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
 
         if (at.Date == DateTime.Today)
         {
@@ -272,11 +279,11 @@ public class HomeScreenManager : MonoBehaviour {
             // go to mission screen
             SetScreen((int)Screens.TESTS);
         }
-
-      /*  if (original)
-        {
-            AnalyticsManager.AddedTestEvent(title, at, subjects, chat);
-        }*/
+        
+        /*  if (original)
+          {
+              AnalyticsManager.AddedTestEvent(title, at, subjects, chat);
+          }*/
 
         //  set reminder
 #if UNITY_EDITOR
@@ -287,6 +294,8 @@ public class HomeScreenManager : MonoBehaviour {
         int session = 60;
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta - 5), "בהצלחה", "בהצלחה במבחן ב" + test.desc.Text, new Color(1, 0.8f, 1), NotificationIcon.Clock);
         NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), "היי", "סיימנו! איך היה?", new Color(1, 0.8f, 1), NotificationIcon.Star);
+        delta = (((at.Date.Day - DateTime.Now.Day+1) * 24 + (at.Hour - DateTime.Now.Hour)) * 60) + (at.Minute - DateTime.Now.Minute);
+        NotificationManager.SendWithAppIcon(TimeSpan.FromMinutes(delta + session), HI[rnd.Next(0,HI.Length-1)], new Color(1, 0.8f, 1), NotificationIcon.Star);
 #endif
     }
 
@@ -297,7 +306,6 @@ public class HomeScreenManager : MonoBehaviour {
 
     public EntryPoint GetEntryPoint()
     {
-
         homeworks = new List<EventsData.HomeworkEvent>();
         EventsData.AllEvents allEvents = EventsData.Load();
         long now = DateTime.Now.ToFileTimeUtc();
