@@ -258,14 +258,14 @@ public class HomeScreenManager : MonoBehaviour {
         tests.Add(data);
 
         TestLine test = Instantiate(testLinePrefab, allTests.transform);
-        test.Init(title, at, 8, 0, data);
+        test.Init(title, at, subjects.Length, 0, data);
 //        test.GetComponent<RectTransform>().SetSiblingIndex(testDates[at.Date].GetComponent<RectTransform>().GetSiblingIndex() + 1);
 
         if (at.Date == DateTime.Today)
         {
             // add daily mission
             TestLine today = Instantiate(testLinePrefab, dailyMissions.transform);
-            today.Init(title, at, 8, 0, data);
+            today.Init(title, at, subjects.Length, 0, data);
         }
         else
         {
@@ -273,10 +273,10 @@ public class HomeScreenManager : MonoBehaviour {
             SetScreen((int)Screens.TESTS);
         }
 
-        if (original)
+      /*  if (original)
         {
             AnalyticsManager.AddedTestEvent(title, at, subjects, chat);
-        }
+        }*/
 
         //  set reminder
 #if UNITY_EDITOR
