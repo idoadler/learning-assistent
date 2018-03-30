@@ -228,10 +228,7 @@ public static class JsonManager
         {
             TSK_DATE = DateTime.Parse(PlayerPrefs.GetString(INTENT_TIME));
             DateTime to = TSK_DATE.AddMinutes(30);
-            if (TSK_TYPE == "TST")
                 HomeScreenManager.StaticCreateMission(TSK_NAME, TSK_DATE, to);
-            else
-                HomeScreenManager.StaticCreateTest(TSK_NAME, TSK_DATE, new string[] { });
         }
 
 
