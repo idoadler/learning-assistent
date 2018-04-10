@@ -74,7 +74,7 @@ public class HomeScreenManager : MonoBehaviour {
     private void LoadEvents()
     {
         EventsData.AllEvents allEvents = EventsData.Load();
-        long now = DateTime.Now.ToFileTimeUtc();
+        long now = DateTime.Today.ToFileTimeUtc();
 
         others = new List<EventsData.GeneralEvent>();
         foreach (EventsData.GeneralEvent e in allEvents.others)
